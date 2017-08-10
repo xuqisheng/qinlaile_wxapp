@@ -1,0 +1,103 @@
+/**index.wxss**/
+
+/*最外层容器*/
+.main{
+  background-color: rgb(216, 216, 216)
+}
+
+/*分割线*/
+.border-top{
+  border-top: 0.5rpx solid lightgray;
+}
+
+/*模块头*/
+.item-header{
+  height: 60rpx;  
+  padding: 6rpx;
+  margin-top: 10rpx;
+  background-color: white;
+}
+
+.hot{
+  /*所有绿色*/
+  color: rgb(66, 192, 23);
+  font-size: 28rpx;
+  line-height: 60rpx;
+}
+
+.dzy{
+  margin-left: 20rpx;
+  color: gray;
+  font-size: 24rpx;
+  line-height: 60rpx;
+}
+
+.more{
+  color: gray;
+  font-size: 24rpx;
+  float: right;
+  line-height: 60rpx;
+}
+
+/*分割线
+.divider{
+  background-color:lightgray;
+  height:0.1rpx;
+}
+*/
+
+/*滚动新闻*/
+.news_banner{
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  height:90rpx;
+  background-color: white;
+}
+.swiper_container {
+   height: 90rpx;
+   width: 100%;
+   line-height: 90rpx;
+ }
+
+/*滚动新闻文字*/
+.news-text {
+   font-size: 25rpx;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   letter-spacing: 2px;
+   padding-left: 10rpx
+}
+
+/*家政服务*/
+.jzfw-container{
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  background-color: white;
+  padding-bottom: 20rpx
+}
+
+/*********************表格*********************/
+.table {
+  border: 0px solid darkgray;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  padding-top: 18rpx;
+}
+.td {
+  width:40%;
+  justify-content: center;
+  text-align: center;
+}
+
+/*********************表格*********************/
+
+/*在线小店*/
+.zxxd{
+  margin-top: 60rpx
+}

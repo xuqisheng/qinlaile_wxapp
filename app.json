@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wuye/wuye",
+    "pages/jiazheng/jiazheng",
+    "pages/xiaodian/xiaodian",
+    "pages/huiyuan/huiyuan"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#42c017",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "res/icon/home.png",
+        "selectedIconPath": "res/icon/home_selected.png"
+      },
+      {
+        "pagePath": "pages/wuye/wuye",
+        "text": "物业",
+        "iconPath": "res/icon/wuye.png",
+        "selectedIconPath": "res/icon/wuye_selected.png"
+      },
+      {
+        "pagePath": "pages/jiazheng/jiazheng",
+        "text": "家政服务",
+        "iconPath": "res/icon/jiazhengfuwu.png",
+        "selectedIconPath": "res/icon/jiazhengfuwu_selected.png"
+      },
+      {
+        "pagePath": "pages/xiaodian/xiaodian",
+        "text": "小店",
+        "iconPath": "res/icon/xiaodian.png",
+        "selectedIconPath": "res/icon/xiaodian_selected.png"
+      },
+      {
+        "pagePath": "pages/huiyuan/huiyuan",
+        "text": "会员",
+        "iconPath": "res/icon/person.png",
+        "selectedIconPath": "res/icon/person_selected.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+<!--在线小店-->
+<view class="jzfw">
+  <view class="item-header">
+    <text class="hot">在线小店</text>
+    <text class="more">更多 ></text>
+  </view>
+
+  <view class="jzfw-container">
+    <view class="border-top">
+      <view class="table">
+
+        <!--第一行-->
+        <view class="tr">
+          <block wx:for="{{category_list}}" wx:for-item="category" wx:key="{{code}}">
+            <view class="td" wx:if="{{index < 3}}">
+              <image class="news-img" src="{{_uri+category.img}}" 
+              style="width:200rpx;height:200rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+            </view>
+          </block>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+</view>

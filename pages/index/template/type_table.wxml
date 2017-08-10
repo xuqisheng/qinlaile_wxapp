@@ -1,0 +1,38 @@
+<!--家政服务-->
+<view class="jzfw">
+  <view class="item-header">
+    <text class="hot">家政服务</text>
+    <text class="more">更多 ></text>
+  </view>
+
+  <view class="jzfw-container">
+    <view class="border-top">
+      <view class="table">
+
+        <!--第一行-->
+        <view class="tr">
+          <block wx:for="{{service_types}}" wx:for-item="type" wx:key="{{code}}">
+            <view class="td" wx:if="{{index < 4}}">
+              <image class="news-img" src="{{_uri+type.img}}" 
+              style="width:80rpx;height:80rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              <view class="news-text">{{type.name}}</view>
+            </view>
+          </block>
+        </view>
+
+        <!--第二行-->
+        <view class="tr">
+          <block wx:for="{{service_types}}" wx:for-item="type" wx:key="{{code}}">
+            <view class="td" wx:if="{{index >= 4}}">
+              <image class="news-img" src="{{_uri+type.img}}"
+              style="width:80rpx;height:80rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              <view class="news-text">{{type.name}}</view>
+            </view>
+          </block>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+</view>

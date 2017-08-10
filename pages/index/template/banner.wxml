@@ -1,0 +1,11 @@
+<template name="banner"> 
+    <swiper class="lunbo" id="lunbo" indicator-active-color="#fff"
+    indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <!--wx:for-item="img"的定义，使用引号，非{{}}-->
+        <block wx:for="{{imgs}}" wx:for-item="img" wx:key="*this">
+            <swiper-item>
+              <image src="{{img}}" style="width:100%;height:800rpx;background-color: #fff;" mode="widthFix"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</template>

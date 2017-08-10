@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="main">
+  <!--顶部轮播图-->
+  <import src="../index/template/banner.wxml"/>
+  <template is="banner" data="{{...banner,imgs}}"/>
+
+  <!--德州新闻header-->
+  <view class="item-header">
+    <text class="hot">今日热点</text>
+    <text class="dzy">转载自：德州云</text>
+    <text class="more">更多 ></text>
+  </view>
+
+  <!--轮播新闻-->
+  <import src="../index/template/news_banner.wxml"/>
+  <template is="news_banner" data="{{newsList,_uri}}"/>
+
+  <!--家政服务-->
+  <include src="template/type_table.wxml"/>
+
+  <!--在线小店-->
+  <include src="template/shop_table.wxml"/>
+
+</view>
