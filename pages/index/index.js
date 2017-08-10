@@ -5,10 +5,14 @@ var app = getApp();
 //引入controller
 const index = require('../../controller/indexController.js').controller;
 
-const URI = 'https://www.jiahetianlang.com';
+const URI = app.globalData.URI;
+
+//在使用的View中引入WxParse模块
+const WxParse = require('../../lib/wxParse/wxParse.js');
 
 Page({
   data: {
+
     _uri:`${URI}`,
     //轮播定义
     banner:{
@@ -49,6 +53,39 @@ Page({
     //社区小店列表
     category_list:[],
     
+  }, 
+
+  //点击新闻条目
+  onNewsClick:function(event){
+    var news = event.currentTarget.dataset.news;
+
+    //得到原生html内容
+    var content = news.content
+    //console.log(content)
+
+    //【思路一】html转换为文本，但是不能拿到图片，转换不完全
+    //var _data = app.convertHtmlToText(content)
+
+   /**
+    * 【思路二】使用重写过后的WxParse获取转换结果
+    * WxParse.wxParse(bindName , type, data, target,imagePadding)
+    * 1.bindName绑定的数据名(必填)
+    * 2.type可以为html或者md(必填)
+    * 3.data为传入的具体数据(必填)
+    * 4.target为Page对象,一般为this(必填)
+    * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+    */
+    WxParse.wxParse('_data', 'html', content, this, 5);
+
+    var obj = WxParse.getResult()
+    //将对象转换为字符串
+    var jsonStr = JSON.stringify(obj)
+
+    //console.log(jsonStr)
+
+    wx.navigateTo({
+      url: '../webView/webView?jsonStr=' + jsonStr,
+    })
   },
 
   onLoad: function () {
@@ -76,7 +113,7 @@ Page({
       _this.setData({
         newsList:data
       })
-      console.log(data)
+      //console.log(data)
     })
 
     //this.req();

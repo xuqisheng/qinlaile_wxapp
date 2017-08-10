@@ -1,0 +1,11 @@
+<!--webView.wxml-->
+
+<!--引入模板--> 
+<import src="../../lib/wxParse/wxParse.wxml"/>
+
+<view class="main">
+  <!--这里data中article为bindName-->
+  <template is="wxParse" data="{{wxParseData:obj.nodes}}"/>
+</view>
+
+

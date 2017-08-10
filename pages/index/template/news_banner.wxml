@@ -3,16 +3,21 @@
   <view class="news_banner">
     <swiper class="swiper_container border-top" vertical="true" autoplay="true" circular="true" interval="3000">
       <block wx:for="{{newsList}}" wx:for-item="news" wx:key="*this">
-        <navigator url="/pages/index/index?title={{news.title}}" open-type="navigate">
+
           <swiper-item>
-            <view class="news-item">
+            <view class="news-item" bindtap="onNewsClick" data-news="{{news}}">
               <image class="news-img" src="{{_uri + news.cover_photo}}" 
               style="float:left;width:90rpx;height:70rpx;background-color: #fff;margin-top:10rpx" mode="aspectFit"></image>
               <view class="news-text">{{news.title}}</view>
             </view>
           </swiper-item>
-        </navigator>
+
       </block>
     </swiper>
   </view>
 </template>
+
+<!--
+        <navigator url="" open-type="navigate">
+        </navigator>
+-->

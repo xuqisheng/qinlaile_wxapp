@@ -4,6 +4,10 @@ const linq = require('../lib/linq.min.js').linq
 
 const URI = 'https://www.jiahetianlang.com';
 
+//全局使用的经纬度
+const lat = 30.311620;
+const lon = 120.253431;
+
 /**
  * 每一个页面对应一个contoller
  */
@@ -21,8 +25,8 @@ class IndexController{
         mid: '',
         version_id: '2',
         version_mini: '2.2',
-        latitude: '30.311620',
-        longitude: '120.253431',
+        latitude: lat,
+        longitude: lon,
       }).then(res => res.data) 
     }
     
@@ -32,6 +36,20 @@ class IndexController{
      */
     getNews() {
       return request.getAsync(`${URI}/app/news_home.php`).then(res => res.data)
+    }
+
+    /**
+     * 获取服务数据
+     * @return {Promise} 
+     */
+    getServe(id) {
+      return request.postAsync(`${URI}/App/workerList.html?act=getPage`, {
+        did: 'A8:60:B6:2D:81:AB',
+        encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+        latitude: lat,
+        longitude: lon,
+        type_id:id
+      }).then(res => res.data)
     }
 }
 /**

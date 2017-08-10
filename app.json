@@ -4,7 +4,9 @@
     "pages/wuye/wuye",
     "pages/jiazheng/jiazheng",
     "pages/xiaodian/xiaodian",
-    "pages/huiyuan/huiyuan"
+    "pages/huiyuan/huiyuan",
+    "pages/webView/webView",
+    "pages/index/serve/serve"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -11,10 +11,13 @@
 
         <!--第一行-->
         <view class="tr">
-          <block wx:for="{{service_types}}" wx:for-item="type" wx:key="{{code}}">
+          <block wx:for="{{service_types}}" wx:for-item="type" wx:key="*this">
             <view class="td" wx:if="{{index < 4}}">
-              <image class="news-img" src="{{_uri+type.img}}" 
-              style="width:80rpx;height:80rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              <navigator url="../../pages/index/serve/serve?serverType={{type.id}}" open-type="navigate">
+                <image class="news-img" src="{{_uri+type.img}}" 
+                style="width:80rpx;height:80rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              </navigator>
+              
               <view class="news-text">{{type.name}}</view>
             </view>
           </block>

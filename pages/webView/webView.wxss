@@ -1,0 +1,4 @@
+/* webView.wxss */
+.main{
+  padding: 16rpx;
+}
