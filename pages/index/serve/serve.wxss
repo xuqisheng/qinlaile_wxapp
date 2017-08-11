@@ -1,18 +1,95 @@
 /* serve.wxss */
-.main{
-  width: 100%;
-  height: 100%;
-  text-align: center;
+.content{
   background-color: rgb(216, 216, 216);
-  line-height: 100%;
-}
-.serve-item{
-  
 }
 
+/*条目*/
+.serve-item{
+  background: white;
+  margin-top: 8rpx;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper{
+  flex-grow: 1;
+  background: white;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+
+/*姓名和评分*/
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*姓名*/
+.name{
+  font-size: 30rpx;
+}
+
+/*评分*/
+.rank{
+  font-size: 24rpx;
+  color: orange;
+  margin-top: 20rpx;
+
+}
+
+/*评分星星*/
+.star{
+  width: 30rpx;
+  height: 30rpx
+}
+
+.right{
+  float: right;
+  margin-right: 20rpx
+}
+
+.distance{
+  font-size: 24rpx;
+  color: gray;
+}
+
+/*选择按钮*/
+.select{
+  text-align: center;
+  font-size: 30rpx;
+  height: 40rpx;
+  margin-top: 40rpx;
+  color: rgb(66, 192, 23);
+  border: 2rpx solid rgb(66, 192, 23);
+  border-radius: 20%;
+  padding: 10rpx 20rpx
+}
+
+/*圆角头像*/
 .avatar {
+  flex-grow: 0;
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
+  line-height: 160rpx;
 }
+
+/*空视图样式*/
+.empty{
+  /*铺满屏幕*/
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  background-color: rgb(216, 216, 216);
+}
+
+

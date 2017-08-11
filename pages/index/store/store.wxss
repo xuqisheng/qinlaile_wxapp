@@ -1,0 +1,72 @@
+/* store.wxss */
+/*圆角头像*/
+.avatar {
+  flex-grow: 0;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  line-height: 160rpx;
+}
+
+.content{
+  background-color: rgb(216, 216, 216);
+}
+
+/*条目*/
+.serve-item{
+  background: white;
+  margin-top: 8rpx;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper{
+  flex-grow: 1;
+  background: white;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+
+/*评分*/
+.rank{
+  font-size: 24rpx;
+  margin-top: 16rpx;
+}
+
+/*姓名和评分*/
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*评分星星*/
+.star{
+  width: 30rpx;
+  height: 30rpx
+}
+
+.orange{
+  color:orange;
+}
+
+/*姓名*/
+.name{
+  font-size: 26rpx;
+}
+
+/*配送费 起送价*/
+.condition{
+  font-size: 20rpx;
+
+}
+
+.distance{
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  color: red;
+}

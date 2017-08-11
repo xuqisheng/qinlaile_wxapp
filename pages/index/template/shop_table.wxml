@@ -11,10 +11,13 @@
 
         <!--第一行-->
         <view class="tr">
-          <block wx:for="{{category_list}}" wx:for-item="category" wx:key="{{code}}">
+          <block wx:for="{{category_list}}" wx:for-item="category" wx:key="*this">
             <view class="td" wx:if="{{index < 3}}">
-              <image class="news-img" src="{{_uri+category.img}}" 
-              style="width:200rpx;height:200rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              <!--点击去往在线店铺-->
+              <navigator url="store/store?category={{category.id}}">
+                <image class="news-img" src="{{_uri+category.img}}" 
+                style="width:200rpx;height:200rpx;background-color: #fff;margin-top:6rpx" mode="aspectFit"></image>
+              </navigator>
             </view>
           </block>
         </view>

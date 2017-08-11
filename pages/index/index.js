@@ -55,6 +55,18 @@ Page({
     
   }, 
 
+  //点击去往家政服务页
+  gotoServe:function(event){
+    var serveType = event.currentTarget.dataset.type;
+
+    console.log(serveType)
+
+    wx.navigateTo({
+      url: 'serve/serve?serveType=' + serveType
+    })
+  },
+  
+
   //点击新闻条目
   onNewsClick:function(event){
     var news = event.currentTarget.dataset.news;

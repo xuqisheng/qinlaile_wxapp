@@ -1,1 +1,74 @@
 /* pages/huiyuan/huiyuan.wxss */
+.login{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/*上部模块*/
+.divider{
+  border-bottom: 1rpx solid lightgray
+}
+
+.wrapper{
+  width: 94%;
+}
+.new-user{
+  text-align: center;
+  font-size: 24rpx;
+  color: black;
+  margin: 40rpx;
+}
+
+/*立即注册*/
+.round-border{
+  text-align: center;
+  font-size: 28rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  padding: 0rpx 60rpx;
+  border-radius: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 40rpx 0;
+
+}
+
+.green-text{
+    color: rgb(66, 192, 23);
+}
+
+.bg{
+  background-color: rgb(66, 192, 23);
+  color: white
+}
+
+.code{
+  height: 60rpx;
+}
+
+.get-code{
+  text-align: center;
+  font-size: 28rpx;
+  border-left: 2rpx solid rgb(66, 192, 23);
+  width: 300rpx;
+  height: 60rpx;
+  border-radius: 40rpx;
+  padding: 0rpx 0rpx;
+  color: gray;
+  line-height: 60rpx;
+
+  /*重叠在右侧显示*/
+  position:absolute;
+  right:0;
+  top: 0;
+  
+}
+
+.trd{
+  text-align: center;
+}
+.icon{
+  height: 180rpx;
+  width:180rpx;
+  margin: 20rpx 40rpx
+}

@@ -1,0 +1,44 @@
+<!--store.wxml-->
+
+<view class="content">
+  <block wx:for="{{storeList}}" wx:for-item="store" wx:key="*this">
+    <view class="serve-item">
+      <image class="avatar" src="{{_uri+store.logo}}" background-size="cover"></image>
+
+      <view class="wrapper">
+        <view class="desc middle">
+          <!--店铺名-->
+          <text class="name">{{store.company_name}}</text>
+
+          <!--评分星星-->
+          <view class="rank">
+            <block wx:for="{{store.imgs}}" wx:key="{{index}}" wx:for-item="url">
+                <image class="star" src="{{url}}"></image>
+            </block>
+            <text class="condition orange">{{store.score}}分</text>
+            <text class="condition">（总销量{{store.monthSellNum}}份）</text>
+          </view>
+          
+
+          <!--起送价-->
+          <view class="condition">
+            <text>起送</text>
+            <text class="orange">￥0.00</text>
+          </view>
+
+          <!--配送费-->
+          <view class="condition">
+            <text>配送费</text>
+            <text class="orange">￥{{store.delivery_fee}}</text>
+            <text class="orange" wx:if="{{free_shipping_money!=0}}">（满{{store.free_shipping_money}}免）</text>
+          </view>
+        </view>
+
+        <view class="desc right">
+          <text class="distance">{{store.distance}}</text>
+        </view>
+      </view>
+      
+    </view>
+  </block>
+</view>

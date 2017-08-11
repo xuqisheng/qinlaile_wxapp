@@ -6,7 +6,8 @@
     "pages/xiaodian/xiaodian",
     "pages/huiyuan/huiyuan",
     "pages/webView/webView",
-    "pages/index/serve/serve"
+    "pages/index/serve/serve",
+    "pages/index/store/store"
   ],
   "window": {
     "backgroundTextStyle": "light",

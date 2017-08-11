@@ -1,13 +1,36 @@
 <!--serve.wxml-->
-<view class="main"  wx:if="{{empty}}">
+<view class="empty"  wx:if="{{empty}}">
   <text>该服务暂时没有服务人员</text>
 </view>
 
-<view class="main"  wx:else>
-  
+<view class="content"  wx:else>
   <block wx:for="{{serveList}}" wx:for-item="serve" wx:key="*this">
     <view class="serve-item">
       <image class="avatar" src="{{_uri+serve.headpic}}" background-size="cover"></image>
+
+      <view class="wrapper">
+        <view class="desc">
+
+          <text class="name">{{serve.name}}</text>
+
+          <!--评分星星-->
+          <view class="rank">
+            <block wx:for="{{serve.imgs}}" wx:key="{{index}}" wx:for-item="url">
+                <image class="star" src="{{url}}"></image>
+            </block>
+            <text style="margin-left:10rpx">{{serve.score}}分</text>
+          </view>
+
+        </view>
+
+        <view class="desc right">
+          <text class="distance">{{serve.distance}}</text>
+          <view class="select">选TA</view>
+        </view>
+      </view>
+      
     </view>
   </block>
 </view>
+
+

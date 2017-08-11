@@ -51,6 +51,19 @@ class IndexController{
         type_id:id
       }).then(res => res.data)
     }
+
+    /**
+     * 获取店铺数据
+     */
+    getStore(id){
+      return request.postAsync(`${URI}/App/shopCategoryList.html?act=getPage`, {
+        did: 'A8:60:B6:2D:81:AB',
+        encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+        latitude: lat,
+        longitude: lon,
+        type_id: id
+      }).then(res => res.data)
+    }
 }
 /**
  * 实例化对象
