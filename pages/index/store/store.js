@@ -29,7 +29,7 @@ Page({
   onLoad: function (options) {
     var category = options.category;
     var that = this;
-    console.log(category)
+    //console.log(category)
 
     index.getStore(category).then(data=>{
       //隐藏加载进度条
@@ -44,7 +44,7 @@ Page({
         temp[i]["imgs"] = arr;
         
         var bool = temp[i].free_shipping_money == 0
-        console.log(bool)
+        //console.log(bool)
       }
       //console.log(temp)
 
@@ -53,7 +53,7 @@ Page({
         storeList: temp
       })
 
-      console.log(temp)
+      //console.log(temp)
     })
   }
   

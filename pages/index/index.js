@@ -59,7 +59,7 @@ Page({
   gotoServe:function(event){
     var serveType = event.currentTarget.dataset.type;
 
-    console.log(serveType)
+    //console.log(serveType)
 
     wx.navigateTo({
       url: 'serve/serve?serveType=' + serveType
