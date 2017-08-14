@@ -1,0 +1,6 @@
+<!--personal.wxml-->
+
+
+
+<!--退出登录-->
+<view class="round-border" bindtap="logout">退出当前账号</view>

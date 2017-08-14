@@ -7,7 +7,9 @@
     "pages/huiyuan/huiyuan",
     "pages/webView/webView",
     "pages/index/serve/serve",
-    "pages/index/store/store"
+    "pages/index/store/store",
+    "pages/huiyuan/register/register",
+    "pages/huiyuan/personal/personal"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -72,3 +72,52 @@
   width:180rpx;
   margin: 20rpx 40rpx
 }
+
+/********************登录状态下的个人中心********************/
+.top{
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(66, 192, 23)
+}
+
+/*圆角头像*/
+.avatar {
+  flex-grow: 0;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  line-height: 160rpx;
+}
+
+/*中间部分占满剩余空间*/
+.middle{
+  flex-grow: 1;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+/*姓名和评分*/
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*姓名*/
+.name{
+  font-size: 30rpx;
+  margin: 14rpx;
+  color: white
+}
+
+/*向右箭头*/
+.right{
+  float: right;
+  margin-right: 20rpx;
+  color: white;
+  font-size: 40rpx
+}

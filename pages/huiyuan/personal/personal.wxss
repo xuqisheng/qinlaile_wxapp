@@ -1,0 +1,14 @@
+/* personal.wxss */
+/*立即注册*/
+.round-border{
+  text-align: center;
+  font-size: 28rpx;
+  padding: 0rpx 60rpx;
+  border-radius: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 40rpx 20rpx;
+  background-color: rgb(66, 192, 23);
+  color: white;
+}
+

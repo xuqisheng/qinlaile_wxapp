@@ -1,0 +1,61 @@
+/* register.wxss */
+.wrapper{
+  width: 94%;
+}
+
+.new-user{
+  text-align: center;
+  font-size: 24rpx;
+  color: black;
+  margin: 40rpx;
+}
+
+/*圆角边框*/
+.round-border{
+  text-align: center;
+  font-size: 28rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  padding: 0rpx 60rpx;
+  border-radius: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 40rpx 0;
+
+}
+
+.code{
+  height: 60rpx;
+}
+
+.get-code{
+  text-align: center;
+  font-size: 28rpx;
+  border-left: 2rpx solid rgb(66, 192, 23);
+  width: 300rpx;
+  height: 60rpx;
+  border-radius: 40rpx;
+  padding: 0rpx 0rpx;
+  color: gray;
+  line-height: 60rpx;
+
+  /*重叠在右侧显示*/
+  position:absolute;
+  right:0;
+  top: 0;
+  
+}
+
+.outter{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.green-text{
+    color: rgb(66, 192, 23);
+}
+
+.bg{
+  background-color: rgb(66, 192, 23);
+  color: white
+}
