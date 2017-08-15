@@ -18,11 +18,12 @@ Page({
     mobile: '',
     code: '',
     counter: '获取验证码',
+    btnCodeDisabled:false,
 
     //头像地址
     headimg: '',
-    username:'都先生',
-    mobile:'15206900201'
+    username:'',
+    mobile:''
   },
 
   /**
@@ -88,51 +89,7 @@ Page({
    * 获取登录验证码
    */
   getLoginCode: function () {
-
-    var that = this;
-
-    var _mobile = this.data.mobile;
-    console.log('手机号：' + _mobile)
-
-    if (_mobile == '' || _mobile.length != 11) {
-      wx.showToast({
-        title: '手机号码输入有误',
-      })
-      return
-    }
-
-    userController.getLoginCode(_mobile).then(data => {
-      var msg = data.message;
-      
-      console.log(msg)
-
-      wx.showToast({
-        title: msg,
-      })
-
-      var code = data.code;
-      //获取成功，开启倒计时
-      if (code == 10000) {
-        let temp = 60;
-        var flag = setInterval(function () {
-          temp--;
-          that.setData({
-            counter: '重新获取（' + temp + '）'
-          })
-          //console.log('重新获取（' + temp+'）')
-
-          //1分钟后清除定时器
-          if (temp == 0) {
-            that.setData({
-              counter: '获取验证码'
-            })
-            clearInterval(flag);
-            console.log('清除定时器');
-          }
-        }, 1000)
-      }
-    })
-
+    userController.getLoginCode(this);
   },
 
   /**
@@ -157,16 +114,5 @@ Page({
       code: val
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var res = wx.getStorageInfoSync()
-    console.log(res.keys)
-    console.log(res.currentSize)
-    console.log(res.limitSize)
-  },
-
-  
+    
 })
