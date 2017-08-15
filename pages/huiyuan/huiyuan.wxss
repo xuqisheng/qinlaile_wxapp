@@ -121,3 +121,51 @@
   color: white;
   font-size: 40rpx
 }
+
+/*定位等每个条目的外层*/
+.item-wrapper{
+  padding: 20rpx;
+  border-bottom: 1rpx solid lightgray;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+/*定位的文字描述*/
+.loacation-content{
+  font-size: 24rpx;
+  color: gray;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+
+/*区块控制左侧缩进*/
+.section-wrapper{
+  padding-left: 20rpx;
+}
+
+/*单个条目，有分割线*/
+.item{
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid lightgray;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+/*条目的小图标*/
+.item-icon{
+  width:40rpx;
+  height:40rpx;
+}
+
+/*条目的文字*/
+.item-text{
+  color: rgb(102, 102, 102);
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+.noborder{
+  border :0rpx;
+}

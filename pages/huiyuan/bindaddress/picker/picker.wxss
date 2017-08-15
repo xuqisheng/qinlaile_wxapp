@@ -1,0 +1,11 @@
+/* picker.wxss */
+/*跳过*/
+.confirm{
+  margin: 40rpx;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 15rpx 30rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  border-radius: 45rpx;
+  color: rgb(66, 192, 23);
+}

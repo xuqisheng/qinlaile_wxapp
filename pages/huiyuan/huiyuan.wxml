@@ -60,5 +60,104 @@
     
   </view>
 
+  <!--小区信息-->
+  <navigator url="bindaddress/bindaddress" open-type="navigate">
+    <view class="item-wrapper">
+      <image class="item-icon" src="../../res/icon/location.png"></image>
+
+      <view class="loacation">
+        <view class="item-text">{{village_name}}</view>
+        <view class="loacation-content">{{city_name+area_name+village_name+address}}</view>
+      </view>
+    </view>
+  </navigator>
+
+  <!--section-wrapper开始-->
+  <view class="section-wrapper">
+    <!--小区公告-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/notice.png"></image>
+
+      <view class="item-text">小区公告</view>
+    </view>
+
+    <!--社区论坛-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/discuss.png"></image>
+
+      <view class="item-text">社区论坛</view>
+    </view>
+
+    <!--我的报修-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/baoxiu.png"></image>
+
+      <view class="item-text">我的报修</view>
+    </view>
+
+    <!--我的预约-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/yuyue.png"></image>
+
+      <view class="item-text">我的预约</view>
+    </view>
+
+    <!--我的订单-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/order.png"></image>
+
+      <view class="item-text">我的订单</view>
+    </view>
+
+    <!--我的帖子-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/thread.png"></image>
+
+      <view class="item-text">我的帖子</view>
+    </view>
+
+
+  <!--section-wrapper结束-->
+  </view>
+  
+  <!--收货地址-->
+  <view class="item-wrapper">
+    <image class="item-icon" src="../../res/icon/address.png"></image>
+
+    <view class="item-text">收货地址</view>
+  </view>
+
+  <!--section-wrapper开始-->
+  <view class="section-wrapper">
+    <!--团队介绍-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/team.png"></image>
+
+      <view class="item-text">团队介绍</view>
+    </view>
+
+    <!--投诉建议-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/suggestion.png"></image>
+
+      <view class="item-text">投诉建议</view>
+    </view>
+
+    <!--联系我们-->
+    <view class="item">
+      <image class="item-icon" src="../../res/icon/contact.png"></image>
+
+      <view class="item-text">联系我们</view>
+    </view>
+
+    <!--入驻申请-->
+    <view class="item noborder">
+      <image class="item-icon" src="../../res/icon/join.png"></image>
+
+      <view class="item-text">入驻申请</view>
+    </view>
+
+  <!--section-wrapper结束-->
+  </view>
 
 </view>

@@ -23,7 +23,16 @@ Page({
     //头像地址
     headimg: '',
     username:'',
-    mobile:''
+    mobile:'',
+
+    //小区名称
+    village_name:'没有绑定小区，请绑定地址',
+    //小区地址信息
+    city_name:'',
+    area_name:'',
+    address:'',
+
+    xq_addr:'请绑定地址'
   },
 
   /**

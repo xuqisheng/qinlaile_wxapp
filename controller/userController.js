@@ -4,11 +4,37 @@ const request = require('../utils/request.js')
 
 const URI = 'https://www.jiahetianlang.com';
 
+const MAP_API = 'https://apis.map.qq.com/ws/geocoder/v1/';
+
 /**
  * 会员中心对应contoller
  * 处理登录，注册等操作
  */
 class UserController {
+
+  /**
+   * 请求省份数据
+   */
+  requestProvince(){
+    var _mid = wx.getStorageSync('mid');
+    console.log('mid = '+_mid)
+    return request.postAsync(`${URI}/App/bindAddress.html`, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+      mid: _mid
+    }).then(res => res.data)
+  }
+
+  /**
+   * 逆地址解析
+   * 通过腾讯地图开放平台webService接口，根据获取的经纬度逆解析当前位置的地址信息
+   */
+  getLocationName(lat,lon){
+    var url = `${MAP_API}?location=` + lat + ',' + lon + '&key=IEGBZ-ALXC4-B4CUG-X2V36-AU4HO-52BE7';
+    console.log(url)
+
+    return request.getAsync(url).then(res => res.data)
+  }
 
   /**
      * 用户登录
@@ -113,6 +139,49 @@ class UserController {
         })
       },
     })
+
+    //小区名称
+    wx.getStorage({
+      key: 'village_name',
+      success: function (res) {
+        //若已绑定
+        if(res.data!='' && res.data!=null){
+          that.setData({
+            village_name: res.data
+          })
+
+          //小区地址为city_name+area_name+village_name+address
+          wx.getStorage({
+            key: 'city_name',
+            success: function (res) {
+              that.setData({
+                city_name: res.data
+              })
+            },
+          })
+
+          wx.getStorage({
+            key: 'area_name',
+            success: function (res) {
+              that.setData({
+                area_name: res.data
+              })
+            },
+          })
+
+          wx.getStorage({
+            key: 'address',
+            success: function (res) {
+              that.setData({
+                address: res.data
+              })
+            },
+          })
+        }
+      },
+      
+    })
+
   }
 
   /**
@@ -157,7 +226,7 @@ class UserController {
       //用户账号其他信息
       var info = data.info;
 
-      //console.log(JSON.stringify(info))
+      console.log(JSON.stringify(info))
 
       //对象转为字符串，保存
       wx.setStorageSync('userinfo', JSON.stringify(info))
@@ -166,7 +235,18 @@ class UserController {
       wx.setStorageSync('headimg', info.headimg)
       //保存用户姓名
       wx.setStorageSync('username', info.realname)
+      //保存用户地址
+      wx.setStorageSync('province_id', info.province_id)
+      //小区名称village_name
+      wx.setStorageSync('village_name', info.village_name)
+      //小区详细address
+      wx.setStorageSync('address', info.address)
+      //城市名称city_name
+      wx.setStorageSync('city_name', info.city_name)
+      //区名称area_name
+      wx.setStorageSync('area_name', info.area_name)
 
+      
 
       //跳转到首页
       wx.switchTab({

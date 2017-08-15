@@ -1,0 +1,52 @@
+<!--bindaddress.wxml-->
+<view class="top">
+  <view class="congrats">恭喜，您已经成为亲来了会员！</view>
+
+  <view class="next">接下来只需要绑定地址即可完成会员注册了！</view>
+</view>
+
+<!--bottom开始-->
+<view class="bottom">
+  <view class="current-wrapper">
+    <text class="current">当前位置：{{address}}</text>
+
+    <text class="switch">切换至该位置</text>
+  </view>
+
+  <view class="left-title">手动设置位置</view>
+
+  <!--省市区选择-->
+  <view class="area-wrapper">
+    <view class="area">
+<!--使用picker组件
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <text class="province">{{region[0]}}</text>
+        <text class="city">{{region[1]}}</text>
+        <text class="district">{{region[2]}}</text>
+      </picker>
+-->
+      <text class="province" bindtap="selectProvince">{{province}}</text>
+      <text class="city">{{city}}</text>
+      <text class="district">{{district}}</text>
+      
+
+    </view>
+  </view>
+
+  <view class="left-title">小区/大厦/学校</view>
+  <view class="village">{{village}}</view>
+
+  <view class="left-title">楼号/门牌</view>
+  <view class="village">
+    <input type="text" placeholder="请输入详细地址"/>
+  </view>
+
+  <view class="action">
+    <view class="classname">
+      <text class="skip">跳过该步骤</text>
+      <text class="skip confirm">绑定</text>
+    </view>
+  </view>
+
+  <!--bottom结束-->
+</view>

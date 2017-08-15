@@ -20,7 +20,8 @@ Page({
    */
   logout:function(){
     wx.showModal({
-      title: '退出当前账号，该账号相关的数据将被删除',
+      title: '提示',
+      content:'退出当前账号，该账号相关的数据将被删除',
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定，退出登录')
