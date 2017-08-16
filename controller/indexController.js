@@ -4,6 +4,9 @@ const linq = require('../lib/linq.min.js').linq
 
 const URI = 'https://www.jiahetianlang.com';
 
+//获取应用实例
+var app = getApp()
+
 //全局使用的经纬度
 const lat = 30.311620;
 const lon = 120.253431;
@@ -18,15 +21,18 @@ class IndexController{
   * @return {Promise} 
   */
   getIndex() {
+    var _mid = app.globalData.mid;
+    console.log('mid：'+_mid)
     return request.postAsync(`${URI}/App/newIndex.html`, {
       app_id: 5,
       did: 'A8:60:B6:2D:81:AB',
       encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: '',
+      //用户id，唯一标识
+      mid: _mid,
       version_id: '2',
       version_mini: '2.2',
-      latitude: lat,
-      longitude: lon,
+      latitude: app.globalData.latitude,
+      longitude: app.globalData.longitude,
     }).then(res => res.data)
   }
 
@@ -46,8 +52,8 @@ class IndexController{
     return request.postAsync(`${URI}/App/workerList.html?act=getPage`, {
       did: 'A8:60:B6:2D:81:AB',
       encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      latitude: lat,
-      longitude: lon,
+      latitude: app.globalData.latitude,
+      longitude: app.globalData.longitude,
       type_id: id
     }).then(res => res.data)
   }
@@ -59,8 +65,8 @@ class IndexController{
     return request.postAsync(`${URI}/App/shopCategoryList.html?act=getPage`, {
       did: 'A8:60:B6:2D:81:AB',
       encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      latitude: lat,
-      longitude: lon,
+      latitude: app.globalData.latitude,
+      longitude: app.globalData.longitude,
       type_id: id
     }).then(res => res.data)
   }

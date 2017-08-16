@@ -5,6 +5,19 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    var that = this;
+    //获取当前位置（经纬度）
+    wx.getLocation({
+      success: function (res) {
+        //console.log(res)
+        
+        that.globalData.latitude = res.latitude;
+        that.globalData.longitude = res.longitude;
+
+        console.log('当前经纬度：' + that.globalData.latitude + "," + that.globalData.longitude)
+      }
+    })
   },
 
   getUserInfo: function(cb) {
@@ -24,8 +37,15 @@ App({
   },
 
   globalData: {
-    URI:'https://www.jiahetianlang.com'
+    URI:'https://www.jiahetianlang.com',
+    //当前的经纬度
+    latitude:'', 
+    longitude:'',
+    mid: wx.getStorageSync('mid')
   },
+
+  
+  
 
   //html转换为文本
   convertHtmlToText: function convertHtmlToText(inputText) {

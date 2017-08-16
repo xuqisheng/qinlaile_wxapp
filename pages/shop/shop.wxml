@@ -1,0 +1,68 @@
+<view class="main">
+
+  <!--头部-->
+	<view class="header {{scrollDown?'hidden':''}}">
+		<image class="logo" src="{{shop.logo}}"/>
+		<view class="name ellipsis">{{shop.name}}</view>
+		<view class="welcome ellipsis">公告：欢迎光临{{shop.name}}！</view>
+		<view class="follow" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
+		<view class="line"></view>
+		<view class="desc">{{shop.desc}}</view>
+	</view>
+
+  <!--主体部分-->
+	<view class="content-container">
+
+    <!--分类部分-->
+		<scroll-view class="classify-container" scroll-y="true">
+			<view class="classify {{classifySeleted==classify.id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+				<view class="name">{{classify.type_name}}</view>
+			</view>
+		</scroll-view>
+
+    <!--商品部分-->
+		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
+			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" id="{{classify.id}}">
+				<view class="title">{{classify.type_name}}</view>
+				<view class="goods" wx:for="{{classify.productLists}}" wx:for-item="goods" wx:key="*this">
+					<image class="pic" src="{{_uri+goods.pic}}"></image>
+					<view class="name ellipsis">{{goods.product_name}}</view>
+					
+					<view class="price">￥{{goods.price}}/{{goods.unit}}</view>
+					<view class="addCart" bindtap="tapAddCart" data-id="{{id}}">
+						<image src="../../res/icon/plus.png"></image>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+
+  <!--购物车详情，点击购物车显示-->
+	<view class="cart-detail" hidden="{{!showCartDetail||!cart.count}}">
+		<view class="mask" bindtap="hideCartDetail"></view>
+		<view class="list">
+			<view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
+				<view class="name ellipsis">{{goods[id].name}}</view>
+				<view class="total">￥{{goods[id].price*cart.list[id]}}</view>
+				<view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+				<view class="num">{{num}}</view>
+				<view class="add" data-id="{{id}}" bindtap="tapAddCart">+</view>
+			</view>
+		</view>
+	</view>
+
+  <!--购物车-->
+	<view class="cart">
+		<view class="data" bindtap="showCartDetail">
+			<view class="icon">
+				<image src="/imgs/shop/cart.png"></image>
+				<view class="count">{{cart.count}}</view>
+			</view>
+			<view class="total">￥{{cart.total}}</view>
+		</view>
+		<form bindsubmit="submit" report-submit="true">
+			<!--<view formType="submit" class="submit">去结算</view>-->
+			<button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+		</form>
+	</view>
+</view>

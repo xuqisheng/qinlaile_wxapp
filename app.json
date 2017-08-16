@@ -11,7 +11,8 @@
     "pages/huiyuan/register/register",
     "pages/huiyuan/personal/personal",
     "pages/huiyuan/bindaddress/bindaddress",
-    "pages/huiyuan/bindaddress/picker/picker"
+    "pages/huiyuan/bindaddress/picker/picker",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",

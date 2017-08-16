@@ -2,7 +2,7 @@
 
 <view class="content">
   <block wx:for="{{storeList}}" wx:for-item="store" wx:key="*this">
-    <view class="serve-item">
+    <view class="serve-item" bindtap="enterShop" data-shop="{{store}}">
       <image class="avatar" src="{{_uri+store.logo}}" background-size="cover"></image>
 
       <view class="wrapper">

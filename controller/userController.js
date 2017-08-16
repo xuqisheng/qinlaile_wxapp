@@ -160,7 +160,7 @@ class UserController {
    */
   setup(that) {
 
-    console.log('通过userController设置个人资料')
+    //console.log('通过userController设置个人资料')
 
     //头像
     wx.getStorage({
