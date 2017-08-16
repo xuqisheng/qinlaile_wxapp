@@ -2,13 +2,19 @@
 
 <!--使用picker-view组件-->
 <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;padding:20rpx;" 
-  value="{{content}}" bindchange="bindContentChange">
+  value="{{}}" bindchange="bindContentChange">
   <picker-view-column>
-    <view wx:for="{{provinces}}" style="line-height: 50px">{{item.name}}</view>
+    <view wx:for="{{contents}}" style="line-height: 50px">{{item.name}}</view>
   </picker-view-column>
 </picker-view>
 
-<view style="text-align:center;margin-top:200rpx">
+<view style="text-align:center;margin-top:300rpx">
+  <text bindtap="confirm">已选：{{content}}</text>
+</view>
+
+<view style="text-align:center;margin-top:100rpx">
   <text bindtap="confirm" class="confirm">确定</text>
 </view>
+
+
 

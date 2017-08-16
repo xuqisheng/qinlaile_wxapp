@@ -43,12 +43,13 @@ Page({
     wx.getStorage({
       key: 'province_id',
       success: function (res) {
-        console.log('用户已绑定地址')
+        
         wx.setNavigationBarTitle({
           title: '物业',
         })
         
         var province_id = res.data;
+        console.log('用户已绑定地址province_id：' + province_id)
         if(province_id==null||province_id==''){
           //提示用户绑定地址
           that.showBindDialog();

@@ -26,6 +26,68 @@ class UserController {
   }
 
   /**
+   * 请求城市数据
+   */
+  requestCity(_provinceId) {
+    var _mid = wx.getStorageSync('mid');
+    console.log('mid = ' + _mid)
+    return request.postAsync(`${URI}/App/bindAddress.html?act=getCitysByProvinceId`, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+      mid: _mid,
+      provinceId: _provinceId
+    }).then(res => res.data)
+  }
+
+  /**
+   * 请求区县数据
+   */
+  requestArea(_cityId) {
+    var _mid = wx.getStorageSync('mid');
+    console.log('mid = ' + _mid)
+    return request.postAsync(`${URI}/App/bindAddress.html?act=getAreasByCityId`, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+      mid: _mid,
+      cityId: _cityId
+    }).then(res => res.data)
+  }
+
+  /**
+   * 请求小区数据
+   */
+  requestVillage(_province,_city) {
+    var _mid = wx.getStorageSync('mid');
+    console.log('mid = ' + _mid)
+    return request.postAsync(`${URI}/App/chooseCommunity.html`, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+      mid: _mid,
+      province: _province,
+      city: _city
+    }).then(res => res.data)
+  }
+
+  /**
+   * 保存绑定地址数据
+   * 
+   */
+  saveAddress(_province, _city, _area, _community_id, _detailAddress) {
+    var _mid = wx.getStorageSync('mid');
+    console.log('mid = ' + _mid)
+    return request.postAsync(`${URI}/App/bindAddress.html?act=save`, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+      mid: _mid,
+      province: _province,
+      city: _city,
+      area:_area,
+      community_id: _community_id,
+      detailAddress: _detailAddress
+    }).then(res => res.data)
+  }
+
+  /**
    * 逆地址解析
    * 通过腾讯地图开放平台webService接口，根据获取的经纬度逆解析当前位置的地址信息
    */

@@ -61,16 +61,14 @@
   </view>
 
   <!--小区信息-->
-  <navigator url="bindaddress/bindaddress" open-type="navigate">
-    <view class="item-wrapper">
-      <image class="item-icon" src="../../res/icon/location.png"></image>
+  <view class="item-wrapper" bindtap="bindOrEidtAddress">
+    <image class="item-icon" src="../../res/icon/location.png"></image>
 
-      <view class="loacation">
-        <view class="item-text">{{village_name}}</view>
-        <view class="loacation-content">{{city_name+area_name+village_name+address}}</view>
-      </view>
+    <view class="loacation">
+      <view class="item-text">{{village_name}}</view>
+      <view class="loacation-content">{{city_name+area_name+village_name+address}}</view>
     </view>
-  </navigator>
+  </view>
 
   <!--section-wrapper开始-->
   <view class="section-wrapper">

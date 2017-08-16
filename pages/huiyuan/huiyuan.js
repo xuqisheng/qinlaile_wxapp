@@ -71,6 +71,30 @@ Page({
   },
 
   /**
+   * 若未绑定，去往绑定页面，否则去往编辑（退出登录页面）
+   * bindOrEidtAddress
+   */
+  bindOrEidtAddress:function(){
+
+    //去往绑定页面
+    var _url = 'bindaddress/bindaddress'
+
+    wx.getStorage({
+      key: 'village_name',
+      success: function (res) {
+        //若已绑定,去往编辑
+        if (res.data != '' && res.data != null) {
+          _url = 'personal/personal'
+        }
+
+        wx.navigateTo({
+          url: _url,
+        })
+      }
+    })
+  },
+
+  /**
    * 前往个人设置页面
    */
   profile:function(){

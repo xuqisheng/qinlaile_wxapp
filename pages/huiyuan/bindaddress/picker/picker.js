@@ -9,37 +9,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    provinces: [],
-    cities:[],
-    areas:[],
-    villages:[],
 
-    province:'',
-    city:'',
-    area:'',
-    village:'',
+    //统一处理的内容和id
+    content:'',//省市县区
+    id:'',//区域ID值
+    contents:[],//数据源
 
-    content:'',
-
-    flag:'1',
+    flag:'1',//操作类型
   },
 
   /**
    * picker-view 绑定事件
    */
   bindContentChange: function (e) {
+    console.log('触发bindChange')
     var that = this;
     const val = e.detail.value
 
-    switch(that.data.flag){
-      case '1':
-        var name = that.data.provinces[val].name;
-        console.log('name = ' + name)
-        that.setData({
-          content: name,
-        })
-      break;
-    }
+    var name = that.data.contents[val].name;
+    var _id = that.data.contents[val].id;
+    console.log('content = ' + name)
+    console.log('id = ' + _id)
+    that.setData({
+      content: name,
+      id: _id
+    })
 
     //console.log('content = ' + that.data.content)
   },
@@ -59,8 +53,27 @@ Page({
       case '1':
         prevPage.setData({
           province: that.data.content,
+          provinceId:that.data.id
         })
       break;
+      case '2':
+        prevPage.setData({
+          city: that.data.content,
+          cityId: that.data.id
+        })
+        break;
+      case '3':
+        prevPage.setData({
+          area: that.data.content,
+          areaId: that.data.id
+        })
+        break;
+      case '4':
+        prevPage.setData({
+          village: that.data.content,
+          villageId: that.data.id
+        })
+        break;
     }
     //回退页面
     wx.navigateBack({
@@ -77,42 +90,83 @@ Page({
     //获取操作类型
     var _flag = options.title;
     var _content = options.content;
-    console.log('_flag：'+_flag)
-    console.log('_content：' + _content)
-    that.setData({
-      flag:_flag,
-    })
+    var _provinceId = options.provinceId;
+    var _cityId = options.cityId;
 
+    //console.log('_flag：'+_flag)
+    //console.log('_content：' + _content)
     var _title='';
     switch (_flag){
       case '1':
         _title = '选择省份';
         userController.requestProvince().then(data=>{
+          data.provinces.unshift({
+            id:'',
+            name:'选择省份'
+          })
           that.setData({
-            provinces: data.provinces
+            contents: data.provinces
           })
         })
-
-        if (_content != '选择省份'){
-          that.setData({
-            content: _content,
-          })
-        }
+       
+        
         break;
       case '2':
         _title = '选择城市';
+        userController.requestCity(_provinceId).then(data => {
+          data.citys.unshift({
+            id: '',
+            name: '选择城市'
+          })
+          that.setData({
+            contents: data.citys
+          })
+        })
+        
         break;
       case '3':
         _title = '选择区县';
+        userController.requestArea(_cityId).then(data => {
+
+
+          data.areas.unshift({
+            id: '',
+            name: '选择区县'
+          })
+          that.setData({
+            contents: data.areas
+          })
+        })
+        
         break;
       case '4':
         _title = '选择小区';
+        userController.requestVillage(_provinceId,_cityId).then(data => {
+          //console.log(data)
+          //二维数组，转换为一维数组
+          var res = [].concat.apply([], data.communitys)
+
+          //console.log(res)
+
+          res.unshift({
+            id: '',
+            name: '选择小区'
+          })
+          that.setData({
+            contents: res
+          })
+        })
+        
         break;
       default:
         _title = '执行默认';
         break
     }
 
+    that.setData({
+      content: _content,
+      flag: _flag,
+    })
     console.log('title：' + _title)
     //动态设置标题
     wx.setNavigationBarTitle({

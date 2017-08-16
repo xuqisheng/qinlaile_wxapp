@@ -26,25 +26,25 @@
       </picker>
 -->
       <text class="province" bindtap="selectProvince">{{province}}</text>
-      <text class="city">{{city}}</text>
-      <text class="district">{{district}}</text>
+      <text class="city" bindtap="selectCity">{{city}}</text>
+      <text class="district" bindtap="selectArea">{{area}}</text>
       
 
     </view>
   </view>
 
   <view class="left-title">小区/大厦/学校</view>
-  <view class="village">{{village}}</view>
+  <view class="village" bindtap="selectVillage">{{village}}</view>
 
   <view class="left-title">楼号/门牌</view>
   <view class="village">
-    <input type="text" placeholder="请输入详细地址"/>
+    <input type="text" bindinput="onAddressListener" placeholder="请输入详细地址"/>
   </view>
 
   <view class="action">
     <view class="classname">
       <text class="skip">跳过该步骤</text>
-      <text class="skip confirm">绑定</text>
+      <text class="skip confirm" bindtap="saveAddress">绑定</text>
     </view>
   </view>
 
