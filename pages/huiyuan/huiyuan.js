@@ -106,8 +106,29 @@ Page({
   /**
    * 登录表单提交
    */
-  loginSubmit: function () {
-    userController.loginSubmit(this)
+  loginSubmit: function (e) {
+    //获取表单中的数据
+    var _mobile = e.detail.value.mobile
+    var _code = e.detail.value.code
+
+    console.log('_mobile = ' + _mobile)
+    if (_mobile.length == 0 || _code.length == 0){
+      wx.showModal({
+        title: '提示',
+        content: '手机号或验证码不能为空',
+      })
+      return
+    }
+
+    userController.loginSubmit(_mobile, _code)
+  },
+
+  /**重置表单 */
+  formReset: function () {
+    this.setData({
+      mobile: '',
+      code: ''
+    })
   },
 
   /**
@@ -126,25 +147,13 @@ Page({
   },
 
   /**
-   * 手机号码输入完成
-   * 使用bindblur绑定，获取输入的内容,type为text时，也可通过bindconfirm，
+   * 手机输入完成
    */
   mobileConfirm: function (event) {
     var val = event.detail.value.trim()
-    console.log('手机号 = ' + val)
+    console.log('手机 = ' + val)
     this.setData({
       mobile: val
-    })
-  },
-
-  /**
-   * 验证码
-   */
-  codeConfirm: function (event) {
-    var val = event.detail.value.trim()
-    console.log('验证码 = ' + val)
-    this.setData({
-      code: val
     })
   },
     

@@ -249,22 +249,11 @@ class UserController {
   /**
    * 登录表单提交
    */
-  loginSubmit(that) {
+  loginSubmit(_mobile, _code) {
 
-    //校验输入内容
-    var _mobile = that.data.mobile
-    var _code = that.data.code
-
-    if (_mobile == '' || _mobile.length != 11) {
+    if (_mobile.length != 11) {
       wx.showToast({
         title: '手机号码输入有误',
-      })
-      return
-    }
-
-    if (_code == '') {
-      wx.showToast({
-        title: '验证码不能为空',
       })
       return
     }
@@ -283,7 +272,7 @@ class UserController {
 
       //同步方式将用户信息保存到内部存储中
       wx.setStorageSync('mid', mid)//用户唯一ID，类似token
-      wx.setStorageSync('mobile', that.data.mobile)
+      wx.setStorageSync('mobile', _mobile)
 
       //用户账号其他信息
       var info = data.info;

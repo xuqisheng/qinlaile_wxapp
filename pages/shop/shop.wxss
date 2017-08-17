@@ -80,8 +80,11 @@ page {
 	text-align: center;
 	border-bottom: 1px dashed #aaa;
 }
+
+/*选中分类的样式*/
 .classify-container .classify.active {
 	background: #fff;
+  border-left: 4rpx solid #42c017 
 }
 .classify-container .classify .name {
 	display: inline-block;
@@ -118,11 +121,16 @@ page {
 	margin-right: 20rpx;
 }
 
+.goods-container .goods .wrapper{
+  flex-direction: column
+}
+
 /*商品名称*/
 .goods-container .goods .name {
 	color: #000;
 	font-size: 28rpx;
 	line-height: 46rpx;
+  width: 320rpx
 }
 
 /*商品价格*/
@@ -136,7 +144,7 @@ page {
 /*添加购物车*/
 .goods-container .goods .addCart {
 	position: absolute;
-	right: 30rpx;
+	right: 10rpx;
 	bottom: 10rpx;
 	width: 64rpx;
 	height: 64rpx;
@@ -185,12 +193,14 @@ page {
 }
 .cart-detail .list .item .reduce,
 .cart-detail .list .item .add {
-	font-size: 50rpx;
+	font-size: 40rpx;
 	background: #42c017;
 	width: 50rpx;
 	height: 50rpx;
 	text-align: center;
 	border-radius: 50%;
+  line-height: 50rpx;
+  color: white;
 }
 .cart-detail .list .item .num {
 	width: 50rpx;
@@ -240,14 +250,65 @@ page {
 }
 .cart .data .total {
 	color: #f45044;
-	font-size: 36rpx;
+	font-size: 32rpx;
 	line-height: 100rpx;
 	padding-left: 160rpx;
 }
+.cart .data .total .fee{
+  line-height: 50rpx;
+}
+
+/*配送费*/
+.cart .data .total .delivery{
+  color: gray;
+	font-size: 26rpx;
+}
+
+/*去结算*/
 .cart button {
 	margin-top: 10rpx;
 	margin-right: 0rpx;
 	width: 200rpx;
 	height: 100%;
 	font-size: 36rpx;
+}
+
+/******************************/
+.edit{
+  font-size: 40rpx;
+	background: #42c017;
+	width: 50rpx;
+	height: 50rpx;
+	text-align: center;
+	border-radius: 50%;
+  line-height: 50rpx;
+  color: white;
+}
+
+.e-reduce{
+  width: 46rpx;
+	height: 46rpx;
+  border: 2rpx solid #42c017;
+  background: white;
+  color: #42c017;
+}
+
+.e-num{
+  width: 50rpx;
+	text-align: center;
+	margin: 0 5rpx;
+}
+
+.edit-container{
+  display: -webkit-flex;
+	color: #333;
+	font-size: 26rpx;
+	line-height: 50rpx;
+
+  position: absolute;
+	right: 10rpx;
+	bottom: 10rpx;
+
+	height: 50rpx;
+	border-radius: 50%;
 }

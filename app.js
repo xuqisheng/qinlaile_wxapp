@@ -41,6 +41,7 @@ App({
     //当前的经纬度
     latitude:'', 
     longitude:'',
+    //用户唯一id，记录是否登录
     mid: wx.getStorageSync('mid')
   },
 

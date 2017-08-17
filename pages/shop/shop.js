@@ -5,13 +5,16 @@ const shopController = require('../../controller/shopController.js').controller;
 
 Page({
 	data: {
+    _uri:app.globalData.URI,
 		goods: '',
 		goodsList: [],
     storeAvatar:'',
 
-    //【字典】goodsList对应的只包含商品的列表
+    //【字典】goodsList对应的只包含商品的列表，_14926:{}
     pureGoods:{},
 
+    //cart_shopId 当前店铺的id，用于存储本地购物车数据CART_125:{...}；在该页面卸载或计算之后写入到本地存储
+    cart_shopId:'',
 		cart: {
 			count: 0,
 			total: 0,
@@ -35,13 +38,44 @@ Page({
     classifyViewed:''
     */
 	},
+
+  /**
+   * 将购物车数据写入本地存储
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    var that = this
+    var cartStr = JSON.stringify(that.data.cart)
+    console.log('------onUnload------')
+    console.log('存储本地购物车数据：' + cartStr)
+
+    wx.setStorage({
+      key: that.data.cart_shopId,
+      data: cartStr,
+    })
+  },
+
+
 	onLoad: function (options) {
     var that = this;
     var shop = JSON.parse(options.shop)
     //取出店铺id和店铺名称
     var shopId = shop.id;
     
+    //先读取本地存储中的数据
+    var cart_shopId = 'CART_' + shopId;
+    wx.getStorage({
+      key: cart_shopId,
+      success: function(res) {
+        console.log('读取本地购物车数据：'+res.data)
+        that.setData({
+          cart:JSON.parse(res.data)
+        })
+      },
+    })
+
     that.setData({
+      cart_shopId: cart_shopId,
       delivery_fee:shop.delivery_fee,
       free_shipping_money:shop.free_shipping_money
     })
@@ -112,7 +146,7 @@ Page({
    */
 	tapAddCart: function (e) {
     var id = e.target.dataset.id
-    console.log(id)
+    //console.log(id)
 		this.addCart(id);
 	},
 	tapReduceCart: function (e) {
@@ -143,11 +177,11 @@ Page({
 			total = 0;
 		for (var id in this.data.cart.list) {
 
-      console.log('data.cart.list：' + id)
+      //console.log('data.cart.list：' + id)
       //仍使用[]读取属性
       var goods = this.data.pureGoods[id];
 
-      console.log(goods)
+      //console.log(goods)
 
 			count += this.data.cart.list[id];
 			total += goods.price * this.data.cart.list[id];
@@ -237,7 +271,20 @@ Page({
    * 提交订单
    */
 	submit: function (e) {
-		
+    var mid = app.globalData.mid
+    console.log('mid = '+mid)
+    //检查是否登录，否则登录
+    if (mid == null || mid== ''){
+      // wx.navigateTo({
+      //   url: '../huiyuan/huiyuan',
+      // })
+      wx.switchTab({
+        url: '/pages/huiyuan/huiyuan',
+      })
+      return
+    }
+
+    console.log('选好商品，提交了')
 	}
 });
 

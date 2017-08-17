@@ -30,12 +30,24 @@
 				<view class="title">{{classify.type_name}}</view>
 				<view class="goods" wx:for="{{classify.productLists}}" wx:for-item="goods" wx:key="*this">
 					<image class="pic" src="{{_uri+goods.pic}}"></image>
-					<view class="name ellipsis">{{goods.product_name}}</view>
-					
-					<view class="price">￥{{goods.price}}/{{goods.unit}}</view>
-					<view class="addCart" bindtap="tapAddCart" data-id="{{goods.id}}">
-						<image src="../../res/icon/plus.png"></image>
-					</view>
+          <!--名称和价格等-->
+          <view class="wrapper">
+            <view class="name ellipsis">{{goods.product_name}}</view>
+            
+            <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
+            <!--数量减
+            <view class="addCart" bindtap="tapAddCart" data-id="{{goods.id}}">
+              <image src="../../res/icon/plus.png"></image>
+            </view>
+            -->
+            <view class="edit-container">
+              <view class="edit e-reduce" data-id="{{goods.id}}" hidden="{{cart[goods.id]}}" bindtap="tapReduceCart">-</view>
+              <view class="e-num">{{cart[goods.id]}}</view>
+              <view class="edit" data-id="{{goods.id}}" bindtap="tapAddCart">+</view>
+            </view>
+            
+          </view>
+          <!--名称和价格等-->
 				</view>
 			</view>
 		</scroll-view>
@@ -47,7 +59,7 @@
 		<view class="list">
 			<view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
 				<view class="name ellipsis">{{pureGoods[id].product_name}}</view>
-				<view class="total">￥{{pureGoods[id].price*num}}</view>
+				<view class="total">￥{{pureGoods[id].price}}</view>
 				<view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
 				<view class="num">{{num}}</view>
 				<view class="add" data-id="{{id}}" bindtap="tapAddCart">+</view>
@@ -62,12 +74,14 @@
 				<image src="../../res/icon/gouwuche.png"></image>
 				<view class="count">{{cart.count}}</view>
 			</view>
-			<view class="total">￥{{cart.total}}</view>
-      <!--配送费
-      <view class="total">配送费：￥{{delivery_fee}}</view>
-      -->
+      <view class="total">
+        <view class="fee">￥{{cart.total}}</view>
+        <!--配送费-->
+        <view class="fee delivery">配送费：￥{{delivery_fee}}</view>
+      </view>
+      
 		</view>
-		<form bindsubmit="submit" report-submit="true">
+		<form bindsubmit="submit" report-submit="true" id="frm">
 			<!--<view formType="submit" class="submit">去结算</view>-->
 			<button class="green {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
 		</form>
