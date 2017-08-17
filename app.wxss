@@ -8,3 +8,24 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/*特殊按钮*/
+button.green {
+	color: #fff;
+	background: #42c017;
+}
+button.green:after {
+	border-color: rgba(66, 192, 23, 0.3);
+}
+button.green.hover {
+	background: #31B703;
+}
+button.green.disabled {
+	background: #ACC4A4;
+}

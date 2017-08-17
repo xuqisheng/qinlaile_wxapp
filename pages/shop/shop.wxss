@@ -9,14 +9,17 @@ page {
 
 .header {
 	position: relative;
-	background: #feb70f;
+  /*主题绿色*/
+	background: #42c017;
 	padding: 20rpx 40rpx;
 	color: #000;
 	-webkit-transition: all 0.6s ease-in-out;
 }
+
+/*通过margin-top的负值隐藏头部*/
 .header.hidden {
 	/*-webkit-transform: translate3d(0,-290rpx,0);*/
-	margin-top: -290rpx;
+	margin-top: -404rpx;
 }
 .header .logo {
 	float: left;
@@ -28,12 +31,12 @@ page {
 }
 .header .name {
 	padding-top: 20rpx;
-	font-size: 36rpx;
+	font-size: 30rpx;
 	line-height: 60rpx;
 }
 .header .welcome {
 	color: #333;
-	font-size: 30rpx;
+	font-size: 26rpx;
 	width: 360rpx;
 	line-height: 70rpx;
 }
@@ -56,7 +59,7 @@ page {
 }
 .header .desc {
 	color: #333;
-	font-size: 30rpx;
+	font-size: 26rpx;
 	line-height: 40rpx;
 	padding-top: 20rpx;
 }
@@ -129,13 +132,16 @@ page {
 	line-height: 46rpx;
   margin-top: 20rpx
 }
+
+/*添加购物车*/
 .goods-container .goods .addCart {
 	position: absolute;
 	right: 30rpx;
-	bottom: 30rpx;
+	bottom: 10rpx;
 	width: 64rpx;
 	height: 64rpx;
 	border-radius: 50%;
+
 }
 .goods-container .goods .addCart image {
 	pointer-events: none;
@@ -167,7 +173,7 @@ page {
 .cart-detail .list .item {
 	display: -webkit-flex;
 	color: #333;
-	font-size: 36rpx;
+	font-size: 26rpx;
 	line-height: 50rpx;
 	padding: 20rpx 40rpx;
 }
@@ -180,7 +186,7 @@ page {
 .cart-detail .list .item .reduce,
 .cart-detail .list .item .add {
 	font-size: 50rpx;
-	background: #feb70f;
+	background: #42c017;
 	width: 50rpx;
 	height: 50rpx;
 	text-align: center;
@@ -211,7 +217,7 @@ page {
 	top: -20rpx;
 	width: 100rpx;
 	height: 100rpx;
-	background: #feb70f;
+	background: #484848;
 	border-radius: 50%;
 }
 .cart .data .icon image {
@@ -240,7 +246,7 @@ page {
 }
 .cart button {
 	margin-top: 10rpx;
-	margin-right: 20rpx;
+	margin-right: 0rpx;
 	width: 200rpx;
 	height: 100%;
 	font-size: 36rpx;

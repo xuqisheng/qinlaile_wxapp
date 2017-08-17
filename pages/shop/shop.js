@@ -5,51 +5,120 @@ const shopController = require('../../controller/shopController.js').controller;
 
 Page({
 	data: {
-    _uri: app.globalData.URI,
-		goods: {
-			1: {
-				id: 1,
-				name: '娃娃菜',
-				pic: 'http://wxapp.im20.com.cn/impublic/waimai/imgs/goods/1.jpg',
-				sold: 1014,
-				price: 2
-			}
-		},
+		goods: '',
 		goodsList: [],
+    storeAvatar:'',
+
+    //【字典】goodsList对应的只包含商品的列表
+    pureGoods:{},
 
 		cart: {
 			count: 0,
 			total: 0,
-			list: {}
+			list: {
+        //使用商品唯一id作为属性，数量作为值，如：14926:2
+      }
 		},
-		showCartDetail: false
+		showCartDetail: false,
+
+    //店铺头信息
+    shop:{},
+
+    is_set_free_shipping:'1',
+    //运费
+    delivery_fee:'',
+    //免邮费限额
+    free_shipping_money:''
+
+    /*可以不在此声明，setData中使用时再声明
+    classifySeleted:'',
+    classifyViewed:''
+    */
 	},
 	onLoad: function (options) {
     var that = this;
+    var shop = JSON.parse(options.shop)
     //取出店铺id和店铺名称
-    var shopId = options.shop_id;
+    var shopId = shop.id;
+    
+    that.setData({
+      delivery_fee:shop.delivery_fee,
+      free_shipping_money:shop.free_shipping_money
+    })
+
+
     wx.setNavigationBarTitle({
-      title: options.company_name,
+      title: shop.company_name,
     })
 
     //请求店铺内商品
     shopController.getGoods(shopId).then(data=>{
-      console.log(data)
+      //console.log(data)
+      var temp = data.data;
+      var res = temp.map(function(item){
+        item.classifyId = '_' + item.type_id;
+        return item;
+      })
+        //为每个item增加非以数字开头的分类id
+      //console.log(res)
+
+      //计算出只有商品的列表
+      var res2 = {};
+      for (let i = 0; i < temp.length;i++){
+        let temp2 = temp[i].productLists
+        for (let j = 0; j < temp2.length; j++) {
+          let goods = temp2[j]
+          let id = goods.id
+          //【动态添加属性】以商品id为属性，以商品对象为值
+          res2[id] = goods;
+        }
+      }
+      //console.log(res2)
 
       that.setData({
-        goodsList: data.data,
-        //classifySeleted: that.data.goodsList[0].type_id
+        goodsList: res,
+        pureGoods: res2
+      });
+
+      //console.log(that.data.pureGoods)
+
+      //【异步数据】先为goodsList赋值，再计算选中的分类
+      that.setData({
+        classifySeleted: that.data.goodsList[0].classifyId
       });
     })
 
+    /**
+     * 获取店铺信息
+     */
+    shopController.getShopInfo(shopId).then(data=>{
+      //console.log(data.data)
+      var url = '../../res/logo.png';
+      if(data.data.images.length!=0){
+        url = app.globalData.URI+data.data.images[0].src
+      }
+
+      //console.log(url)
+      this.setData({
+        shop: data.data,
+        storeAvatar:url
+      })
+    })
 	},
-	
+
+  
+  /**
+   * 添加到购物车
+   */
 	tapAddCart: function (e) {
-		this.addCart(e.target.dataset.id);
+    var id = e.target.dataset.id
+    console.log(id)
+		this.addCart(id);
 	},
 	tapReduceCart: function (e) {
 		this.reduceCart(e.target.dataset.id);
 	},
+  
 	addCart: function (id) {
 		var num = this.data.cart.list[id] || 0;
 		this.data.cart.list[id] = num + 1;
@@ -64,25 +133,43 @@ Page({
 		}
 		this.countCart();
 	},
+
+  /**
+   * 计算购物车数量
+   */
 	countCart: function () {
+    //console.log(this.data.pureGoods)
 		var count = 0,
 			total = 0;
 		for (var id in this.data.cart.list) {
-			var goods = this.data.goods[id];
+
+      console.log('data.cart.list：' + id)
+      //仍使用[]读取属性
+      var goods = this.data.pureGoods[id];
+
+      console.log(goods)
+
 			count += this.data.cart.list[id];
 			total += goods.price * this.data.cart.list[id];
 		}
 		this.data.cart.count = count;
-		this.data.cart.total = total;
+    //所有价格保留两位小数
+		this.data.cart.total = total.toFixed(2);
 		this.setData({
 			cart: this.data.cart
 		});
 	},
+
+  /**关注店铺 */
 	follow: function () {
 		this.setData({
 			followed: !this.data.followed
 		});
 	},
+
+  /**
+   * 商品滚动监听，同步分类的选中状态
+   */
 	onGoodsScroll: function (e) {
 		if (e.detail.scrollTop > 10 && !this.data.scrollDown) {
 			this.setData({
@@ -100,9 +187,9 @@ Page({
 			classifySeleted,
 			len = this.data.goodsList.length;
 		this.data.goodsList.forEach(function (classify, i) {
-			var _h = 70 + classify.goods.length * (46 * 3 + 20 * 2);
+      var _h = 70 + classify.productLists.length * (46 * 3 + 20 * 2);
 			if (scrollTop >= h - 100 / scale) {
-				classifySeleted = classify.id;
+        classifySeleted = classify.classifyId;
 			}
 			h += _h;
 		});
@@ -110,8 +197,13 @@ Page({
 			classifySeleted: classifySeleted
 		});
 	},
+
+  /**
+   * 点击分类
+   */
 	tapClassify: function (e) {
 		var id = e.target.dataset.id;
+    console.log('点击分类：'+id)
 		this.setData({
 			classifyViewed: id
 		});
@@ -122,16 +214,28 @@ Page({
 			});
 		}, 100);
 	},
+
+  /**
+   * 查看购物车
+   */
 	showCartDetail: function () {
 		this.setData({
 			showCartDetail: !this.data.showCartDetail
 		});
 	},
+
+  /**
+   * 隐藏购物车
+   */
 	hideCartDetail: function () {
 		this.setData({
 			showCartDetail: false
 		});
 	},
+
+  /**
+   * 提交订单
+   */
 	submit: function (e) {
 		
 	}

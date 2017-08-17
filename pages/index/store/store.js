@@ -29,13 +29,8 @@ Page({
    */
   enterShop:function(event){
     var shop = event.currentTarget.dataset.shop;
-    var shop_id = shop.id;
-    var company_name = shop.company_name;
-
-    //console.log('shop_id = ' + shop_id)
-
     wx.navigateTo({
-      url: '../../shop/shop?shop_id=' + shop_id + '&company_name=' + company_name,
+      url: '../../shop/shop?shop=' + JSON.stringify(shop),
     })
   },
 

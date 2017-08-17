@@ -30,7 +30,7 @@
           <view class="condition">
             <text>配送费</text>
             <text class="orange">￥{{store.delivery_fee}}</text>
-            <text class="orange" wx:if="{{free_shipping_money!=0}}">（满{{store.free_shipping_money}}免）</text>
+            <text class="orange" wx:if="{{free_shipping_money!='0.00'}}">（满{{store.free_shipping_money}}免）</text>
           </view>
         </view>
 

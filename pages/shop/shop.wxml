@@ -2,12 +2,14 @@
 
   <!--头部-->
 	<view class="header {{scrollDown?'hidden':''}}">
-		<image class="logo" src="{{shop.logo}}"/>
-		<view class="name ellipsis">{{shop.name}}</view>
-		<view class="welcome ellipsis">公告：欢迎光临{{shop.name}}！</view>
-		<view class="follow" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
+		<image class="logo" src="{{storeAvatar}}"/>
+		<view class="name ellipsis">{{shop.shop_name}}</view>
+		<view class="welcome ellipsis">商家简介：{{shop.brief==null?'无':shop.brief}}</view>
+		<view class="follow" hidden="true" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
 		<view class="line"></view>
-		<view class="desc">{{shop.desc}}</view>
+		<view class="desc">营业时间：{{shop.business_start}}-{{shop.business_end}}</view>
+    <view class="desc">联系电话：{{shop.tel}}</view>
+    <view class="desc">地址：{{shop.address}}</view>
 	</view>
 
   <!--主体部分-->
@@ -15,21 +17,23 @@
 
     <!--分类部分-->
 		<scroll-view class="classify-container" scroll-y="true">
-			<view class="classify {{classifySeleted==classify.id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+			<view class="classify {{classifySeleted==classify.classifyId?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" 
+      data-id="{{classify.classifyId}}" bindtap="tapClassify">
 				<view class="name">{{classify.type_name}}</view>
 			</view>
 		</scroll-view>
 
     <!--商品部分-->
+    <!--scroll-into-view值应为某子元素id（id不能以数字开头），故使用重新生成的classifyId（type_name为中文字符，不能作为id）作为id，结合上面商品分类给classifyViewed赋值。设置哪个方向可滚动，则在哪个方向滚动到该元素-->
 		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
-			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" id="{{classify.id}}">
+			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" id="{{classify.classifyId}}">
 				<view class="title">{{classify.type_name}}</view>
 				<view class="goods" wx:for="{{classify.productLists}}" wx:for-item="goods" wx:key="*this">
 					<image class="pic" src="{{_uri+goods.pic}}"></image>
 					<view class="name ellipsis">{{goods.product_name}}</view>
 					
 					<view class="price">￥{{goods.price}}/{{goods.unit}}</view>
-					<view class="addCart" bindtap="tapAddCart" data-id="{{id}}">
+					<view class="addCart" bindtap="tapAddCart" data-id="{{goods.id}}">
 						<image src="../../res/icon/plus.png"></image>
 					</view>
 				</view>
@@ -42,8 +46,8 @@
 		<view class="mask" bindtap="hideCartDetail"></view>
 		<view class="list">
 			<view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
-				<view class="name ellipsis">{{goods[id].name}}</view>
-				<view class="total">￥{{goods[id].price*cart.list[id]}}</view>
+				<view class="name ellipsis">{{pureGoods[id].product_name}}</view>
+				<view class="total">￥{{pureGoods[id].price*num}}</view>
 				<view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
 				<view class="num">{{num}}</view>
 				<view class="add" data-id="{{id}}" bindtap="tapAddCart">+</view>
@@ -55,14 +59,17 @@
 	<view class="cart">
 		<view class="data" bindtap="showCartDetail">
 			<view class="icon">
-				<image src="/imgs/shop/cart.png"></image>
+				<image src="../../res/icon/gouwuche.png"></image>
 				<view class="count">{{cart.count}}</view>
 			</view>
 			<view class="total">￥{{cart.total}}</view>
+      <!--配送费
+      <view class="total">配送费：￥{{delivery_fee}}</view>
+      -->
 		</view>
 		<form bindsubmit="submit" report-submit="true">
 			<!--<view formType="submit" class="submit">去结算</view>-->
-			<button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+			<button class="green {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
 		</form>
 	</view>
 </view>

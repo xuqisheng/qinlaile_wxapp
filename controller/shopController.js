@@ -24,8 +24,16 @@ class ShopController {
     }).then(res => res.data)
   }
 
-  
-
+  /**
+   * 获取店铺信息
+   * 
+   */
+  getShopInfo(id) {
+    return request.postAsync(`${URI}/App/shopDetails.html?shop_id=` + id, {
+      did: 'A8:60:B6:2D:81:AB',
+      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+    }).then(res => res.data)
+  }
 }
 /**
  * 实例化对象
