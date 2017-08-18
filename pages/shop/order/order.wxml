@@ -1,0 +1,72 @@
+<!--order.wxml-->
+<view class="main">
+  <!--收货地址信息-->
+  <view class="receiver-wrapper" bindtap="selectAddress">
+    <image class="item-icon" src="../../../res/icon/receice-addr.png"></image>
+
+    <view class="receive">
+      <view class="receiver">{{orderView.addressInfo.consignee+'  '+orderView.addressInfo.mobile}}</view>
+      <view class="loacation">收货地址：{{orderView.addressInfo.addr}}</view>
+    </view>
+  </view>
+
+  <!--收货地址信息-->
+  <view class="goods">
+    <view class="title">商品详情</view>
+
+    <block wx:for="{{orderView.productInfo}}" wx:key="{{index}}" wx:for-item="product">
+      <view class="goods-item">
+        <image class="pic" src="{{_uri+product.image}}"></image>
+        <!--名称和价格等-->
+        <view class="wrapper">
+          <view class="name ellipsis">{{product.product_name}}</view>
+          <view class="price">
+            <text>￥{{product.price}}</text>
+            <text class="num">x{{product.product_num}}</text>
+          </view>            
+        </view>
+        <!--名称和价格等-->
+      </view>
+    </block>
+
+  </view>
+
+  <!--配送费-->
+  <view class="title">
+    <text>配送费</text>
+    <text class="fee">￥{{orderView.delivery_fee}}</text>
+  </view>
+
+  <form bindsubmit="confirmOrder" class="frm">
+    <!--买家留言-->
+    <view class="title">
+      <text>买家留言</text>
+      <input class="msg" type="text" placeholder="请输入备注" name="message"/>
+    </view>
+
+    <!--共需支付-->
+    <view class="title border-bottom">
+      <text>共需支付</text>
+      <text class="fee red">￥{{total_price}}</text>
+    </view>
+
+    <!--支付列表-->
+    <radio-group name="payment" class="radio-group" bindchange="radioChange">
+      <label wx:for="{{orderView.payments}}" wx:key="*this">
+        <view class="radio">
+          <image class="icon" src="{{item.pay_code=='alipay'?'../../../res/pay_ali.png':'../../../res/pay_wechat.png'}}"></image>
+          <text class="name">{{item.pay_name}}</text>
+          <radio class="box" value="{{item.id}}" checked="{{item.pay_code=='alipay'}}"/>{{item.value}}
+        </view>
+      </label>
+    </radio-group>
+
+    <!--提交订单-->
+    <view class="confirm-wrapper">
+      <button class="confirm" form-type="submit">提交订单</button>
+    </view>
+  </form>
+  
+  
+
+</view>

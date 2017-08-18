@@ -8,11 +8,13 @@ Page({
     _uri:app.globalData.URI,
 		goods: '',
 		goodsList: [],
+    //店铺logo图片
     storeAvatar:'',
 
     //【字典】goodsList对应的只包含商品的列表，_14926:{}
     pureGoods:{},
 
+    shopId:'',
     //cart_shopId 当前店铺的id，用于存储本地购物车数据CART_125:{...}；在该页面卸载或计算之后写入到本地存储
     cart_shopId:'',
 		cart: {
@@ -40,13 +42,27 @@ Page({
 	},
 
   /**
-   * 将购物车数据写入本地存储
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    console.log('------onHide()-----')
+  },
+
+  /**
+   * 
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    
+  },
+
+  /**
+   * 将购物车数据写入本地存储
+   */
+  saveCartData:function(){
     var that = this
     var cartStr = JSON.stringify(that.data.cart)
-    console.log('------onUnload------')
+    console.log('------saveCartData()------')
     console.log('存储本地购物车数据：' + cartStr)
 
     wx.setStorage({
@@ -75,6 +91,7 @@ Page({
     })
 
     that.setData({
+      shopId: shopId,
       cart_shopId: cart_shopId,
       delivery_fee:shop.delivery_fee,
       free_shipping_money:shop.free_shipping_money
@@ -192,6 +209,8 @@ Page({
 		this.setData({
 			cart: this.data.cart
 		});
+    //写到本地
+    this.saveCartData()
 	},
 
   /**关注店铺 */
@@ -272,6 +291,7 @@ Page({
    */
 	submit: function (e) {
     var mid = app.globalData.mid
+    //var mid = wx.getStorageSync('mid')
     console.log('mid = '+mid)
     //检查是否登录，否则登录
     if (mid == null || mid== ''){
@@ -284,7 +304,45 @@ Page({
       return
     }
 
-    console.log('选好商品，提交了')
+    //console.log('选好商品，提交了')
+
+    //读取用户地址结构
+
+    var self = this;
+    var products = '['
+
+    for (let id in self.data.cart.list) {
+      console.log('-----提交订单-----')
+      let num = self.data.cart.list[id];
+      products += '{"product_id":' + id +',"product_num":'+num+'},';
+      //console.log(id + ':' + num)
+    }
+
+    products = products.substring(0,products.length-1);
+    products+=']'
+    console.log('products:' + products)
+
+    //创建订单信息确认
+    shopController.viewConfirmOrder(self.data.shopId, products).then(data=>{
+      //移除当前店铺购物车数据：本地加内存
+      console.log(data)
+
+      /**
+       * 携带参数：
+       * 1.products
+       * 2.data
+       * 3.购买商品goods（data中包含购买商品数据）
+       */
+      //var goods = [];//+'&goods'+goods
+
+      wx.navigateTo({
+        url: 'order/order?products=' + products + '&data=' + JSON.stringify(data)+'&cart_shopId='+self.data.cart_shopId,
+      })
+    })
+
+    // wx.navigateTo({
+    //   url: 'order/order',
+    // })
 	}
 });
 

@@ -182,7 +182,7 @@ page {
 	display: -webkit-flex;
 	color: #333;
 	font-size: 26rpx;
-	line-height: 50rpx;
+	line-height: 40rpx;
 	padding: 20rpx 40rpx;
 }
 .cart-detail .list .item .name {
@@ -193,17 +193,15 @@ page {
 }
 .cart-detail .list .item .reduce,
 .cart-detail .list .item .add {
-	font-size: 40rpx;
-	background: #42c017;
-	width: 50rpx;
-	height: 50rpx;
+	width: 40rpx;
+	height: 40rpx;
 	text-align: center;
 	border-radius: 50%;
-  line-height: 50rpx;
+  line-height: 40rpx;
   color: white;
 }
 .cart-detail .list .item .num {
-	width: 50rpx;
+	width: 40rpx;
 	text-align: center;
 	margin: 0 5rpx;
 }
@@ -275,27 +273,18 @@ page {
 
 /******************************/
 .edit{
+  height: 40rpx;
+  width: 40rpx;
   font-size: 40rpx;
-	background: #42c017;
-	width: 50rpx;
-	height: 50rpx;
 	text-align: center;
 	border-radius: 50%;
-  line-height: 50rpx;
-  color: white;
-}
-
-.e-reduce{
-  width: 46rpx;
-	height: 46rpx;
-  border: 2rpx solid #42c017;
-  background: white;
-  color: #42c017;
+  line-height: 40rpx;
 }
 
 .e-num{
-  width: 50rpx;
+  width: 40rpx;
 	text-align: center;
+  line-height: 40rpx;
 	margin: 0 5rpx;
 }
 
@@ -303,12 +292,9 @@ page {
   display: -webkit-flex;
 	color: #333;
 	font-size: 26rpx;
-	line-height: 50rpx;
-
   position: absolute;
 	right: 10rpx;
 	bottom: 10rpx;
-
-	height: 50rpx;
+	height: 40rpx;
 	border-radius: 50%;
 }

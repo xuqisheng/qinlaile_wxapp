@@ -41,7 +41,7 @@ App({
     //当前的经纬度
     latitude:'', 
     longitude:'',
-    //用户唯一id，记录是否登录
+    //用户唯一id，记录是否登录；使用时要注意，用户若退出登录切换用户，且未退出应用，那么mid的值还在，可能会影响一些用到mid的操作
     mid: wx.getStorageSync('mid')
   },
 

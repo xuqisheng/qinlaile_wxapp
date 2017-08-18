@@ -1,0 +1,143 @@
+/* order.wxss */
+page{
+  background-color: white
+}
+/*定位等每个条目的外层*/
+.receiver-wrapper{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+/*小图标*/
+.item-icon{
+  width:34rpx;
+  height:40rpx;
+}
+
+/*收货人*/
+.receiver{
+  color: black;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+/*收货地址*/
+.loacation{
+  font-size: 24rpx;
+  color: gray;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+/*商品模块*/
+.goods{
+  border-bottom: 1rpx solid lightgray;
+}
+
+/*左侧标题*/
+.title{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+	position: relative;
+  border-top: 20rpx solid lightgray;
+}
+
+.goods .goods-item {
+	position: relative;
+	padding: 20rpx 20rpx 20rpx 20rpx;
+	border-top: 1rpx solid #f7f7f7;
+
+}
+
+.goods .goods-item .pic{
+  float: left;
+	width: 110rpx;
+	height: 110rpx;
+	margin-right: 20rpx;
+}
+
+.goods .goods-item .wrapper{
+  flex-direction: column
+}
+
+/*商品名称*/
+.goods .goods-item .name {
+	color: #000;
+	font-size: 28rpx;
+	line-height: 46rpx;
+  width: 320rpx
+}
+
+/*商品价格*/
+.goods .goods-item .price {
+	color: gray;
+	font-size: 24rpx;
+	line-height: 46rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.goods .goods-item .num{
+  float: right;
+  color: #42c017;
+}
+
+.title .fee{
+  float: right;
+  color: gray;
+}
+
+.frm .title .msg{
+  color: gray;
+  margin-top: 20rpx;
+}
+
+.frm .border-bottom{
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.frm .title .red{
+  color: red;
+}
+
+.frm .radio{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+  height: 90rpx;
+  display: -webkit-flex;
+  
+}
+
+.frm .radio .icon{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+}
+
+.frm .radio .name{
+  line-height: 90rpx;
+}
+
+.frm .radio .box{
+  line-height: 90rpx;
+  float: right;
+  /*绝对定位靠右*/
+  position: absolute;
+  right: 10rpx
+}
+
+.confirm-wrapper{
+  padding: 40rpx 20rpx;
+  border-top: 20rpx solid lightgray;
+}
+.confirm-wrapper .confirm{
+  background: #42c017;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+  width: 100%;
+  color: white
+}

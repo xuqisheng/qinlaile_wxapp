@@ -35,15 +35,15 @@
             <view class="name ellipsis">{{goods.product_name}}</view>
             
             <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
-            <!--数量减
+            <!--原数量加
             <view class="addCart" bindtap="tapAddCart" data-id="{{goods.id}}">
               <image src="../../res/icon/plus.png"></image>
             </view>
             -->
             <view class="edit-container">
-              <view class="edit e-reduce" data-id="{{goods.id}}" hidden="{{cart[goods.id]}}" bindtap="tapReduceCart">-</view>
-              <view class="e-num">{{cart[goods.id]}}</view>
-              <view class="edit" data-id="{{goods.id}}" bindtap="tapAddCart">+</view>
+              <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
+              <view class="e-num">{{cart.list[goods.id]}}</view>
+              <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
             </view>
             
           </view>
@@ -60,9 +60,9 @@
 			<view class="item" wx:for="{{cart.list}}" wx:for-index="id" wx:for-item="num" wx:key="id">
 				<view class="name ellipsis">{{pureGoods[id].product_name}}</view>
 				<view class="total">￥{{pureGoods[id].price}}</view>
-				<view class="reduce" data-id="{{id}}" bindtap="tapReduceCart">-</view>
+				<image class="reduce" data-id="{{id}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
 				<view class="num">{{num}}</view>
-				<view class="add" data-id="{{id}}" bindtap="tapAddCart">+</view>
+				<image class="add" data-id="{{id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
 			</view>
 		</view>
 	</view>
