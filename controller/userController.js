@@ -1,4 +1,4 @@
-
+var app = getApp()
 
 const request = require('../utils/request.js')
 
@@ -272,6 +272,9 @@ class UserController {
 
       //同步方式将用户信息保存到内部存储中
       wx.setStorageSync('mid', mid)//用户唯一ID，类似token
+      //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
+      app.globalData.mid = mid
+
       wx.setStorageSync('mobile', _mobile)
 
       //用户账号其他信息
@@ -360,6 +363,9 @@ class UserController {
 
       //同步方式将用户信息保存到内部存储中
       wx.setStorageSync('mid', mid)//用户唯一ID，类似token
+      //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
+      app.globalData.mid = mid
+
       wx.setStorageSync('is_house_worker', is_house_worker)
 
       wx.setStorageSync('username', that.data.name)
