@@ -1,1 +1,147 @@
 /* detail.wxss */
+.main{
+
+}
+
+/*订单状态  */
+.main .title{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+	position: relative;
+  border-top: 2rpx solid lightgray;
+  border-bottom: 2rpx solid lightgray;
+}
+
+.main .title .status{
+  color:red;
+  margin-left:20rpx;
+}
+
+/*定位等每个条目的外层*/
+.main .receiver{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+/*小图标*/
+.main .receiver .icon{
+  width:34rpx;
+  height:40rpx;
+}
+
+/*收货人*/
+.main .receiver .wrapper .name{
+  color: black;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+/*收货地址*/
+.main .receiver .wrapper .addr{
+  font-size: 24rpx;
+  color: gray;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+/*商品模块*/
+.main .goods{
+  border-bottom: 1rpx solid lightgray;
+}
+
+/*左侧标题*/
+.main .goods .title{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+	position: relative;
+  border-top: 20rpx solid lightgray;
+}
+
+.main .goods .item {
+	position: relative;
+	padding: 20rpx 20rpx 20rpx 20rpx;
+	border-top: 1rpx solid #f7f7f7;
+
+}
+
+.main .goods .item .pic{
+  float: left;
+	width: 110rpx;
+	height: 110rpx;
+	margin-right: 20rpx;
+}
+
+.main .goods .item .wrapper{
+  flex-direction: column
+}
+
+/*商品名称*/
+.main .goods .item .wrapper .name {
+	color: #000;
+	font-size: 28rpx;
+	line-height: 46rpx;
+  width: 500rpx
+}
+
+/*商品价格*/
+.main .goods .item .wrapper .price {
+	color: gray;
+	font-size: 24rpx;
+	line-height: 46rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.main .goods .item .wrapper .price  .num{
+  float: right;
+  color: gray;
+}
+
+/*订单总额  */
+.main .description{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+	position: relative;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.main .bordertop{
+  border-top: 20rpx solid lightgray;
+}
+
+.main .description .msg{
+  float: right;
+  color: gray
+}
+
+.main .description .red{
+  color:red;
+}
+
+.main .action{
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 40rpx;
+}
+
+.main .action .cancel{
+  font-size: 30rpx;
+  border: 4rpx solid #42c017;
+  padding: 15rpx 80rpx;
+  border-radius: 10rpx;
+  color: #42c017;
+}
+
+.main .action .pay{
+  font-size: 30rpx;
+  padding: 15rpx 80rpx;
+  background-color: #42c017;
+  border-radius: 10rpx;
+  color: white;
+}

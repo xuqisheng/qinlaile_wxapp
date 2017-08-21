@@ -10,6 +10,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    _uri:app.globalData.URI,
+    orderDetail:{},
+    //下单时间，由字符串计算得到格式化的时间
+    add_time:''
 
   },
 
@@ -23,6 +27,17 @@ Page({
 
     shopController.getOrderDetail(orderid).then(data=>{
       console.log(data)
+      
+      //时间日期格式化
+      var timestamp = data.order_info.add_time
+      var newDate = new Date();
+      newDate.setTime(timestamp * 1000);
+      var format = newDate.toLocaleDateString()
+
+      that.setData({
+        orderDetail:data,
+        add_time: format
+      })
     })
   },
 

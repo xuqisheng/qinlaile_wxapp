@@ -1,3 +1,79 @@
 <!--detail.wxml-->
-<!-- <include src="../order.wxml"></include> -->
+<!--body-->
+<view class="main">
+  <!--订单状态  -->
+  <view class="title">
+    <text>订单状态：</text>
+    <text class="status">{{orderDetail.order_info.statusTxt}}</text>
+  </view>
 
+  <!--收货地址信息-->
+  <view class="receiver" bindtap="selectAddress">
+    <image class="icon" src="../../../../res/icon/receice-addr.png"></image>
+
+    <view class="wrapper">
+      <view class="name">{{orderDetail.order_info.name+'  '+orderDetail.order_info.mobile}}</view>
+      <view class="addr">收货地址：{{orderDetail.order_info.area_info+orderDetail.order_info.delivery_address}}</view>
+    </view>
+  </view>
+  <!--收货地址信息-->
+
+  <!--商品信息  -->
+  <view class="goods">
+    <view class="title">
+      <text>{{orderDetail.shop_info.company_name}}</text>
+    </view>
+
+    <block wx:for="{{orderDetail.product_info}}" wx:key="{{index}}" wx:for-item="product">
+      <view class="item">
+        <image class="pic" src="{{_uri+product.pics}}"></image>
+        <!--名称和价格等-->
+        <view class="wrapper">
+          <view class="name ellipsis">{{product.product_name}}</view>
+          <view class="price">
+            <text>￥{{product.price}}</text>
+            <text class="num">x{{product.product_num}}</text>
+          </view>            
+        </view>
+        <!--名称和价格等-->
+      </view>
+    </block>
+  </view>
+
+  <!--支付信息  -->
+  <view class="description bordertop">
+    <text>共需支付</text>
+    <text class="msg red">￥{{orderDetail.order_info.money}}</text>
+  </view>
+
+  <!--支付方式  -->
+  <view class="description">
+    <text>支付方式</text>
+    <text class="msg">{{orderDetail.order_info.pay_name}}</text>
+  </view>
+
+  <!--买家留言  -->
+  <view class="description">
+    <text>买家留言</text>
+    <text class="msg">{{orderDetail.order_info.buyer_message?orderDetail.order_info.buyer_message:'无'}}</text>
+  </view>
+
+  <!--订单号  -->
+  <view class="description">
+    <text>订单编号</text>
+    <text class="msg">{{orderDetail.order_info.order_sn}}</text>
+  </view>
+
+  <!--下单时间  -->
+  <view class="description">
+    <text>下单时间</text>
+    <text class="msg">{{add_time}}</text>
+  </view>
+
+  <!--订单操作  -->
+  <view class="action bordertop">
+    <text class="cancel">取消订单</text>
+    <text class="pay">立即支付</text>
+  </view>
+
+</view>
