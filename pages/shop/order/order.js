@@ -110,6 +110,18 @@ Page({
         console.log('购物车清除成功')
       }
     })
+
+    //清除内存中的购物车
+    // var pages = getCurrentPages()
+    // var prevPage = pages[pages.length - 1]  //当前界面
+    // var prevPage = pages[pages.length - 2]  //上一个页面
+    // prevPage.setData({
+    //   cart:{
+    //     count: 0,
+    //     total: 0,
+    //     list: {}
+    //   }
+    // })
   },
 
   /**

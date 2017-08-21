@@ -29,3 +29,8 @@ button.green.hover {
 button.green.disabled {
 	background: #ACC4A4;
 }
+
+/*主题绿色*/
+.theme-green{
+	background: #42c017;
+}

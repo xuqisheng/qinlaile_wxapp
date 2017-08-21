@@ -44,11 +44,11 @@ Page({
   onShow: function () {
     var that = this;
 
-    console.log('onShow:that.data.mid = ' + that.data.mid)
-
     that.setData({
       mid: app.globalData.mid
     })
+    
+    console.log('onShow:that.data.mid = ' + that.data.mid)
 
     if(that.data.mid){
       userController.setup(that)

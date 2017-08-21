@@ -97,6 +97,19 @@ class ShopController {
     // return request.postAsync(`${URI}/App/confirmOrder.html?act=submit`, param).then(res => res.data)
   }
 
+  /**
+   * 获取订单列表
+   * App/myOrder.html?act=getPage
+   * status:订单类型
+   * curNum:分页当前页，默认1
+   */
+  getOrderList(status, curNum) {
+    return this._post_request('/myOrder.html?act=getPage', {
+      status: status,
+      curNum:curNum
+    })
+  }
+
 
 }
 /**

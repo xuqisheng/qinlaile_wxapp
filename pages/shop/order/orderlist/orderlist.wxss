@@ -1,1 +1,117 @@
 /* orderlist.wxss */
+page{
+  background-color:#edf0f3;
+}
+
+/*tabs容器*/
+.nav{
+  background-color:white;
+  width:100%;
+  height:70rpx;
+  display:flex;
+  flex-direction:row;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  /* padding: 24rpx 0rpx; */
+}
+
+/*tab文字默认样式*/
+.default{
+  line-height:70rpx;
+  text-align:center;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  color:#000;
+  font-size:28rpx;
+}
+
+/*tab文字选中样式*/
+.selected{
+  line-height:70rpx;
+  text-align:center;
+  color:#42c017;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  border-bottom: 4rpx solid #42c017; 
+  font-size:28rpx;
+  /* margin-bottom: -24rpx; */
+
+}
+
+/*************订单**************/
+
+/*空视图  */
+.body .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.body .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: gray; 
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+/*订单item*/
+.body .orderList .order{
+  background-color:white;
+  padding: 20rpx 20rpx 0rpx 20rpx;
+  border-bottom: 20rpx solid #edf0f3;
+}
+
+/*订单标题*/
+.body .orderList .order .sn{
+  font-size: 28rpx;
+  color: black;
+  padding: 10rpx;
+	position: relative;
+  border-bottom: 1rpx solid lightgray;
+}
+/*订单状态  */
+.body .orderList .order .sn .status{
+  float: right;
+  color: gray;
+}
+
+/*商品列表  */
+.body .orderList .order .goods {
+	position: relative;
+	padding: 20rpx 20rpx 20rpx 20rpx;
+	border-top: 1rpx solid #f7f7f7;
+}
+
+.body .orderList .order .goods .pic{
+  float: left;
+	width: 110rpx;
+	height: 110rpx;
+	margin-right: 20rpx;
+}
+
+.body .orderList .order .goods .wrapper{
+  flex-direction: column
+}
+
+/*商品名称*/
+.body .orderList .order .goods .name {
+	color: #000;
+	font-size: 28rpx;
+	line-height: 46rpx;
+  width: 500rpx
+}
+
+/*商品价格*/
+.body .orderList .order .goods .price {
+	color: gray;
+	font-size: 24rpx;
+	line-height: 46rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.body .orderList .order .goods .num{
+  float: right;
+  color: gray
+}

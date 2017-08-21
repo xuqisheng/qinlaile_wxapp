@@ -1,2 +1,48 @@
 <!--orderlist.wxml-->
-<text>orderlist.wxml</text>
+<view class="body">
+  <view class="nav">
+    <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="index">
+      <view class="{{index==itemSelected?'selected':'default'}}" data-index="{{index}}" bindtap="onTabClick">{{tabs[index]}}</view>
+    </block>
+    
+  </view>
+  
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      暂无数据
+    </view>
+  </view>
+
+  <!--订单列表-->
+  <view class="orderList" wx:else>
+    <block wx:for="{{orderList}}" wx:for-item="order" wx:key="*this">
+      <!--订单item-->
+      <view class="order">
+        <!--订单状态-->
+        <view class="sn">
+          <text>订单编号：{{order.order_info.order_sn}}</text>
+          <text class="status">{{order.order_info.status_text}}</text>
+        </view>
+
+        <!--商品列表--> 
+        <block wx:for="{{order.products}}" wx:for-item="product"  wx:key="idx">
+          <view class="goods">
+            <image class="pic" src="{{_uri+product.pics}}"></image>
+            <!--名称和价格等-->
+            <view class="wrapper">
+              <view class="name ellipsis">{{product.product_name}}</view>
+              <view class="price">
+                <text>￥{{product.price}}</text>
+                <text class="num">x{{product.product_num}}</text>
+              </view>            
+            </view>
+            <!--名称和价格等-->
+          </view>
+        <!--商品列表--> 
+        </block>
+
+      </view>
+    </block>
+  </view>
+
+</view>

@@ -45,7 +45,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('------onHide()-----')
+    console.log('------onShow()-----')
+    var that = this
+    //先读取本地存储中的数据
+    var cart_shopId = that.data.cart_shopId;
+    wx.getStorage({
+      key: cart_shopId,
+      success: function (res) {
+        console.log('读取本地购物车数据：' + res.data)
+        that.setData({
+          cart: JSON.parse(res.data)
+        })
+      },
+    })
+
   },
 
   /**
@@ -77,18 +90,7 @@ Page({
     var shop = JSON.parse(options.shop)
     //取出店铺id和店铺名称
     var shopId = shop.id;
-    
-    //先读取本地存储中的数据
     var cart_shopId = 'CART_' + shopId;
-    wx.getStorage({
-      key: cart_shopId,
-      success: function(res) {
-        console.log('读取本地购物车数据：'+res.data)
-        that.setData({
-          cart:JSON.parse(res.data)
-        })
-      },
-    })
 
     that.setData({
       shopId: shopId,

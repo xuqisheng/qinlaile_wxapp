@@ -68,11 +68,13 @@
     </view>
 
     <!--我的订单-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/order.png"></image>
-
-      <view class="item-text">我的订单</view>
-    </view>
+    <navigator url="../shop/order/orderlist/orderlist" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/order.png"></image>
+        <view class="item-text">我的订单</view>
+      </view>
+    </navigator>
+    
 
     <!--我的帖子-->
     <view class="item">
