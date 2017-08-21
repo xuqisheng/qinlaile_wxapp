@@ -4,7 +4,7 @@
   <!--订单状态  -->
   <view class="title">
     <text>订单状态：</text>
-    <text class="status">{{orderDetail.order_info.statusTxt}}</text>
+    <text class="{{orderDetail.order_info.status==1?'red':'gray'}}">{{orderDetail.order_info.statusTxt}}</text>
   </view>
 
   <!--收货地址信息-->
@@ -47,7 +47,7 @@
   </view>
 
   <!--支付方式  -->
-  <view class="description">
+  <view class="description" hidden="{{orderDetail.order_info.status!=1}}">
     <text>支付方式</text>
     <text class="msg">{{orderDetail.order_info.pay_name}}</text>
   </view>
@@ -71,7 +71,7 @@
   </view>
 
   <!--订单操作  -->
-  <view class="action bordertop">
+  <view class="action" hidden="{{orderDetail.order_info.status!=1}}">
     <text class="cancel">取消订单</text>
     <text class="pay">立即支付</text>
   </view>

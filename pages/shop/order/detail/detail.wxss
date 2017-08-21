@@ -13,10 +13,16 @@
   border-bottom: 2rpx solid lightgray;
 }
 
-.main .title .status{
+.main .title .gray{
+  color:gray;
+  margin-left:20rpx;
+}
+
+.main .title .red{
   color:red;
   margin-left:20rpx;
 }
+
 
 /*定位等每个条目的外层*/
 .main .receiver{
@@ -124,10 +130,9 @@
 }
 
 .main .action{
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-around;
+  text-align: center;
   padding-top: 40rpx;
+  border-top: 20rpx solid lightgray;
 }
 
 .main .action .cancel{
@@ -136,12 +141,15 @@
   padding: 15rpx 80rpx;
   border-radius: 10rpx;
   color: #42c017;
+  margin: 20rpx
 }
 
 .main .action .pay{
   font-size: 30rpx;
+  border: 4rpx solid #42c017;
   padding: 15rpx 80rpx;
   background-color: #42c017;
   border-radius: 10rpx;
   color: white;
+  margin: 20rpx
 }
