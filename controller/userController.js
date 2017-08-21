@@ -303,8 +303,12 @@ class UserController {
       
 
       //跳转到首页
-      wx.switchTab({
-        url: '/pages/index/index'
+      // wx.switchTab({
+      //   url: '/pages/index/index'
+      // })
+      //返回会员页面
+      wx.navigateBack({
+        delta:1
       })
     })
   }

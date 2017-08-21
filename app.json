@@ -14,7 +14,8 @@
     "pages/huiyuan/bindaddress/picker/picker",
     "pages/shop/shop",
     "pages/shop/order/order",
-    "pages/shop/order/orderlist/orderlist"
+    "pages/shop/order/orderlist/orderlist",
+    "pages/huiyuan/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

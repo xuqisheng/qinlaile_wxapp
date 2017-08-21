@@ -295,16 +295,14 @@ Page({
     console.log('mid = '+mid)
     //检查是否登录，否则登录
     if (mid == null || mid== ''){
-      // wx.navigateTo({
-      //   url: '../huiyuan/huiyuan',
-      // })
-      wx.switchTab({
-        url: '/pages/huiyuan/huiyuan',
+      wx.navigateTo({
+        url: '../huiyuan/login/login',
       })
+      
       return
     }
 
-    //console.log('选好商品，提交了')
+    console.log('选好商品，提交了')
 
     //读取用户地址结构
 

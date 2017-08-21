@@ -1,0 +1,43 @@
+<!--login.wxml-->
+<view class="login">
+<!-- <view class="login" wx:if="{{!_login}}"> -->
+  <view class="wrapper divider">
+    <view class="new-user">我是新用户</view>
+    <navigator url="../register/register" open-type="navigate">
+      <view class="round-border green-text">立即注册成为亲来了会员</view>
+    </navigator>
+    
+  </view>
+  
+  <view class="wrapper">
+    <view class="new-user">已有账号</view>
+    <form bindsubmit="loginSubmit" bindreset="formReset">
+      <view class="round-border">
+        <input name="mobile" type="number" class="code" placeholder="请输入手机号码" bindinput="mobileConfirm" placeholder-style="font-size: 28rpx;"/>
+      </view>
+      
+      <view style="position:relative;height:60rpx">
+        <view class="round-border" style="padding-left:4rpx;padding-right:0rpx">
+          <input name="code" type="number" class="code" style="float: left;" placeholder="请输入验证码" placeholder-style="font-size: 28rpx;"/>
+        </view>
+
+        <!--获取验证码和计时器-->
+        <text class="get-code" bindtap="getLoginCode">{{counter}}</text>
+      </view>
+
+      <button form-type="submit" class="round-border green-text bg">登录</button>
+      <!--重置表单，对应formReset方法
+      <button style="width:30%" formType="reset" >重置</button>
+      -->
+    </form>
+
+    <view class="new-user">第三方平台登录</view>
+
+    <view class="trd">
+      <image bindtap="qqLogin" class="icon" src="../../res/qq.png"></image>
+
+      <image class="icon" src="../../res/wechat.png"></image>
+    </view>
+  </view>
+
+</view>
