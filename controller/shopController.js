@@ -110,6 +110,15 @@ class ShopController {
     })
   }
 
+  /**
+   * 获取订单详情orderDetail.html
+   * order_id:订单id
+   */
+  getOrderDetail(order_id) {
+    return this._post_request('/orderDetail.html', {
+      order_id: order_id,
+    })
+  }
 
 }
 /**
