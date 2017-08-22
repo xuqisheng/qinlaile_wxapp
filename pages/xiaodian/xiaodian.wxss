@@ -1,1 +1,39 @@
-/* xiaodian.wxss */
+/* orderlist.wxss */
+page{
+  background-color:#edf0f3;
+}
+
+/*tabs容器*/
+.nav{
+  background-color:white;
+  width:100%;
+  height:70rpx;
+  display:flex;
+  flex-direction:row;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  /* padding: 24rpx 0rpx; */
+}
+
+/*tab文字默认样式*/
+.default{
+  line-height:70rpx;
+  text-align:center;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  color:#000;
+  font-size:28rpx;
+}
+
+/*tab文字选中样式*/
+.selected{
+  line-height:70rpx;
+  text-align:center;
+  color:#42c017;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  border-bottom: 4rpx solid #42c017; 
+  font-size:28rpx;
+  /* margin-bottom: -24rpx; */
+
+}

@@ -7,7 +7,9 @@
 		<view class="welcome ellipsis">商家简介：{{shop.brief==null?'无':shop.brief}}</view>
 		<view class="follow" hidden="true" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
 		<view class="line"></view>
-		<view class="desc">营业时间：{{shop.business_start}}-{{shop.business_end}}</view>
+    
+    <!--营业时间数据没有时，显示为00：00-00：00  -->
+		<view class="desc">营业时间：{{shop.business_start?shop.business_start:'00:00'}}-{{shop.business_end?shop.business_end:'00:00'}}</view>
     <view class="desc">联系电话：{{shop.tel}}</view>
     <view class="desc">地址：{{shop.address}}</view>
 	</view>
@@ -77,7 +79,7 @@
       <view class="total">
         <view class="fee">￥{{cart.total}}</view>
         <!--配送费-->
-        <view class="fee delivery">配送费：￥{{delivery_fee}}</view>
+        <view class="fee delivery">配送费：￥{{free_shipping?0.00:delivery_fee}}</view>
       </view>
       
 		</view>

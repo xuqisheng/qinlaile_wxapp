@@ -28,12 +28,14 @@ Page({
 
     //店铺头信息
     shop:{},
-
+    // 是否免运费（暂不使用）
     is_set_free_shipping:'1',
     //运费
     delivery_fee:'',
     //免邮费限额
-    free_shipping_money:''
+    free_shipping_money:'',
+    //免邮标记
+    free_shipping:false,
 
     /*可以不在此声明，setData中使用时再声明
     classifySeleted:'',
@@ -56,9 +58,42 @@ Page({
         that.setData({
           cart: JSON.parse(res.data)
         })
+
+        // 计算运费
+        that.calcFee();
       },
     })
 
+  },
+
+  /**
+   * 计算运费
+   */
+  calcFee:function(){
+    var that = this
+    //计算运费
+    var fee = 0;
+    //免邮费限额
+    var limit = 0;
+    //数字转换异常处理
+    try {
+      fee = parseFloat(that.data.delivery_fee)
+      limit = parseFloat(that.data.free_shipping_money)
+    } catch (e) {
+      fee = 0;
+      limit = 0;
+    }
+    if (fee > 0 && that.data.cart.total < limit) {
+      console.log('不免运费')
+      this.setData({
+        free_shipping: false
+      })
+    } else {
+      console.log('免运费')
+      this.setData({
+        free_shipping: true
+      })
+    }
   },
 
   /**
@@ -206,6 +241,31 @@ Page({
 			total += goods.price * this.data.cart.list[id];
 		}
 		this.data.cart.count = count;
+
+    //计算运费
+    var fee = 0;
+    //免邮费限额
+    var limit = 0;
+    //数字转换异常处理
+    try{
+      fee = parseFloat(this.data.delivery_fee)
+      limit = parseFloat(this.data.free_shipping_money)
+    }catch(e){
+      fee = 0;
+      limit = 0;
+    }
+    if (fee > 0 && total < limit){
+      total += fee;
+      console.log('不免运费')
+      this.setData({
+        free_shipping: false
+      })
+    }else{
+      console.log('免运费')
+      this.setData({
+        free_shipping:true
+      })
+    }
     //所有价格保留两位小数
 		this.data.cart.total = total.toFixed(2);
 		this.setData({

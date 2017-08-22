@@ -137,7 +137,7 @@ page{
 .confirm-wrapper .confirm{
   background: #42c017;
   font-size: 28rpx;
-  border-radius: 50rpx;
+  border-radius: 10rpx;
   width: 100%;
   color: white
 }

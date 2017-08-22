@@ -34,7 +34,7 @@ Page({
     //console.log(data)
     var orderView = JSON.parse(data)
     //实际数字可能为整数，重新计算保留两位小数
-    var total_price = orderView.total_price.toFixed(2)
+    var total_price = parseFloat(orderView.total_price).toFixed(2)
     self.setData({
       orderView: orderView,
       total_price: total_price,

@@ -54,20 +54,7 @@ Page({
       userController.setup(that)
     }
 
-    // var mid = app.globalData.mid
-    // if(mid==''||mid==null){
-      
-    //   console.log('用户未登录')
-    //   that.setData({
-    //     _login: false
-    //   })
 
-    // }else{
-    //   console.log('用户已登录')
-    //   that.setData({
-    //     _login: true
-    //   })
-    // }
   },
 
   /**
@@ -82,11 +69,18 @@ Page({
     wx.getStorage({
       key: 'village_name',
       success: function (res) {
+        console.log('已绑定')
         //若已绑定,去往编辑
         if (res.data != '' && res.data != null) {
           _url = 'personal/personal'
         }
 
+        wx.navigateTo({
+          url: _url,
+        })
+      },
+      fail:function(res){
+        console.log('未绑定')
         wx.navigateTo({
           url: _url,
         })

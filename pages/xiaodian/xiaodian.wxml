@@ -1,2 +1,29 @@
 <!--xiaodian.wxml-->
-<text>小店</text>
+<view class="body">
+  <!--实现页签功能-->
+  <view class="nav">
+    <block wx:for="{{typeList}}" wx:for-item="type" wx:key="index">
+      <view class="{{index==itemSelected?'selected':'default'}}" data-index="{{index}}" bindtap="onTabClick">{{type.name}}</view>
+    </block>
+  </view>
+  
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      暂无数据
+    </view>
+  </view>
+
+  <!--店铺列表-->
+  <view class="orderList" wx:else>
+    <block wx:for="{{orderList}}" wx:for-item="order" wx:key="*this">
+      <!--店铺item-->
+      <navigator url="../detail/detail?orderid={{order.order_info.id}}" open-type="navigate">
+        <view class="order">
+          
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+</view>
+

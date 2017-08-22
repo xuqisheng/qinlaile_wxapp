@@ -72,13 +72,10 @@ class ShopController {
    * products参数:[{"product_id":1123,"product_num":3},{"product_id":1120,"product_num":3}]
    */
   viewConfirmOrder(_shop_id, _products) {
-    return request.postAsync(`${URI}/App/confirmOrder.html`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: app.globalData.mid,
+    return this._post_request(`/confirmOrder.html`,{
       shop_id: _shop_id,
       products: _products
-    }).then(res => res.data)
+    })
   }
 
   /**
@@ -87,14 +84,6 @@ class ShopController {
    */
   confirmOrder(params){
     return this._post_request('/confirmOrder.html?act=submit',params)
-    // var param = Object.assign({
-    //   did: 'A8:60:B6:2D:81:AB',
-    //   encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-    //   mid: app.globalData.mid,
-    // }, params);
-    // console.log('-----订单参数-----')
-    // console.log(param)
-    // return request.postAsync(`${URI}/App/confirmOrder.html?act=submit`, param).then(res => res.data)
   }
 
   /**
@@ -120,6 +109,24 @@ class ShopController {
     })
   }
 
+  /**
+   * 获取店铺分类列表
+   */
+  getStoreTypeList(){
+    return this._post_request('/shopCategoryList.html', {})
+  }
+
+  /**
+   * 获取店铺列表
+   */
+  getStoreList(type_id){
+    return this._post_request('/shopCategoryList.html?act=getPage',{
+      type_id:type_id,
+      app_id:'1',
+      latitude:app.globalData.latitude,
+      longitude:app.globalData.longitude,
+    })
+  }
 }
 /**
  * 实例化对象
