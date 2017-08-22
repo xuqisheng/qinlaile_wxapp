@@ -6,22 +6,65 @@
       <view class="{{index==itemSelected?'selected':'default'}}" data-index="{{index}}" bindtap="onTabClick">{{type.name}}</view>
     </block>
   </view>
+
+  <!--分类下的二级分类弹窗  -->
+  <view class="second-type" hidden="{{secondTypeList.length==0||!showPopupwindow}}">
+		<view class="mask" bindtap="showPopupwindow"></view>
+		<view class="list">
+			<view class="{{secondTypeId==type.id?'item-selected':'item-normal'}}" bindtap="onSecondTypeClick" 
+      wx:for="{{secondTypeList}}" data-type_id="{{type.id}}" wx:for-item="type" wx:key="{{index}}">
+				{{type.name}}
+			</view>
+		</view>
+	</view>
   
-  <view class="empty" wx:if="{{empty}}">
+  <view class="empty" wx:if="{{empty}}" hidden="{{secondTypeList.length!=0&&showPopupwindow}}">
     <view class="text">
       暂无数据
     </view>
   </view>
 
-  <!--店铺列表-->
-  <view class="orderList" wx:else>
-    <block wx:for="{{orderList}}" wx:for-item="order" wx:key="*this">
-      <!--店铺item-->
-      <navigator url="../detail/detail?orderid={{order.order_info.id}}" open-type="navigate">
-        <view class="order">
-          
+  <!--店铺列表 二级分类弹窗显示时，同时将下方店铺列表隐藏，互斥显示：逆否条件-->
+  <view class="content" wx:else hidden="{{secondTypeList.length!=0&&showPopupwindow}}">
+    <block wx:for="{{storeList}}" wx:for-item="store" wx:key="*this">
+      <view class="serve-item" bindtap="enterShop" data-shop="{{store}}">
+        <image class="avatar" src="{{_uri+store.logo}}" background-size="cover"></image>
+
+        <view class="wrapper">
+          <view class="desc middle">
+            <!--店铺名-->
+            <text class="name">{{store.company_name}}</text>
+
+            <!--评分星星-->
+            <view class="rank">
+              <block wx:for="{{store.imgs}}" wx:key="{{index}}" wx:for-item="url">
+                  <image class="star" src="{{url}}"></image>
+              </block>
+              <text class="condition orange">{{store.score}}分</text>
+              <text class="condition">（总销量{{store.monthSellNum}}份）</text>
+            </view>
+            
+
+            <!--起送价-->
+            <view class="condition">
+              <text>起送</text>
+              <text class="orange">￥0.00</text>
+            </view>
+
+            <!--配送费-->
+            <view class="condition">
+              <text>配送费</text>
+              <text class="orange">￥{{store.delivery_fee}}</text>
+              <text class="orange" wx:if="{{free_shipping_money!='0.00'}}">（满{{store.free_shipping_money}}免）</text>
+            </view>
+          </view>
+
+          <view class="desc right">
+            <text class="distance">{{store.distance}}</text>
+          </view>
         </view>
-      </navigator>
+        
+      </view>
     </block>
   </view>
 
