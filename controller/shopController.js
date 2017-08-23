@@ -1,11 +1,6 @@
 
-const request = require('../utils/request.js')
-const linq = require('../lib/linq.min.js').linq
-
-const URI = 'https://www.jiahetianlang.com';
-
-//获取应用实例
-var app = getApp()
+//引入baseController
+const baseController = require('baseController.js').controller;
 
 
 /**
@@ -39,10 +34,7 @@ class ShopController {
   * @return {Promise} 
   */
   getGoods(id) {
-    return request.postAsync(`${URI}/App/productList.html?shop_id=`+id, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-    }).then(res => res.data)
+    return baseController.post('/productList.html?shop_id='+id)
   }
 
   /**
@@ -50,21 +42,14 @@ class ShopController {
    * 
    */
   getShopInfo(id) {
-    return request.postAsync(`${URI}/App/shopDetails.html?shop_id=` + id, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-    }).then(res => res.data)
+    return baseController.post('/shopDetails.html?shop_id=' + id)
   }
 
   /**
-   * 读取用户地址列表/App/addressList.html
+   * 读取用户地址列表
    */
   getUserAddress() {
-    return request.postAsync(`${URI}/App/addressList.html`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid:app.globalData.mid,
-    }).then(res => res.data)
+    return baseController.postMid('/addressList.html')
   }
 
   /**
@@ -72,7 +57,7 @@ class ShopController {
    * products参数:[{"product_id":1123,"product_num":3},{"product_id":1120,"product_num":3}]
    */
   viewConfirmOrder(_shop_id, _products) {
-    return this._post_request(`/confirmOrder.html`,{
+    return baseController.postMid('/confirmOrder.html',{
       shop_id: _shop_id,
       products: _products
     })
@@ -83,7 +68,7 @@ class ShopController {
    * App/confirmOrder.html?act=submit
    */
   confirmOrder(params){
-    return this._post_request('/confirmOrder.html?act=submit',params)
+    return baseController.postMid('/confirmOrder.html?act=submit',params)
   }
 
   /**
@@ -93,7 +78,7 @@ class ShopController {
    * curNum:分页当前页，默认1
    */
   getOrderList(status, curNum) {
-    return this._post_request('/myOrder.html?act=getPage', {
+    return baseController.postMid('/myOrder.html?act=getPage', {
       status: status,
       curNum:curNum
     })
@@ -104,7 +89,7 @@ class ShopController {
    * order_id:订单id
    */
   getOrderDetail(order_id) {
-    return this._post_request('/orderDetail.html', {
+    return baseController.postMid('/orderDetail.html', {
       order_id: order_id,
     })
   }
@@ -113,18 +98,16 @@ class ShopController {
    * 获取店铺分类列表
    */
   getStoreTypeList(){
-    return this._post_request('/shopCategoryList.html', {})
+    return baseController.post('/shopCategoryList.html')
   }
 
   /**
    * 获取店铺列表
    */
   getStoreList(type_id){
-    return this._post_request('/shopCategoryList.html?act=getPage',{
+    return baseController.postLocation('/shopCategoryList.html?act=getPage',{
       type_id:type_id,
       app_id:'1',
-      latitude:app.globalData.latitude,
-      longitude:app.globalData.longitude,
     })
   }
 }

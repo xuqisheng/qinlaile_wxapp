@@ -1,5 +1,16 @@
 //app.js
 App({
+  
+  // 应用全局变量
+  globalData: {
+    URI: 'https://www.jiahetianlang.com',
+    //当前的经纬度
+    latitude: '',
+    longitude: '',
+    //用户唯一id，记录是否登录；使用时要注意，用户若退出登录切换用户，且未退出应用，那么mid的值还在，可能会影响一些用到mid的操作
+    mid: wx.getStorageSync('mid')
+  },
+
   onLaunch: function() {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -35,17 +46,6 @@ App({
       })
     }
   },
-
-  globalData: {
-    URI:'https://www.jiahetianlang.com',
-    //当前的经纬度
-    latitude:'', 
-    longitude:'',
-    //用户唯一id，记录是否登录；使用时要注意，用户若退出登录切换用户，且未退出应用，那么mid的值还在，可能会影响一些用到mid的操作
-    mid: wx.getStorageSync('mid')
-  },
-
-  
   
 
   //html转换为文本

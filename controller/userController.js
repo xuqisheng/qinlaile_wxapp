@@ -1,10 +1,7 @@
 var app = getApp()
 
-const request = require('../utils/request.js')
-
-const URI = 'https://www.jiahetianlang.com';
-
-const MAP_API = 'https://apis.map.qq.com/ws/geocoder/v1/';
+//引入baseController
+const baseController = require('baseController.js').controller;
 
 /**
  * 会员中心对应contoller
@@ -15,144 +12,104 @@ class UserController {
   /**
    * 请求省份数据
    */
-  requestProvince(){
-    var _mid = wx.getStorageSync('mid');
-    console.log('mid = '+_mid)
-    return request.postAsync(`${URI}/App/bindAddress.html`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: _mid
-    }).then(res => res.data)
+  requestProvince() {
+    return baseController.postMid('/bindAddress.html')
   }
 
-  /**
-   * 请求城市数据
-   */
+ /**
+  * 请求城市数据
+  */
   requestCity(_provinceId) {
-    var _mid = wx.getStorageSync('mid');
-    console.log('mid = ' + _mid)
-    return request.postAsync(`${URI}/App/bindAddress.html?act=getCitysByProvinceId`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: _mid,
+    return baseController.postMid('/bindAddress.html?act=getCitysByProvinceId',{
       provinceId: _provinceId
-    }).then(res => res.data)
+    })
   }
 
   /**
    * 请求区县数据
    */
   requestArea(_cityId) {
-    var _mid = wx.getStorageSync('mid');
-    console.log('mid = ' + _mid)
-    return request.postAsync(`${URI}/App/bindAddress.html?act=getAreasByCityId`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: _mid,
+    return baseController.postMid('/bindAddress.html?act=getAreasByCityId', {
       cityId: _cityId
-    }).then(res => res.data)
+    })
   }
 
   /**
    * 请求小区数据
    */
-  requestVillage(_province,_city) {
-    var _mid = wx.getStorageSync('mid');
-    console.log('mid = ' + _mid)
-    return request.postAsync(`${URI}/App/chooseCommunity.html`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: _mid,
+  requestVillage(_province, _city) {
+    return baseController.postMid('/chooseCommunity.html', {
       province: _province,
       city: _city
-    }).then(res => res.data)
+    })
   }
 
   /**
    * 保存绑定地址数据
-   * 
    */
   saveAddress(_province, _city, _area, _community_id, _detailAddress) {
-    var _mid = wx.getStorageSync('mid');
-    console.log('mid = ' + _mid)
-    return request.postAsync(`${URI}/App/bindAddress.html?act=save`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-      mid: _mid,
+    return baseController.postMid('/bindAddress.html?act=save',{
       province: _province,
       city: _city,
-      area:_area,
+      area: _area,
       community_id: _community_id,
       detailAddress: _detailAddress
-    }).then(res => res.data)
+    })
   }
 
   /**
-   * 逆地址解析
-   * 通过腾讯地图开放平台webService接口，根据获取的经纬度逆解析当前位置的地址信息
+   * 根据获取的经纬度逆解析当前位置的地址信息
    */
-  getLocationName(lat,lon){
-    var url = `${MAP_API}?location=` + lat + ',' + lon + '&key=IEGBZ-ALXC4-B4CUG-X2V36-AU4HO-52BE7';
-    console.log(url)
-
-    return request.getAsync(url).then(res => res.data)
+  getLocationName(lat, lon) {
+    return baseController.getLocationName(lat, lon)
   }
 
   /**
-     * 用户登录
-     */
+  * 用户登录
+  */
   login(_mobile, _code) {
-    return request.postAsync(`${URI}/App/login.html?act=login`, {
+    return baseController.post('/login.html?act=login',{
       clientid: '29bc294248dd078d16ac4de2f258b1fd',
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
       app_id: '5',
       mobile: _mobile,
       code: _code,
-    }).then(res => res.data)
+    })
   }
 
-  /**
-     * App/login.html?act=getSmsVerificationCode
-     * 获取登录验证码
-     */
+ /**
+  * 获取登录验证码
+  */
   requestLoginCode(_mobile) {
-    return request.postAsync(`${URI}/App/login.html?act=getSmsVerificationCode`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+    return baseController.post('/login.html?act=getSmsVerificationCode',{
       app_id: '1',
       mobile: _mobile
-    }).then(res => res.data)
+    })
   }
 
-  /**
-     * 获取注册验证码
-     */
+  
+ /**
+  * 获取注册验证码
+  */
   requestRegisterCode(_mobile) {
-    return request.postAsync(`${URI}/App/register.html?act=getSmsVerificationCode`, {
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
+    return baseController.post('/register.html?act=getSmsVerificationCode', {
       app_id: '1',
       mobile: _mobile
-    }).then(res => res.data)
+    })
   }
-
 
   /**
    * 提交注册信息
    */
   register(_mobile, _name, _code) {
-    return request.postAsync(`${URI}/App/register.html?act=bindMobile`, {
+    return baseController.post('/register.html?act=bindMobile',{
       clientid: '29bc294248dd078d16ac4de2f258b1fd',
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
       app_id: '5',
       version_id: '2',
       version_mini: '2.2',
       mobile: _mobile,
       name: _name,
       code: _code,
-    }).then(res => res.data)
+    })
   }
 
   /**
@@ -266,42 +223,11 @@ class UserController {
       wx.showToast({
         title: msg,
       })
-
-      var mid = data.mid;
-      //console.log('注册信息：mid = ' + mid)
-
-      //同步方式将用户信息保存到内部存储中
-      wx.setStorageSync('mid', mid)//用户唯一ID，类似token
-      //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
-      app.globalData.mid = mid
-
-      wx.setStorageSync('mobile', _mobile)
-
-      //用户账号其他信息
-      var info = data.info;
-
-      console.log(JSON.stringify(info))
-
-      //对象转为字符串，保存
-      wx.setStorageSync('userinfo', JSON.stringify(info))
-
-      //保存用户头像
-      wx.setStorageSync('headimg', info.headimg)
-      //保存用户姓名
-      wx.setStorageSync('username', info.realname)
-      //保存用户地址
-      wx.setStorageSync('province_id', info.province_id)
-      //小区名称village_name
-      wx.setStorageSync('village_name', info.village_name)
-      //小区详细address
-      wx.setStorageSync('address', info.address)
-      //城市名称city_name
-      wx.setStorageSync('city_name', info.city_name)
-      //区名称area_name
-      wx.setStorageSync('area_name', info.area_name)
-
       
-
+      //保存用户信息
+      this.saveUserInfoAsync(data, _mobile)
+      
+      console.log('返回个人页面')
       //跳转到首页
       // wx.switchTab({
       //   url: '/pages/index/index'
@@ -311,6 +237,111 @@ class UserController {
         delta:1
       })
     })
+  }
+
+  /**
+   * 保存用户信息
+   */
+  saveUserInfoAsync(data, _mobile) {
+    var mid = data.mid;
+    //console.log('注册信息：mid = ' + mid)
+
+    //同步方式将用户信息保存到内部存储中
+    wx.setStorage({
+      key: 'mid',
+      data: mid,
+    })
+    //用户唯一ID，类似token
+    //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
+    app.globalData.mid = mid
+
+    wx.setStorage({
+      key: 'mobile',
+      data: _mobile,
+    })
+    //用户账号其他信息
+    var info = data.info;
+
+    console.log(JSON.stringify(info))
+
+    //对象转为字符串，保存
+    wx.setStorage({
+      key: 'userinfo',
+      data: JSON.stringify(info),
+    })
+
+    //保存用户头像
+    wx.setStorage({
+      key: 'headimg',
+      data: info.headimg,
+    })
+    //保存用户姓名
+    wx.setStorage({
+      key: 'username',
+      data: info.username,
+    })
+    //保存用户地址
+    wx.setStorage({
+      key: 'province_id',
+      data: info.province_id,
+    })
+    //小区名称village_name
+    wx.setStorage({
+      key: 'village_name',
+      data: info.village_name,
+    })
+    //小区详细address
+    wx.setStorage({
+      key: 'address',
+      data: info.address,
+    })
+    //城市名称city_name
+    wx.setStorage({
+      key: 'city_name',
+      data: info.city_name,
+    })
+    //区名称area_name
+    wx.setStorage({
+      key: 'area_name',
+      data: info.area_name,
+    })
+  }
+
+  /**
+   * 保存用户信息
+   */
+  saveUserInfo(data, _mobile){
+    var mid = data.mid;
+    //console.log('注册信息：mid = ' + mid)
+
+    //同步方式将用户信息保存到内部存储中
+    wx.setStorageSync('mid', mid)//用户唯一ID，类似token
+    //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
+    app.globalData.mid = mid
+
+    wx.setStorageSync('mobile', _mobile)
+    //用户账号其他信息
+    var info = data.info;
+
+    console.log(JSON.stringify(info))
+
+    //对象转为字符串，保存
+    wx.setStorageSync('userinfo', JSON.stringify(info))
+
+    //保存用户头像
+    wx.setStorageSync('headimg', info.headimg)
+    //保存用户姓名
+    wx.setStorageSync('username', info.realname)
+    //保存用户地址
+    wx.setStorageSync('province_id', info.province_id)
+    //小区名称village_name
+    wx.setStorageSync('village_name', info.village_name)
+    //小区详细address
+    wx.setStorageSync('address', info.address)
+    //城市名称city_name
+    wx.setStorageSync('city_name', info.city_name)
+    //区名称area_name
+    wx.setStorageSync('area_name', info.area_name)
   }
 
   /**

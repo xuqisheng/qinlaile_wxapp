@@ -79,7 +79,7 @@
       <view class="total">
         <view class="fee">￥{{cart.total}}</view>
         <!--配送费-->
-        <view class="fee delivery">配送费：￥{{free_shipping?0.00:delivery_fee}}</view>
+        <view class="fee delivery">配送费：￥{{free_shipping?'0.00':delivery_fee}}</view>
       </view>
       
 		</view>
