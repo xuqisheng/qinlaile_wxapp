@@ -26,15 +26,6 @@ class IndexController{
     return baseController._get('/news_home.php')
   }
 
-
-  /**
-   * 获取服务数据
-   * @return {Promise} 
-   */
-  getServe(id) {
-    return baseController.postLocation('/workerList.html?act=getPage', { type_id: id })
-  }
-
   /**
    * 获取店铺数据
    */

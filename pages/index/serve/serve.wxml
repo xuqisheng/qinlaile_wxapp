@@ -3,9 +3,9 @@
   <text>该服务暂时没有服务人员</text>
 </view>
 
-<view class="content"  wx:else>
+<view class="content" wx:else>
   <block wx:for="{{serveList}}" wx:for-item="serve" wx:key="*this">
-    <view class="serve-item">
+    <view class="serve-item" bindtap="toDetail" data-id="{{serve.id}}">
       <image class="avatar" src="{{_uri+serve.headpic}}" background-size="cover"></image>
 
       <view class="wrapper">

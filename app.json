@@ -16,7 +16,8 @@
     "pages/shop/order/order",
     "pages/shop/order/orderlist/orderlist",
     "pages/huiyuan/login/login",
-    "pages/shop/order/detail/detail"
+    "pages/shop/order/detail/detail",
+    "pages/index/serve/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

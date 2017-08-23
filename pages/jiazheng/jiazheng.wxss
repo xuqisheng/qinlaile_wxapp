@@ -1,1 +1,114 @@
-/* jiazheng.wxss */
+/*page和.main共同作用使service铺满屏幕  */
+page{
+  height: 100%;
+	overflow: hidden;
+}
+
+.main {
+	height: 100%;
+	overflow: hidden;
+}
+
+.main .banner{
+  background: #efefef;
+}
+
+/*轮播图  */
+.main .banner .img{
+  width:100%;
+  height:800rpx;
+  /* background: red; */
+}
+
+/*主体内容  */
+.main .content{
+   /* background: red;  */
+   margin-top: -20rpx; 
+  height: 100%;
+  display: -webkit-flex;
+	box-sizing: border-box;
+}
+
+/*一级分类  */
+.main .content .service {
+	width: 240rpx;
+	background: lightgray;
+	height: 100%;
+}
+
+.main .content .service .item {
+	padding: 20rpx 20rpx;
+	/* text-align: center; */
+  color: #646464;
+}
+
+/*选中分类的样式*/
+.main .content .service .active {
+	background: #fff;
+  color: #42c017;
+}
+
+.main .content .service .item .name {
+	display: inline-block;
+	font-size: 30rpx;
+	line-height: 1.2;
+	text-align: left;
+	pointer-events: none;
+}
+
+/*二级分类  */
+.main .content .sec-service {
+	-webkit-flex: 1;
+	background: #f7f7f7;
+	height: 100%;
+  
+} 
+
+/*标题  */
+.main .content .sec-service .title {
+	padding: 20rpx 5rpx;
+	color: #646464;
+	font-size: 28rpx;
+	line-height: 30rpx;
+	background: #fafafa;
+  text-align: center;
+
+}
+
+/*二级分类  */
+.main .content .sec-service .item{
+  font-size: 30rpx;
+  height: 80rpx;
+  width: 100%;
+  background: white;
+  margin: 10rpx 10rpx 10rpx 0;
+}
+
+.main .content .sec-service .item .wrapper{
+  display: -webkit-flex;
+  flex-direction: row;
+}
+
+/*小图标  */
+.main .content .sec-service .item .wrapper .pic{
+  position: relative;
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 15rpx 20rpx 0 20rpx;
+}
+
+/*二级服务名称  */
+.main .content .sec-service .item .wrapper .name{
+  line-height: 80rpx;
+}
+
+/*箭头  */
+.main .content .sec-service .item .wrapper .arrow{
+  position: absolute;
+  right: 0;
+  line-height: 80rpx;
+  margin-right: 20rpx;
+  font-size: 36rpx;
+}
+

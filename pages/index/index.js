@@ -101,9 +101,13 @@ Page({
   },
 
   onLoad: function () {
+    wx.showLoading({
+      title: '数据加载中...',
+    })
     var _this = this;
     //获取首页数据
     index.getIndex().then(data => {
+      wx.hideLoading()
       let temp = data.adsLists.map(function(item){
         //return app.globalData.URI+item.src;
         //使用`${}`取占位符的值

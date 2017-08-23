@@ -1,2 +1,44 @@
 <!--jiazheng.wxml-->
-<text>家政服务</text>
+<view class="main">
+
+  <!--轮播图-->
+	<view class="banner">
+		<swiper id="lunbo" indicator-active-color="#fff"
+    indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+      <block wx:for="{{ad_pic}}" wx:for-item="item" wx:key="*this">
+        <swiper-item>
+          <image class="img" src="{{_uri+item.src}}" mode="widthFix"/>
+        </swiper-item>
+      </block>
+    </swiper>
+	</view>
+
+  <!--主体部分-->
+	<view class="content">
+
+    <!--一级分类部分-->
+		<view class="service">
+			<view class="item {{service_pic[idx].id==service.id?'active':''}}" 
+      wx:for="{{service_pic}}" wx:for-item="service" wx:key="id" data-index="{{index}}" bindtap="tapService">
+				<view class="name">{{service.name}}</view>
+			</view>
+		</view>
+
+    <!--二级分类部分-->
+    <view class="sec-service">
+      <view class="title">{{service_pic[idx].name}}</view>
+
+      <view class="item" wx:for="{{service_pic[idx].child}}" wx:for-item="item" wx:key="{{index}}" data-id="{{item.id}}" bindtap="tapSecondService">
+        <view class="wrapper">
+          <image class="pic" src="{{_uri+item.img}}"></image>
+          <view class="name ellipsis">{{item.name}}</view>
+          <view class="arrow">></view>
+        </view>
+      </view>
+
+    </view>
+
+	</view>
+
+</view>
+

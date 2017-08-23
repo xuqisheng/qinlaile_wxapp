@@ -1,7 +1,7 @@
 // serve.js
 var app = getApp();
 //引入controller
-const index = require('../../../controller/indexController.js').controller;
+const serviceController = require('../../../controller/serviceController.js').controller;
 
 //引入RatingBar
 const ratingBar = require('../../../lib/ratingbar.js');
@@ -31,9 +31,9 @@ Page({
       title: '加载中...',
     })
     //获取服务数据
-    index.getServe(serveType).then(data=>{
+    serviceController.getServe(serveType).then(data=>{
       var temp = data.lists
-      //console.log(temp)
+      console.log(temp)
       //隐藏进度
       wx.hideLoading()
 
@@ -63,6 +63,15 @@ Page({
 
     })
   },
+
+  // 详情页
+  toDetail:function(e){
+    var id = e.currentTarget.dataset.id;
+    //console.log('id = '+id)
+    wx.navigateTo({
+      url: 'detail/detail?id='+id,
+    })
+  }
 
 
 })
