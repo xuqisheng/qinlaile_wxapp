@@ -1,2 +1,4 @@
 <!--detail.wxml-->
-<text>detail.wxml</text>
+<view class="main">
+
+</view>
