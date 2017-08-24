@@ -15,7 +15,25 @@ Page({
     _uri: app.globalData.URI,
     serveList:[],
     empty:true,
+    type_id:0,
+  },
 
+  // 选择当前人员
+  select:function(e){
+    var mid = app.globalData.mid
+
+    //检查是否登录，否则登录
+    if (mid == null || mid == '') {
+      wx.navigateTo({
+        url: '../../huiyuan/login/login',
+      })
+      return
+    }
+    var id = e.currentTarget.dataset.id;
+
+    wx.navigateTo({
+      url: 'engage/engage?id=' + id + '&type_id=' + this.data.type_id,
+    })
   },
 
   /**
@@ -26,6 +44,9 @@ Page({
     //console.log(serveType)
 
     var that = this
+    that.setData({
+      type_id: serveType
+    })
     //显示进度条
     wx.showLoading({
       title: '加载中...',

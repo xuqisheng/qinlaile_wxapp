@@ -143,6 +143,8 @@ class UserController {
     wx.getStorage({
       key: 'username',
       success: function (res) {
+        var username = res.data
+        console.log('username = ' + username)
         that.setData({
           username: res.data
         })
@@ -276,9 +278,11 @@ class UserController {
       data: info.headimg,
     })
     //保存用户姓名
+    var realname = info.realname
+    console.log('realname = ' + realname)
     wx.setStorage({
       key: 'username',
-      data: info.username,
+      data: info.realname,
     })
     //保存用户地址
     wx.setStorage({
@@ -331,7 +335,9 @@ class UserController {
     //保存用户头像
     wx.setStorageSync('headimg', info.headimg)
     //保存用户姓名
-    wx.setStorageSync('username', info.realname)
+    var realname = info.realname
+    console.log('realname = ' + realname)
+    wx.setStorageSync('username', realname)
     //保存用户地址
     wx.setStorageSync('province_id', info.province_id)
     //小区名称village_name

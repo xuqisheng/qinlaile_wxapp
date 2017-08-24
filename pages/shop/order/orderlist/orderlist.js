@@ -68,9 +68,6 @@ Page({
       var temp = data.data;
 
       console.log(temp)
-      that.setData({
-        orderList: [],
-      })
       
       if(temp!=undefined && temp.length!=0){
         that.setData({

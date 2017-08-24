@@ -24,7 +24,34 @@ class ServiceController {
     return baseController.postLocation('/workerList.html?act=getPage', { type_id: id })
   }
 
-  
+  /**
+   * 提交服务人员预约
+   */
+  submitReservation(typeId, workerId, address, tel, time, remark){
+    return baseController.postMid('/submitReservation.html?act=submit', {
+      typeId: typeId,
+      workerId: workerId,
+      address: address,
+      tel: tel,
+      time: time,
+      remark: remark
+    })
+  }
+
+  // 获取全部状态的预约列表
+  getBookList(curNum){
+    return baseController.postMid('/myBooking.html?act=ajax', {
+      curNum: curNum,
+    })
+  }
+
+  // 获取预约列表
+  getBookListByStatus(curNum, status) {
+    return baseController.postMid('/myBooking.html?act=ajax', {
+      curNum: curNum,
+      status, status
+    })
+  }
 
 }
 /**

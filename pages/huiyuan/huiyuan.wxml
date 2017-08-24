@@ -61,11 +61,13 @@
     </view>
 
     <!--我的预约-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/yuyue.png"></image>
+    <navigator url="myengage/myengage" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/yuyue.png"></image>
 
-      <view class="item-text">我的预约</view>
-    </view>
+        <view class="item-text">我的预约</view>
+      </view>
+    </navigator>
 
     <!--我的订单-->
     <navigator url="../shop/order/orderlist/orderlist" open-type="navigate">

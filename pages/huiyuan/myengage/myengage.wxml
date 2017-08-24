@@ -1,0 +1,47 @@
+<!--myengage.wxml-->
+<view class="body">
+  <!--实现页签功能-->
+  <view class="nav">
+    <block wx:for="{{tabs}}" wx:for-item="tab" wx:key="index">
+      <view class="{{index==itemSelected?'selected':'default'}}" data-index="{{''+index}}" bindtap="onTabClick">{{tabs[index]}}</view>
+    </block>
+  </view>
+  
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      暂无数据
+    </view>
+  </view>
+
+  <!--订单列表-->
+  <view class="bookList" wx:else>
+    <block wx:for="{{bookList}}" wx:for-item="book" wx:key="*this">
+      <!--订单item-->
+      <navigator url="" open-type="navigate">
+        <view class="book">
+          <!--订单状态-->
+          <view class="sn">
+            <text>{{book.t_name}}</text>
+            <text class="status">{{book.status_name}}</text>
+          </view>
+
+          <view class="content">
+            <!--名称-->
+            <view class="item">
+              <image class="img" src="../../../res/icon/book_worker.png"></image>
+              <text class="txt">{{book.worker_name}}</text>
+            </view>
+            <!--地点-->
+            <view class="item">
+              <image class="img" src="../../../res/icon/book_location.png"></image>
+              <text class="txt">{{book.worker_name}}</text>
+            </view>
+          </view>
+
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+</view>
+

@@ -1,0 +1,44 @@
+<!--engage.wxml-->
+<view class="main">
+  <form bindsubmit="submit">
+    <!--服务地址  -->
+    <view class="item">
+      <view class="title">服务地址：</view>
+      <input type="text" class="msg" name="addr" value="{{address}}"/>
+    </view>
+
+    <!--联系电话  -->
+    <view class="item">
+      <view class="title">联系电话：</view>
+      <input type="number" class="msg" name="tel" value="{{mobile}}"/>
+    </view>
+
+    <!--预约日期  -->
+    <view class="item">
+      <view class="title">预约日期：</view>
+      <picker mode="date" value="{{date}}" name="date" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
+         <text class="msg">{{date}}</text> 
+      </picker>
+    </view>
+
+    <!--预约时间  -->
+    <view class="item">
+      <view class="title">预约时间：</view>
+      <picker mode="time" value="{{time}}" name="time" start="00:00" end="23:59" bindchange="bindTimeChange">
+         <text class="msg">{{time}}</text> 
+      </picker>
+    </view>
+
+    <!--备注  -->
+    <view class="item">
+      <view class="title">备    注：</view>
+      <input type="text" class="msg" name="remark" placeholder="请输写备注信息"/>
+    </view>
+
+    <view class="placeholder"></view>
+
+    <view class="select">
+      <button class="button" form-type="submit">提交预约</button>
+    </view>
+  </form>
+</view>

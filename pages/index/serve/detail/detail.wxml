@@ -1,4 +1,47 @@
 <!--detail.wxml-->
 <view class="main">
+  <view class="header">
+    <image class="bg" src="../../../../res/server_detail_bg.png"></image>
 
+    <view class="wrapper">
+      <image class="avatar" src="{{_uri+workerInfo.headpic}}"></image>
+      <text class="name">{{workerInfo.name}}</text>
+      <view class="rank">
+        <block wx:for="{{stars}}" wx:key="{{index}}" wx:for-item="url">
+           <image class="star" src="{{url}}"></image> 
+        </block>
+        <text style="margin-left:10rpx">{{workerInfo.score}}分</text>
+      </view>
+    </view>
+    
+  </view>
+
+  <!--描述  -->
+  <view class="desc">
+    <view class="item">籍贯：{{workerInfo.native_place}}</view>
+    <view class="item">年龄：{{workerInfo.age}}</view>
+    <view class="experience-wrapper">
+      <view class="left">行业经验：</view>
+      <view class="experience">{{workerInfo.experience}}</view>
+    </view>
+  </view>
+
+  <!-- 所属家政公司 -->
+  <view class="belong">
+    <view class="title">所属家政公司</view>
+    <view class="content">
+      <view class="logo-wrapper">
+        <image src="{{_uri+workerInfo.house_headpic}}" class="logo"></image>
+      </view>
+      <view class="introduction">
+        <view class="name">{{workerInfo.company_name}}</view>
+        <view class="addr">{{workerInfo.house_addr}}</view>
+      </view>
+    </view>
+    <view class="distance">{{workerInfo.distance}}</view>
+  </view>
+
+  <view class="select">
+    <view class="button" bindtap="onClick" data-type_id="{{workerInfo.type_id}}" data-id="{{workerInfo.id}}">选择该服务人员</view>
+  </view>
 </view>

@@ -1,0 +1,67 @@
+/* engage.wxss */
+.page{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+.main{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+/*条目  */
+.main .item{
+  display: -webkit-flex;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  border-top: 1rpx solid lightgray;
+  height: 60rpx;
+  background: white
+}
+
+/*名称  */
+.main .item .title{
+  width: 18%;
+  line-height: 60rpx;
+  height: 60rpx;
+  /* text-align: center; */
+}
+
+/*条目输入值  */
+.main .item .msg{
+  width: 82%;
+  line-height: 60rpx;
+  height: 60rpx;
+}
+
+/*灰色背景  */
+.main .placeholder{
+  background: #eee;
+  position: absolute;
+  bottom: 100rpx;
+  height: 50%;
+  width: 100%
+}
+
+.main .select{
+  position: absolute;
+  bottom: 0;
+  background: white;
+  width: 100%;
+  text-align: center;
+  padding: 20rpx 0 20rpx 0;
+}
+
+.main .select .button{
+  background: #42c017;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  color: white;
+  width: 90%
+}

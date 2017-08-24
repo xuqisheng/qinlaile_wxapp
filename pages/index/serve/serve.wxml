@@ -5,8 +5,8 @@
 
 <view class="content" wx:else>
   <block wx:for="{{serveList}}" wx:for-item="serve" wx:key="*this">
-    <view class="serve-item" bindtap="toDetail" data-id="{{serve.id}}">
-      <image class="avatar" src="{{_uri+serve.headpic}}" background-size="cover"></image>
+    <view class="serve-item">
+      <image class="avatar" bindtap="toDetail" data-id="{{serve.id}}" src="{{_uri+serve.headpic}}" background-size="cover"></image>
 
       <view class="wrapper">
         <view class="desc">
@@ -25,7 +25,7 @@
 
         <view class="desc right">
           <text class="distance">{{serve.distance}}</text>
-          <view class="select">选TA</view>
+          <view class="select" bindtap="select" data-id="{{serve.id}}">选TA</view>
         </view>
       </view>
       

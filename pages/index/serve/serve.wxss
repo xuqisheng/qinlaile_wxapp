@@ -66,7 +66,7 @@
   margin-top: 40rpx;
   color: rgb(66, 192, 23);
   border: 2rpx solid rgb(66, 192, 23);
-  border-radius: 20%;
+  border-radius: 10rpx;
   padding: 10rpx 20rpx
 }
 
