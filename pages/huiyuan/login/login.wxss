@@ -68,7 +68,7 @@
   text-align: center;
 }
 .icon{
-  height: 180rpx;
-  width:180rpx;
+  height:140rpx;
+  width:140rpx;
   margin: 20rpx 40rpx
 }

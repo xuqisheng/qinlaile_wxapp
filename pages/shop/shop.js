@@ -254,7 +254,7 @@ Page({
       fee = 0;
       limit = 0;
     }
-    if (fee > 0 && total < limit){
+    if (count!=0 && fee > 0 && total < limit){
       total += fee;
       console.log('不免运费')
       this.setData({
@@ -286,23 +286,31 @@ Page({
    * 商品滚动监听，同步分类的选中状态
    */
 	onGoodsScroll: function (e) {
-		if (e.detail.scrollTop > 10 && !this.data.scrollDown) {
+    var top = e.detail.scrollTop
+    /**
+     * 往上滚动，scrollTop值越来越大；反之，越来越小
+     */
+    // console.log('e.detail.scrollTop:' + top)
+    // console.log('e.detail.scrollWidth:' + e.detail.scrollWidth)//315
+    
+    if (top > 10 && !this.data.scrollDown) {
 			this.setData({
 				scrollDown: true
 			});
-		} else if (e.detail.scrollTop < 10 && this.data.scrollDown) {
+    } else if (top < 10 && this.data.scrollDown) {
 			this.setData({
 				scrollDown: false
 			});
 		}
 
 		var scale = e.detail.scrollWidth / 570,
-			scrollTop = e.detail.scrollTop / scale,
+      scrollTop = top / scale,
 			h = 0,
 			classifySeleted,
 			len = this.data.goodsList.length;
 		this.data.goodsList.forEach(function (classify, i) {
-      var _h = 70 + classify.productLists.length * (46 * 3 + 20 * 2);
+      // 70为标题高度；
+      var _h = 70 + classify.productLists.length * 170;
 			if (scrollTop >= h - 100 / scale) {
         classifySeleted = classify.classifyId;
 			}

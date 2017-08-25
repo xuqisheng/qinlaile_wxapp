@@ -1,0 +1,15 @@
+<!--家政服务-->
+<view class="jiazheng">
+  <view class="item-header">
+    <text class="hot">家政服务</text>
+    <text class="more" bindtap="toJiazheng">更多 ></text>  
+  </view>
+
+  <view class="content">
+    <view class="item" wx:for="{{service_types}}" wx:key="{{index}}" wx:for-item="type" bindtap="gotoServe" data-type="{{type.id}}">
+      <image class="img" src="{{_uri+type.img}}" mode="aspectFit"></image>
+      <view class="txt">{{type.name}}</view>
+    </view>
+  </view>
+
+</view>

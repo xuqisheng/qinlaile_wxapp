@@ -2,8 +2,8 @@
 <view class="main">
 
   <!--轮播图-->
-	<view class="banner">
-		<swiper id="lunbo" indicator-active-color="#fff"
+	<view>
+		<swiper class="banner" id="lunbo" indicator-active-color="#fff"
     indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
       <block wx:for="{{ad_pic}}" wx:for-item="item" wx:key="*this">
         <swiper-item>

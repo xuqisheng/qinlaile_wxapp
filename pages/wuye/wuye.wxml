@@ -1,8 +1,8 @@
 <!--wuye.wxml-->
-<view class="main">
+<view class="main" hidden="{{hidden}}">
   <!--轮播图-->
-	<view class="banner">
-		<swiper id="lunbo" indicator-active-color="#fff"
+	<view >
+		<swiper class="banner" id="lunbo" indicator-active-color="#fff"
     indicator-dots="{{propertyDetail.pics.length!=1}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
       <block wx:for="{{propertyDetail.pics}}" wx:for-item="item" wx:key="*this">
         <swiper-item>

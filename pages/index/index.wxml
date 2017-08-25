@@ -16,7 +16,7 @@
   <template is="news_banner" data="{{newsList,_uri}}"/>
 
   <!--家政服务-->
-  <include src="template/type_table.wxml"/>
+  <include src="template/service_list.wxml"/>
 
   <!--在线小店-->
   <include src="template/shop_table.wxml"/>

@@ -1,6 +1,6 @@
 <!--serve.wxml-->
 <view class="empty"  wx:if="{{empty}}">
-  <text>该服务暂时没有服务人员</text>
+  <text class="text">该服务暂时没有服务人员</text>
 </view>
 
 <view class="content" wx:else>

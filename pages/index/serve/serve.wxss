@@ -89,7 +89,10 @@
   justify-content: center;
   align-items: center;
   position:absolute;
-  background-color: rgb(216, 216, 216);
+  background-color: #edf0f3;
+  font-size: 34rpx;
+  color: gray; 
 }
+
 
 

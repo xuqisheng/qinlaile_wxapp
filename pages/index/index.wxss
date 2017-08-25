@@ -2,12 +2,24 @@
 
 /*最外层容器*/
 .main{
-  background-color: rgb(216, 216, 216)
+  background-color: rgb(216, 216, 216);
+  height: 100%;
+  width: 100%;
 }
 
 /*分割线*/
 .border-top{
   border-top: 0.5rpx solid lightgray;
+}
+
+/*lunbo  */
+.banner{
+  height: 280rpx;
+}
+
+.banner image{
+  height: 100%;
+  width: 100%;
 }
 
 /*模块头*/
@@ -100,4 +112,40 @@
 /*在线小店*/
 .zxxd{
   margin-top: 60rpx
+}
+
+.main .jiazheng{
+  width: 100%;
+  background: white;
+}
+
+/*家政服务使用flex布局布局  */
+.main .jiazheng .content{
+  display: -webkit-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 360rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main .jiazheng .item{
+  height: 180rpx;
+  width: 150rpx;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main .jiazheng .item .img{
+  width: 100rpx;
+  height: 100rpx
+}
+
+.main .jiazheng .item .txt{
+  font-size: 25rpx;
+  color: #444;
+  text-align: center;
+  width: 100%;
+  margin: 20rpx
 }

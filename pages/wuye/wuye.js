@@ -13,7 +13,7 @@ Page({
     _uri:app.globalData.URI,
     //物业详情
     propertyDetail:{},
-
+    hidden:true,
   },
 
   //打电话
@@ -45,9 +45,9 @@ Page({
       },
       fail: function () {
         console.log('用户未登录')//跳转至登录页面
-        wx.showToast({
-          title: '请登录',
-        })
+        // wx.showToast({
+        //   title: '请登录',
+        // })
         wx.switchTab({
           url: '/pages/huiyuan/huiyuan',
         })
@@ -92,7 +92,8 @@ Page({
     serviceController.getPropertyDetail().then(data => {
       console.log(data)
       that.setData({
-        propertyDetail:data.data
+        propertyDetail:data.data,
+        hidden:false
       })
     })
   },

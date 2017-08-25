@@ -34,20 +34,16 @@
 					<image class="pic" src="{{_uri+goods.pic}}"></image>
           <!--名称和价格等-->
           <view class="wrapper">
-            <view class="name ellipsis">{{goods.product_name}}</view>
-            
-            <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
-            <!--原数量加
-            <view class="addCart" bindtap="tapAddCart" data-id="{{goods.id}}">
-              <image src="../../res/icon/plus.png"></image>
+            <text class="name ellipsis">{{goods.product_name}}</text>
+            <view class="horizontal">
+              <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
+              <view class="edit-container">
+                <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
+                <view class="e-num">{{cart.list[goods.id]}}</view>
+                <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
+              </view>
             </view>
-            -->
-            <view class="edit-container">
-              <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
-              <view class="e-num">{{cart.list[goods.id]}}</view>
-              <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
-            </view>
-            
+                  
           </view>
           <!--名称和价格等-->
 				</view>
