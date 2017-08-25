@@ -4,6 +4,7 @@ var app = getApp();
 
 //引入controller
 const serviceController = require('../../../controller/serviceController.js').controller;
+const util = require('../../../utils/util.js')
 
 Page({
 
@@ -39,6 +40,15 @@ Page({
 
   },
 
+  // 详情页
+  toDetail:function(e){
+    var book = e.currentTarget.dataset.book
+    var bookStr = JSON.stringify(book)
+    wx.navigateTo({
+      url: 'detail/detail?bookStr='+bookStr,
+    })
+  },
+
   /**
    * 获取预约列表
    */
@@ -66,10 +76,13 @@ Page({
 
     var temp = data.lists;
 
-    //console.log(temp)
-
-
     if (temp != undefined && temp.length != 0) {
+      for(let i=0;i<temp.length;i++){
+        let book = temp[i]
+        book['formatDate'] = util.timestampToDate(book.booking_time);
+      }
+      console.log(temp)
+
       that.setData({
         bookList: temp,
         empty: false

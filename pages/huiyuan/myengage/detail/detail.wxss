@@ -1,0 +1,24 @@
+/* detail.wxss */
+.main{
+  width: 100%;
+  /* height: 100%; */
+  border-bottom: 1rpx solid lightgray
+}
+
+.main .item{
+  display: -webkit-flex;
+  font-size: 28rpx;
+  padding: 20rpx;
+  border-top: 1rpx solid lightgray
+}
+
+.main .item .attr{
+  color: #444
+}
+
+.main .item .value{
+  color: gray;
+  position: fixed;
+  right:0;
+  padding-right: 20rpx
+}

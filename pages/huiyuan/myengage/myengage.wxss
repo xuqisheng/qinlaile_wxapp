@@ -77,7 +77,7 @@ page{
 }
 
 .body .bookList .book .content{
-  padding: 0 20rpx 0 20rpx;
+  /* padding: 0 20rpx 0 20rpx; */
 }
 
 .body .bookList .book .content .item{

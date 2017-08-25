@@ -1,0 +1,27 @@
+<!--detail.wxml-->
+<view class="main">
+  <view class="item">
+    <text class="attr">保姆</text>
+    <text class="value">{{book.status_name}}</text>
+  </view>
+
+  <view class="item">
+    <text class="attr">服务人员</text>
+    <text class="value">{{book.worker_name}}</text>
+  </view>
+
+  <view class="item">
+    <text class="attr">服务地址</text>
+    <text class="value">{{book.service_addr}}</text>
+  </view>
+
+  <view class="item">
+    <text class="attr">联系电话</text>
+    <text class="value">{{book.tel}}</text>
+  </view>
+
+  <view class="item">
+    <text class="attr">预约时间</text>
+    <text class="value">{{formatDate}}</text>
+  </view>
+</view>

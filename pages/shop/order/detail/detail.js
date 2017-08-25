@@ -3,6 +3,7 @@ var app = getApp();
 
 //引入shopController
 const shopController = require('../../../../controller/shopController.js').controller;
+const util = require('../../../../utils/util.js')
 
 Page({
 
@@ -30,9 +31,7 @@ Page({
       
       //时间日期格式化
       var timestamp = data.order_info.add_time
-      var newDate = new Date();
-      newDate.setTime(timestamp * 1000);
-      var format = newDate.toLocaleDateString()
+      var format = util.timestampToDate(timestamp)
 
       that.setData({
         orderDetail:data,
