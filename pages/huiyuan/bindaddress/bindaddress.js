@@ -201,6 +201,8 @@ Page({
         wx.setStorageSync('area_name', that.data.area)
         //保存用户地址
         wx.setStorageSync('province_id', that.data.provinceId)
+        // 保存物业信息
+        wx.setStorageSync('propertyInfoId', that.data.property_user_id)
       }
     })
   },

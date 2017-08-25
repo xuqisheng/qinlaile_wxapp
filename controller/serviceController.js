@@ -53,6 +53,13 @@ class ServiceController {
     })
   }
 
+  // 获取物业详情
+  getPropertyDetail(){
+    return baseController.postMid('/propertyDetail.html', {
+      pp_id: wx.getStorageSync('propertyInfoId')
+    })
+  }
+
 }
 /**
  * 实例化对象

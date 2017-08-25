@@ -1,11 +1,27 @@
 // wuye.js
+var app = getApp()
+
+//引入controller
+const serviceController = require('../../controller/serviceController.js').controller;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    _uri:app.globalData.URI,
+    //物业详情
+    propertyDetail:{},
+
+  },
+
+  //打电话
+  call:function(e){
+    var mobile = e.currentTarget.dataset.mobile
+    wx.makePhoneCall({
+      phoneNumber: mobile,
+    })
   },
 
   /**
@@ -13,6 +29,7 @@ Page({
    * 若已登录，但是
    */
   onShow:function(){
+    console.log('wuye...onShow()')
     this.checkLogin();
   },
 
@@ -28,6 +45,9 @@ Page({
       },
       fail: function () {
         console.log('用户未登录')//跳转至登录页面
+        wx.showToast({
+          title: '请登录',
+        })
         wx.switchTab({
           url: '/pages/huiyuan/huiyuan',
         })
@@ -55,7 +75,7 @@ Page({
           that.showBindDialog();
         } else {
           //若用户已绑定地址，显示物业页面
-          
+          that.getPropertyDetail()
         }
       },
       fail: function () {
@@ -63,6 +83,17 @@ Page({
         //提示用户绑定地址
         that.showBindDialog();
       }
+    })
+  },
+
+  //获取物业详情
+  getPropertyDetail:function(){
+    var that = this
+    serviceController.getPropertyDetail().then(data => {
+      console.log(data)
+      that.setData({
+        propertyDetail:data.data
+      })
     })
   },
 

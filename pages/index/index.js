@@ -55,6 +55,18 @@ Page({
     
   }, 
 
+  toJiazheng:function(){
+    wx.switchTab({
+      url: '/pages/jiazheng/jiazheng',
+    })
+  },
+
+  toXiaodian:function(){
+    wx.switchTab({
+      url: '/pages/xiaodian/xiaodian',
+    })
+  },
+
   //点击去往家政服务页
   gotoServe:function(event){
     var serveType = event.currentTarget.dataset.type;
@@ -108,6 +120,14 @@ Page({
     //获取首页数据
     index.getIndex().then(data => {
       wx.hideLoading()
+      // console.log(data)
+      // 保存物业信息
+      var propertyInfo = data.propertyInfo
+      if (propertyInfo!=null){
+        wx.setStorageSync('propertyInfoId', propertyInfo.id)
+      }
+
+      //取出banner图片
       let temp = data.adsLists.map(function(item){
         //return app.globalData.URI+item.src;
         //使用`${}`取占位符的值
@@ -120,8 +140,8 @@ Page({
           service_types: data.service_types,
           category_list: data.category_list
         })
-      //console.log(data.service_types)
-      //console.log(temp)
+      // console.log(data.service_types)
+      // console.log(temp)
     })
 
     //获取首页轮播新闻数据

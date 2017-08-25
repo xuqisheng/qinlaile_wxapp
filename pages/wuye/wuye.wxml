@@ -1,2 +1,45 @@
 <!--wuye.wxml-->
-<text>物业</text>
+<view class="main">
+  <!--轮播图-->
+	<view class="banner">
+		<swiper id="lunbo" indicator-active-color="#fff"
+    indicator-dots="{{propertyDetail.pics.length!=1}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+      <block wx:for="{{propertyDetail.pics}}" wx:for-item="item" wx:key="*this">
+        <swiper-item>
+          <image class="img" src="{{_uri+item.src}}" mode="scaleToFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
+	</view>
+
+  <!--物业名称  -->
+  <view class="basic">
+    <image class="logo" src="{{_uri+propertyDetail.logo}}"></image>
+    <text class="name">{{propertyDetail.company_name}}</text>
+  </view>
+
+  <!--可选操作  -->
+  <view class="action">
+    <view class="item">
+      物业公共
+    </view>
+    <view class="item">
+      物业缴费
+    </view>
+    <view class="item">
+      公共保修
+    </view>
+    <view class="item">
+      个人保修
+    </view>
+  </view>
+
+  <view class="desc">{{propertyDetail.desc}}</view>
+
+  <view class="intro">营业时间：{{propertyDetail.starttime+'-'+propertyDetail.endtime}}</view>
+  <view class="intro">
+    <text>联系电话：{{propertyDetail.tel}}</text>
+    <image bindtap="call" data-mobile="{{propertyDetail.tel}}" hidden="{{!propertyDetail.tel}}" src="../../res/icon/contact.png" class="call"></image>
+  </view>
+  <view class="intro">地址：{{propertyDetail.address}}</view>
+</view>

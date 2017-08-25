@@ -2,7 +2,7 @@
 <view class="jzfw">
   <view class="item-header">
     <text class="hot">家政服务</text>
-    <text class="more">更多 ></text>
+    <text class="more" bindtap="toJiazheng">更多 ></text>  
   </view>
 
   <view class="jzfw-container">

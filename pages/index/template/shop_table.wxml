@@ -2,7 +2,7 @@
 <view class="jzfw">
   <view class="item-header">
     <text class="hot">在线小店</text>
-    <text class="more">更多 ></text>
+    <text class="more" bindtap="toXiaodian">更多 ></text>
   </view>
 
   <view class="jzfw-container">

@@ -2,6 +2,7 @@ var app = getApp()
 
 //引入baseController
 const baseController = require('baseController.js').controller;
+const index = require('indexController.js').controller;
 
 /**
  * 会员中心对应contoller
@@ -209,17 +210,18 @@ class UserController {
    * 登录表单提交
    */
   loginSubmit(_mobile, _code) {
-
     if (_mobile.length != 11) {
       wx.showToast({
         title: '手机号码输入有误',
       })
       return
     }
-
+    wx.showLoading({
+      title: '登录中...',
+    })
     //手机号，验证码
     this.login(_mobile, _code).then(data => {
-
+      wx.hideLoading()
       console.log(data)
       var msg = data.message;
       wx.showToast({
@@ -283,6 +285,12 @@ class UserController {
     wx.setStorage({
       key: 'username',
       data: info.realname,
+    })
+    // 保存物业信息
+    var property_user_id = info.property_user_id
+    wx.setStorage({
+      key: 'propertyInfoId',
+      data: property_user_id,
     })
     //保存用户地址
     wx.setStorage({
@@ -382,9 +390,12 @@ class UserController {
       })
       return
     }
-
+    wx.showLoading({
+      title: '注册中...',
+    })
     //手机号，姓名，验证码
     this.register(_mobile, _name, _code).then(data => {
+      wx.hideLoading()
       var msg = data.message;
       wx.showToast({
         title: msg,
@@ -438,10 +449,12 @@ class UserController {
       })
       return
     }
-
+    wx.showLoading({
+      title: '获取中...',
+    })
     this.requestLoginCode(_mobile).then(data => {
       var msg = data.message;
-
+      wx.hideLoading()
       console.log(msg)
 
       wx.showToast({
