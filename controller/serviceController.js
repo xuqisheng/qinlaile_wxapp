@@ -60,6 +60,16 @@ class ServiceController {
     })
   }
 
+  /**
+   * 获取小区公告
+   */
+  getNotices(page){
+    return baseController.postMid('/announceList.html', {
+      vid: wx.getStorageSync('village'),
+      pnum:page,
+    })
+  }
+
 }
 /**
  * 实例化对象

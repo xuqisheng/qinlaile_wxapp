@@ -20,9 +20,12 @@
 
   <!--可选操作  -->
   <view class="action">
-    <view class="item">
-      物业公共
-    </view>
+    <navigator url="notice/notice" open-type="navigate">
+      <view class="item">
+        物业公共
+      </view>
+    </navigator>
+    
     <view class="item">
       物业缴费
     </view>

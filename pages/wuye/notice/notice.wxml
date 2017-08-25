@@ -1,0 +1,14 @@
+<!--notice.wxml-->
+<view class="main">
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      暂时没有公告
+    </view>
+  </view>
+
+  <view class="wrapper" wx:for="{{notices}}" wx:for-item="notice" wx:key="{{index}}">
+    <view class="title">{{notice.title}}</view>
+    <view class="desc">{{notice.content}}</view>
+    <view class="time">{{notice.formattime}}</view>
+  </view>
+</view>

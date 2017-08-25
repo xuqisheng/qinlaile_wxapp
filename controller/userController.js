@@ -266,7 +266,7 @@ class UserController {
     //用户账号其他信息
     var info = data.info;
 
-    console.log(JSON.stringify(info))
+    //console.log(JSON.stringify(info))
 
     //对象转为字符串，保存
     wx.setStorage({
@@ -316,6 +316,11 @@ class UserController {
     wx.setStorage({
       key: 'area_name',
       data: info.area_name,
+    })
+    //village
+    wx.setStorage({
+      key: 'village',
+      data: info.village,
     })
   }
 
