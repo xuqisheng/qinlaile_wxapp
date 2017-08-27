@@ -26,9 +26,13 @@
       </view>
     </navigator>
     
-    <view class="item">
-      物业缴费
-    </view>
+    <navigator url="query/query" open-type="navigate">
+      <view class="item">
+        物业缴费
+      </view>
+    </navigator>
+
+
     <view class="item">
       公共保修
     </view>

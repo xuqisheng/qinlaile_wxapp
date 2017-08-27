@@ -1,0 +1,71 @@
+/* query.wxss */
+page{
+  height: 100%;
+  width: 100%;
+}
+.main{
+  background: lightgray;
+  height: 100%;
+  width: 100%;
+}
+
+.main .property{
+  border-top: 20rpx solid lightgray;
+  padding: 20rpx;
+  background: white;
+  border-bottom: 1rpx solid lightgray;
+  font-size: 30rpx;
+}
+
+.main .property .value{
+  position: relative;
+  float: right
+}
+
+.main .country{
+  padding: 20rpx;
+  background: white;
+  font-size: 30rpx;
+}
+
+.main .country .value{
+  position: relative;
+  float: right
+}
+
+.main .info{
+  text-align: center;
+  font-size: 26rpx;
+  color: gray;
+  padding: 40rpx 20rpx;
+}
+
+.main .info .bottom{
+  margin-top: 20rpx;
+}
+
+.main .frm .mobile{
+  padding-left: 20rpx;
+  background: white;
+  font-size: 30rpx;
+  display: -webkit-flex;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.main .frm .mobile .value{
+  line-height: 70rpx;
+  height: 70rpx;
+  margin-left: 20rpx;
+}
+
+.main .frm .button{
+  background: #42c017;
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  color: white;
+  margin-top: 400rpx;
+}

@@ -1,0 +1,32 @@
+<!--query.wxml-->
+<view class="main">
+  <view class="property">
+    <text class="attr">物业名称</text>
+    <view class="value">{{company_name}}</view>
+  </view>
+
+  <view class="country">
+    <text class="attr">小区名称</text>
+    <view class="value">{{village_name}}</view>
+  </view>
+
+  
+  <form class="frm" bindsubmit="formSubmit">
+    <view class="code">
+      <text class="attr">验证码</text>
+      <input class="value" type="number" name="code" placeholder="请输入验证码"/>
+      <text class="send">发送验证码</text>
+    </view>
+
+
+    <view class="info">共查询到2条业主信息，请进行身份确认</view>
+
+    <!--实际数据  -->
+    <view class="dataList" wx:for="{{dataList}}" wx:for-item="data" wx:key="{{index}}">
+    
+    </view>
+
+    <button class="button" form-type="submit">立即绑定</button>
+  </form>
+  
+</view>

@@ -1,0 +1,27 @@
+<!--query.wxml-->
+<view class="main">
+  <view class="property">
+    <text class="attr">物业名称</text>
+    <view class="value">{{company_name}}</view>
+  </view>
+
+  <view class="country">
+    <text class="attr">小区名称</text>
+    <view class="value">{{village_name}}</view>
+  </view>
+
+  <view class="info">
+    <view>您还未添加住户</view>
+    <view class="bottom">请输入您在物业处登记的业主手机号码进行绑定</view>
+  </view>
+
+  <form class="frm" bindsubmit="formSubmit">
+    <view class="mobile">
+      <text class="attr">手机号</text>
+      <input class="value" type="number" name="mobile" placeholder="请输入业主手机号"/>
+    </view>
+
+    <button class="button" form-type="submit">确定</button>
+  </form>
+  
+</view>

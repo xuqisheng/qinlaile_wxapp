@@ -90,6 +90,16 @@ Page({
   getPropertyDetail:function(){
     var that = this
     serviceController.getPropertyDetail().then(data => {
+      //物业名称
+      wx.setStorage({
+        key: 'company_name',
+        data: data.data.company_name,
+      })
+      //物业名称
+      wx.setStorage({
+        key: 'property_phonenum',
+        data: data.data.mobile,
+      })
       console.log(data)
       that.setData({
         propertyDetail:data.data,

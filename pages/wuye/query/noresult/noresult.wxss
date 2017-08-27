@@ -1,0 +1,65 @@
+/* query.wxss */
+page{
+  height: 100%;
+  width: 100%;
+}
+.main{
+  background: lightgray;
+  height: 100%;
+  width: 100%;
+}
+
+.main .property{
+  border-top: 20rpx solid lightgray;
+  padding: 20rpx;
+  background: white;
+  border-bottom: 1rpx solid lightgray;
+  font-size: 30rpx;
+}
+
+.main .property .value{
+  position: relative;
+  float: right
+}
+
+.main .country{
+  padding: 20rpx;
+  background: white;
+  font-size: 30rpx;
+}
+
+.main .country .value{
+  position: relative;
+  float: right
+}
+
+.main .info{
+  font-size: 28rpx;
+  color: gray;
+  padding:20rpx;
+}
+
+
+.main .bottom{
+  position: absolute;
+  bottom: 120rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: gray;
+  width: 60%;
+  left: 20%;
+}
+
+
+.main .call{
+  background: #42c017;
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  color: white;
+  margin-left: 5%;
+  position: absolute;
+  bottom: 20rpx;
+  text-align: center
+}

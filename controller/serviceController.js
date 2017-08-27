@@ -70,6 +70,17 @@ class ServiceController {
     })
   }
 
+  /**
+   * 查询物业
+   */
+  queryProperty(mobile){
+    return baseController.postMid('/propertyFeeOwners.html?act=searchOwner',{
+      mobile: mobile,
+      isBind:'0',
+      vid: wx.getStorageSync('village'),
+    })
+  }
+
 }
 /**
  * 实例化对象

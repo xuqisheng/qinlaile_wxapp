@@ -1,0 +1,28 @@
+<!--query.wxml-->
+<view class="main">
+  <view class="property">
+    <text class="attr">物业名称</text>
+    <view class="value">{{company_name}}</view>
+  </view>
+
+  <view class="country">
+    <text class="attr">小区名称</text>
+    <view class="value">{{village_name}}</view>
+  </view>
+
+
+
+  <view class="property">
+    <text class="attr">手机号</text>
+    <view class="value">{{mobile}}</view>
+  </view>
+
+  <view class="info">并未查到相关业主信息，请确认该手机号是否为物业处登记业主的手机号，或输入是否有误，如有疑问请联系物业。</view> 
+
+  <view class="bottom">
+    物业联系电话：{{property_phonenum}}
+  </view>
+
+  <view class="call" bindtap="call">拨打电话</view>
+  
+</view>

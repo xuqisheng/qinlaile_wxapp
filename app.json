@@ -21,7 +21,10 @@
     "pages/index/serve/engage/engage",
     "pages/huiyuan/myengage/myengage",
     "pages/huiyuan/myengage/detail/detail",
-    "pages/wuye/notice/notice"
+    "pages/wuye/notice/notice",
+    "pages/wuye/query/query",
+    "pages/wuye/query/noresult/noresult",
+    "pages/wuye/query/bind/bind"
   ],
   "window": {
     "backgroundTextStyle": "light",
