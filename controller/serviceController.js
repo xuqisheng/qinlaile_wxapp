@@ -81,6 +81,73 @@ class ServiceController {
     })
   }
 
+  /**
+   * 公共报修列表
+   */
+  getPublicList(page){
+    return baseController.postMid('/repairsCommentList.html?type=public', {
+      page:page
+    })
+  }
+
+  /**
+   * 点赞
+   */
+  support(id){
+    return baseController.postMid('/publicRepairsDetail.html?act=support',{
+      id:id
+    })
+  }
+
+  /**
+   * 评论
+   */
+  comment(content,id){
+    return baseController.postMid('/publicRepairsDetail.html?act=comment',{
+      content:content,
+      id:id
+    })
+  }
+
+  /**
+   * 获取评论列表
+   */
+  getCommentList(id){
+    return baseController.postMid('/publicRepairsDetail.html?act=getPage',{
+      id:id
+    })
+  }
+
+  /**
+   * 提交报修信息
+   */
+  repairSubmit(desc,image){
+    return baseController.postMid('/repair.html?act=submit',{
+      type:1,
+      desc:desc,
+      image:image
+    })
+  }
+
+  /**
+   * 我的报修列表
+   */
+  getRepairListByType(curNum,status){
+    return baseController.postMid('/myRepairs.html?act=ajax',{
+      curNum:curNum,
+      type: status
+    })
+  }
+
+  /**
+   * 我的报修列表
+   */
+  getRepairList(curNum){
+    return baseController.postMid('/myRepairs.html?act=ajax', {
+      curNum: curNum,
+    })
+  }
+
 }
 /**
  * 实例化对象

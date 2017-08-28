@@ -1,0 +1,50 @@
+<!--notice.wxml-->
+<view class="main">
+  <view class="empty" wx:if="{{repairList.length==0}}">
+    <view class="text">
+      暂时没有数据
+    </view>
+  </view>
+
+  <!--报修item   -->
+  <view class="outter" wx:for="{{repairList}}" wx:for-item="repair" wx:key="{{index}}">
+    <view class="wrapper">
+      <view class="top" bindtap="toDetail" data-repair="{{repair}}" data-index="{{index}}">
+        <image class="avatar" src="{{_uri+repair.headimg}}"></image>
+        <image class="action" src="{{repair.status=='8'?'../../../res/finished_pic.png':'../../../res/unfinished_pic.png'}}"></image> 
+        <view class="content">
+          <view class="name">{{repair.name}}</view>
+          <view class="date">{{repair.formatTime}}</view>
+          <view class="desc">{{repair.desc}}</view>
+          <image class="img" src="{{_uri+repair.img}}"></image>
+        </view>
+      </view>
+
+      <!--点赞和评论  -->
+      <view class="action">
+        <!-- <view class="placeholder"></view> -->
+        <view class="actions">
+          <view class="support" bindtap="support" data-repair="{{repair}}" data-index="{{index}}">
+            <image class="icon" src="{{repair.is_support?'../../../res/icon/support_img.png':'../../../res/icon/support_img_red.png'}}"></image>
+            <text class="txt">({{repair.support}})</text>
+          </view>
+
+          <view class="comment" bindtap="toDetail" data-repair="{{repair}}" data-index="{{index}}">
+            <image class="icon" src="../../../res/icon/comment_img.png"></image>
+            <text class="txt">({{repair.comment_count}})</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!--占位item  -->
+    <view class="placeholder" hidden="{{index!=repairList.length-1}}"></view>
+  </view>
+
+  <view class="repair">
+    <navigator url="create/create">
+      <view class="txt">公共报修</view>
+    </navigator>
+  </view>
+</view>
+

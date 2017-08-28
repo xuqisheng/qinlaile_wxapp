@@ -32,13 +32,19 @@
       </view>
     </navigator>
 
+    <!--公共报修  -->
+    <navigator url="public/public" open-type="navigate">
+      <view class="item">
+        公共报修
+      </view>
+    </navigator>
 
-    <view class="item">
-      公共保修
-    </view>
-    <view class="item">
-      个人保修
-    </view>
+    <!--个人报修  -->
+    <navigator url="personal/personal" open-type="navigate">
+      <view class="item">
+        个人报修
+      </view>
+    </navigator>
   </view>
 
   <view class="desc">{{propertyDetail.desc}}</view>

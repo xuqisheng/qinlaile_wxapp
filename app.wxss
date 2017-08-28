@@ -34,3 +34,8 @@ button.green.disabled {
 .theme-green{
 	background: #42c017;
 }
+
+/*空数据红色  */
+.empty-red{
+  background: #f26d7e;
+}

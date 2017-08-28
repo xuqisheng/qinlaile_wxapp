@@ -1,0 +1,20 @@
+<!--create.wxml-->
+<view class="main">
+  <form bindsubmit="formSubmit">
+    <view class="desc">
+      <text class="attr">情况简述：</text>
+      <input type="text" name="desc" placeholder="简单说明问题情况" class="content"/>
+    </view>
+
+    <!--图片  -->
+    <view class="image">
+      <text class="attr">上传图片：</text>
+      <image src="../../../../res/add_img.png" bindtap="chooseImage" class="img"></image>
+    </view>
+
+    <view class="button">
+      <button form-type="submit" class="input">提交</button>
+    </view>
+  </form>
+
+</view>

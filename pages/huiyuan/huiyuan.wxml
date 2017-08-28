@@ -54,17 +54,17 @@
     </view>
 
     <!--我的报修-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/baoxiu.png"></image>
-
-      <view class="item-text">我的报修</view>
-    </view>
+    <navigator url="repair/repair" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/baoxiu.png"></image>
+        <view class="item-text">我的报修</view>
+      </view>
+    </navigator>
 
     <!--我的预约-->
     <navigator url="myengage/myengage" open-type="navigate">
       <view class="item">
         <image class="item-icon" src="../../res/icon/yuyue.png"></image>
-
         <view class="item-text">我的预约</view>
       </view>
     </navigator>
@@ -84,8 +84,7 @@
 
       <view class="item-text">我的帖子</view>
     </view>
-
-
+    
   <!--section-wrapper结束-->
   </view>
   

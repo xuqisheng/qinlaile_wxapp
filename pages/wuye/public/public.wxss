@@ -1,0 +1,180 @@
+/* public.wxss */
+/*报修按钮 利用z-index重叠显示 */
+.main .repair{
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  height: 100rpx;
+  background: white;
+}
+
+.main .repair .txt{
+  border-radius: 10rpx;
+  height: 60rpx;
+  background: #42c017;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  margin: 20rpx 5%;
+  width: 90%;
+}
+
+
+.main{
+  width: 100%;
+}
+
+
+/*空数据  */
+.main .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.main .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: #f26d7e;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+/*最后一个item加长尾巴，否则报修按钮遮挡  */
+.main .placeholder{
+  height: 100rpx;
+  background: white;
+}
+
+/*报修item  */
+.main .wrapper{
+  width: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+  border-top: 1rpx solid lightgray;
+  border-bottom: 20rpx solid lightgray;
+}
+
+.main .wrapper .top{
+  margin: 0 20rpx 0 20rpx;
+  display: -webkit-flex;
+  border-bottom: 1rpx solid lightgray;
+}
+
+/*左侧头像  */
+.main .wrapper .top .avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  position: relative;
+  float: left;
+  margin-top: 20rpx;
+  /* background: greenyellow; */
+}
+
+/*右侧内容  */
+.main .wrapper .top .content{
+   /* background: red;  */
+  margin-left: 20rpx;
+  flex-flow: 100;
+}
+
+/*右侧悬浮按钮  */
+.main .wrapper .top .action{
+  position: absolute;
+  right: 20rpx;
+  top: 0;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  /* background: greenyellow; */
+}
+
+.main .wrapper .top .content .name{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: black;
+}
+
+/*日期  */
+.main .wrapper .top .content .date{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: gray;
+}
+
+/*描述  */
+.main .wrapper .top .content .desc{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #444;
+}
+
+/*主图  */
+.main .wrapper .top .content .img{
+  height: 200rpx;
+  width: 200rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+/*点赞和评论  */
+.main .wrapper .action{
+  width: 100%;
+  height: 60rpx;
+  display: -webkit-flex;
+}
+
+.main .wrapper .action .placeholder{
+  width: 75%;
+  height: 60rpx;
+  background: red;
+}
+
+/*操作  */
+.main .wrapper .action .actions{
+  position: absolute;
+  right: 20rpx;
+  width: 30%;
+  height: 60rpx;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main .wrapper .action .actions .support{
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.main .wrapper .action .actions .support .icon{
+  height: 40rpx;
+  width: 40rpx;
+  margin: 5rpx;
+}
+
+.main .wrapper .action .actions .support .txt{
+  font-size: 26rpx;
+  color: gray;
+  margin: 5rpx;
+}
+
+.main .wrapper .action .actions .comment{
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.main .wrapper .action .actions .comment .icon{
+  height: 40rpx;
+  width: 40rpx;
+  margin: 5rpx;
+}
+
+.main .wrapper .action .actions .comment .txt{
+  font-size: 26rpx;
+  color: gray;
+  margin: 5rpx;
+}
+

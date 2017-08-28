@@ -24,7 +24,12 @@
     "pages/wuye/notice/notice",
     "pages/wuye/query/query",
     "pages/wuye/query/noresult/noresult",
-    "pages/wuye/query/bind/bind"
+    "pages/wuye/query/bind/bind",
+    "pages/wuye/public/public",
+    "pages/wuye/personal/personal",
+    "pages/wuye/public/detail/detail",
+    "pages/wuye/public/create/create",
+    "pages/huiyuan/repair/repair"
   ],
   "window": {
     "backgroundTextStyle": "light",

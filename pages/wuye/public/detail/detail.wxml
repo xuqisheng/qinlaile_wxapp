@@ -1,0 +1,64 @@
+<!--notice.wxml-->
+<view class="main">
+
+  <!--报修item   -->
+  <view class="outter">
+    <view class="wrapper">
+      <view class="top">
+        <image class="avatar" src="{{_uri+repair.headimg}}"></image>
+        <image class="action" src="{{repair.status=='8'?'../../../../res/finished_pic.png':'../../../../res/unfinished_pic.png'}}"></image> 
+        <view class="content">
+          <view class="name">{{repair.name}}</view>
+          <view class="date">{{repair.formatTime}}</view>
+          <view class="desc">{{repair.desc}}</view>
+          <image class="img" src="{{_uri+repair.img}}"></image>
+        </view>
+      </view>
+
+      <!--点赞和评论  -->
+      <view class="action">
+        <!-- <view class="placeholder"></view> -->
+        <view class="actions">
+          <view class="support" bindtap="support">
+            <image class="icon" src="{{repair.is_support?'../../../../res/icon/support_img.png':'../../../../res/icon/support_img_red.png'}}"></image>
+            <text class="txt">({{repair.support}})</text>
+          </view>
+
+          <view class="comment">
+            <image class="icon" src="../../../../res/icon/comment_img.png"></image>
+            <text class="txt">({{repair.comment_count}})</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="comments" hidden="{{commentList.length==0}}">
+      <view class="title">热门评论</view>
+      <view class="wrapper2" wx:for="{{commentList}}" wx:for-item="comment" wx:key="{{index}}">
+        <view class="item">
+          <image class="avatar" src="{{_uri+comment.headimg}}"></image>
+          <view class="content">
+            <view class="name">{{comment.name}}</view>
+            <view class="date">{{comment.add_time}}</view>
+            <view class="desc">{{comment.content}}</view>
+          </view>
+        </view>
+        <!--占位item  -->
+        <view class="placeholder" hidden="{{index!=commentList.length-1}}"></view>
+      </view>
+    </view>
+    
+  </view>
+
+  <view class="repair">
+    <form bindsubmit="formSubmit">
+      <view class="inner">
+        <input type="text" name="comment" placeholder="说点什么吧" class="input"/>
+        <button class="button" form-type="submit">发表</button>
+      </view>
+    </form>
+    
+  </view>
+</view>
+
