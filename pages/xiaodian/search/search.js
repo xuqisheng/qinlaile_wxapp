@@ -23,7 +23,7 @@ Page({
   toStore:function(e){
     var shop = e.currentTarget.dataset.shop
     wx.navigateTo({
-      url: '../../shop/shop?shop_id=' + shop_id + '&delivery_fee=' + shop.delivery_fee + '&free_shipping_money=' + shop.free_shipping_money,
+      url: '../../shop/shop?shop_id=' + shop.shop_id + '&delivery_fee=' + shop.delivery_fee + '&free_shipping_money=' + shop.free_shipping_money,
     })
   },
 
