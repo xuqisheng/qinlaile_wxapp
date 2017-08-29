@@ -1,1 +1,109 @@
-/* repair.wxss */
+/* orderlist.wxss */
+page{
+  background-color:#edf0f3;
+}
+
+/*tabs容器*/
+.nav{
+  background-color:white;
+  width:100%;
+  height:70rpx;
+  display:flex;
+  flex-direction:row;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  /* padding: 24rpx 0rpx; */
+}
+
+/*tab文字默认样式*/
+.default{
+  line-height:70rpx;
+  text-align:center;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  color:#000;
+  font-size:28rpx;
+}
+
+/*tab文字选中样式*/
+.selected{
+  line-height:70rpx;
+  text-align:center;
+  color:#42c017;
+  flex:1;
+  /* border-right:1px solid gainsboro; */
+  border-bottom: 4rpx solid #42c017; 
+  font-size:28rpx;
+  /* margin-bottom: -24rpx; */
+
+}
+
+/*************订单**************/
+
+/*空视图  */
+.body .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.body .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: gray; 
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+/*订单item*/
+.body .repairList .repair{
+  background-color:white;
+  padding: 20rpx 20rpx 0rpx 20rpx;
+  border-bottom: 20rpx solid #edf0f3;
+}
+
+/*订单标题*/
+.body .repairList .repair .type{
+  font-size: 28rpx;
+  color: black;
+  padding: 10rpx;
+	position: relative;
+  border-bottom: 1rpx solid lightgray;
+}
+/*订单状态  */
+.body .repairList .repair .type .status{
+  float: right;
+  color: gray;
+}
+
+.body .repairList .repair .type .red{
+  float: right;
+  color: #f26d7e;
+}
+
+
+.body .repairList .repair .content .item{
+  display: -webkit-flex;
+  margin: 10rpx;
+  flex-direction: row;
+  height: 50rpx;
+}
+
+.body .repairList .repair .content .item .img{
+  height: 50rpx;
+  width: 50rpx;
+  margin-right:20rpx 
+}
+
+.body .repairList .repair .content .item .txt{
+  font-size: 26rpx;
+  color: #444;
+  line-height: 50rpx;
+}
+
+.body .repairList .repair .content .bigImg{
+  height: 160rpx;
+  width: 160rpx;
+  margin-left: 80rpx;
+  margin-bottom: 10rpx;
+}

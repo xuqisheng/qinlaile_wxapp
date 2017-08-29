@@ -110,6 +110,16 @@ class ShopController {
       app_id:'1',
     })
   }
+
+  /**
+   * 搜索店铺和商品
+   */
+  search(search_name){
+    return baseController.postLocation('/productSearch.html',{
+      app_id:'3',
+      search_name: search_name
+    })
+  }
 }
 /**
  * 实例化对象

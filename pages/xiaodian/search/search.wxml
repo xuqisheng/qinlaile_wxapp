@@ -1,0 +1,89 @@
+<!--search.wxml-->
+<view class="main">
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      没有搜索到数据
+    </view>
+  </view>
+
+  <!--搜索结果  -->
+  <view class="res" wx:else>
+    <!--店铺  -->
+    <view class="shops" wx:if="{{shop_list.length!=0}}">
+      <view class="title">店铺</view>
+      <view class="item" wx:for="{{shop_list}}" wx:for-item="store" wx:key="{{index}}" bindtap="toStore" data-shop="{{store}}">
+        <image class="avatar" src="{{_uri+store.logo}}" background-size="cover"></image>
+
+        <view class="wrapper">
+          <view class="desc">
+            <!--店铺名-->
+            <text class="name">{{store.company_name}}</text>
+
+            <!--评分星星-->
+            <view class="rank">
+              <block wx:for="{{store.imgs}}" wx:key="{{index}}" wx:for-item="url">
+                  <image class="star" src="{{url}}"></image>
+              </block>
+              <text class="condition orange">{{store.score}}分</text>
+              <text class="sales">（月售{{store.sales}}份）</text>
+            </view>
+            
+
+            <!--起送价-->
+            <view class="condition">
+              <text>起送</text>
+              <text class="orange">￥0.00</text>
+            </view>
+
+            <!--配送费-->
+            <view class="condition">
+              <text>配送费</text>
+              <text class="orange">￥{{store.delivery_fee}}</text>
+              <text class="orange" wx:if="{{free_shipping_money!='0.00'}}">（满{{store.free_shipping_money}}免）</text>
+            </view>
+          </view>
+
+          <view class="desc">
+            <text class="distance">{{store.distance}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!--商品  -->
+    <view class="products" wx:if="{{product_list.length!=0}}">
+      <view class="title">商品</view>
+      <view class="item" wx:for="{{product_list}}" wx:for-item="product" wx:key="{{index}}" bindtap="toStore" data-shop="{{product}}">
+        <image class="avatar" src="{{_uri+product.images}}" background-size="cover"></image>
+
+        <view class="wrapper">
+          <view class="desc">
+            <!--店铺名-->
+            <text class="name">{{product.product_name}}</text>
+
+            <!--价格、月售-->
+            <view class="rank">
+              <text class="price">￥{{product.price}}</text>
+              <text class="sales">（月售{{product.sales}}份）</text>
+            </view>
+            
+
+            <!--店铺名-->
+            <view class="storename">
+              <text>{{product.shop_name}}</text>
+            </view>
+
+
+
+          </view>
+
+          <view class="desc">
+            <text class="distance">{{store.distance}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>

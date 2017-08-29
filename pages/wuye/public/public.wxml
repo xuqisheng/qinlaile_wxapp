@@ -21,7 +21,7 @@
       </view>
 
       <!--点赞和评论  -->
-      <view class="action">
+      <view class="action" wx:if="{{repairType=='public'}}">
         <!-- <view class="placeholder"></view> -->
         <view class="actions">
           <view class="support" bindtap="support" data-repair="{{repair}}" data-index="{{index}}">
@@ -42,8 +42,8 @@
   </view>
 
   <view class="repair">
-    <navigator url="create/create">
-      <view class="txt">公共报修</view>
+    <navigator url="create/create?repairType={{repairType}}">
+      <view class="txt">{{repairType=='public'?'公共报修':'个人报修'}}</view>
     </navigator>
   </view>
 </view>

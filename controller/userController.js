@@ -307,6 +307,11 @@ class UserController {
       key: 'address',
       data: info.address,
     })
+    //省份名称province_name
+    wx.setStorage({
+      key: 'province_name',
+      data: info.province_name,
+    })
     //城市名称city_name
     wx.setStorage({
       key: 'city_name',

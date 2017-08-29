@@ -33,14 +33,15 @@
     </navigator>
 
     <!--公共报修  -->
-    <navigator url="public/public" open-type="navigate">
+    <navigator url="public/public?repairType=public" open-type="navigate">
       <view class="item">
         公共报修
       </view>
     </navigator>
 
     <!--个人报修  -->
-    <navigator url="personal/personal" open-type="navigate">
+    <!-- <navigator url="personal/personal" open-type="navigate"> -->
+    <navigator url="public/public?repairType=personal" open-type="navigate">
       <view class="item">
         个人报修
       </view>

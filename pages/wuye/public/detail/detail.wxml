@@ -16,7 +16,7 @@
       </view>
 
       <!--点赞和评论  -->
-      <view class="action">
+      <view class="action" wx:if="{{repairType=='public'}}">
         <!-- <view class="placeholder"></view> -->
         <view class="actions">
           <view class="support" bindtap="support">
@@ -33,7 +33,7 @@
 
     </view>
 
-    <view class="comments" hidden="{{commentList.length==0}}">
+    <view class="comments" hidden="{{commentList.length==0}}" wx:if="{{repairType=='public'}}">
       <view class="title">热门评论</view>
       <view class="wrapper2" wx:for="{{commentList}}" wx:for-item="comment" wx:key="{{index}}">
         <view class="item">
@@ -51,7 +51,7 @@
     
   </view>
 
-  <view class="repair">
+  <view class="repair" wx:if="{{repairType=='public'}}">
     <form bindsubmit="formSubmit">
       <view class="inner">
         <input type="text" name="comment" placeholder="说点什么吧" class="input"/>

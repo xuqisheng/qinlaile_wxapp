@@ -14,38 +14,43 @@
   </view>
 
   <!--订单列表-->
-  <view class="bookList" wx:else>
-    <block wx:for="{{bookList}}" wx:for-item="book" wx:key="*this">
+  <view class="repairList" wx:else>
+    <block wx:for="{{repairList}}" wx:for-item="repair" wx:key="{{index}}">
       <!--订单item-->
-      <view class="book" bindtap="toDetail" data-book="{{book}}">
+      <view class="repair" bindtap="toDetail" data-repair="{{repair}}">
         <!--订单状态-->
-        <view class="sn">
-          <text>{{book.t_name}}</text>
-          <text class="status">{{book.status_name}}</text>
+        <view class="type">
+          <text>{{repair.type_name}}</text>
+          <text class="{{repair.status=='0'?'red':'status'}}">{{repair.status_name}}</text>
         </view>
 
         <view class="content">
-          <!--名称-->
-          <view class="item">
-            <image class="img" src="../../../res/icon/book_worker.png"></image>
-            <text class="txt">{{book.worker_name}}</text>
-          </view>
-          <!--地点-->
-          <view class="item">
-            <image class="img" src="../../../res/icon/book_location.png"></image>
-            <text class="txt">{{book.service_addr}}</text>
-          </view>
-
-          <!--电话-->
-          <view class="item">
-            <image class="img" src="../../../res/icon/book_phone.png"></image>
-            <text class="txt">{{book.tel}}</text>
-          </view>
           <!--时间-->
           <view class="item">
             <image class="img" src="../../../res/icon/book_time.png"></image>
-            <text class="txt">{{book.formatDate}}</text>
+            <text class="txt">{{repair.formatDate}}</text>
           </view>
+
+          <!--地点-->
+          <view class="item" wx:if="{{repair.type!='1'}}">
+            <image class="img" src="../../../res/icon/book_location.png"></image>
+            <text class="txt">{{repair.address}}</text>
+          </view>
+
+          <!--电话-->
+          <view class="item" wx:if="{{repair.type!='1'}}">
+            <image class="img" src="../../../res/icon/book_phone.png"></image>
+            <text class="txt">{{repair.tel}}</text>
+          </view>
+
+          <!--描述-->
+          <view class="item">
+            <image class="img" src="../../../res/icon/desc_img.png"></image>
+            <text class="txt">{{repair.desc}}</text>
+          </view>
+
+          <!--主图-->
+          <image class="bigImg" src="{{_uri+repair.img}}"></image>
         </view>
 
       </view>

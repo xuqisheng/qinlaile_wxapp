@@ -3,6 +3,7 @@ var app = getApp()
 //引入controller
 const serviceController = require('../../../../controller/serviceController.js').controller;
 const util = require('../../../../utils/util.js')
+
 Page({
 
   /**
@@ -11,7 +12,9 @@ Page({
   data: {
     repair:{},
     _uri:app.globalData.URI,
-    commentList:[]
+    commentList:[],
+    //报修类型
+    repairType: ''
   },
 
   /**
@@ -20,16 +23,23 @@ Page({
   onLoad: function (options) {
     var index = options.index
     var repairStr = options.repairStr
+    var repairType = options.repairType
 
     // console.log('index='+index)
     // console.log('repairStr=' + repairStr)
     var repair = JSON.parse(repairStr)
     var that = this
     that.setData({
-      repair: repair
+      repair: repair,
+      repairType: repairType
     })
+
+    console.log('repairType = ' + repairType)
     //获取评论列表
-    that.getCommentList();
+    if (repairType=='public'){
+      that.getCommentList();
+    }
+
   },
 
   /**

@@ -91,6 +91,15 @@ class ServiceController {
   }
 
   /**
+   * 个人报修列表
+   */
+  getPersonalList(page){
+    return baseController.postMid('/repairsCommentList.html?type=person', {
+      page: page
+    })
+  }
+
+  /**
    * 点赞
    */
   support(id){
@@ -119,13 +128,26 @@ class ServiceController {
   }
 
   /**
-   * 提交报修信息
+   * 提交公共报修信息
    */
   repairSubmit(desc,image){
     return baseController.postMid('/repair.html?act=submit',{
       type:1,
       desc:desc,
       image:image
+    })
+  }
+
+  /**
+   * 个人报修提交
+   */
+  personalRepairSubmit(desc, image,address,tel){
+    return baseController.postMid('/repair.html?act=submit', {
+      type: 2,
+      desc: desc,
+      image: image,
+      address: address,
+      tel:tel
     })
   }
 

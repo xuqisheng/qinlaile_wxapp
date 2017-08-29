@@ -3,6 +3,38 @@ page{
   background-color:#edf0f3;
 }
 
+.body .search{
+  display: -webkit-flex;
+  width: 100%;
+  height: 40rpx;
+  padding: 20rpx;
+  background: white
+}
+
+.body .search .text{
+  width: 85%;
+  color: gray;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  border-radius: 20rpx;
+  background: #eee;
+}
+
+
+.body .search .wrapper{
+  text-align: center;
+  width: 10%;
+  height: 40rpx;
+}
+
+.body .search .wrapper .img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+}
+
 /*tabs容器*/
 .nav{
   background-color:white;

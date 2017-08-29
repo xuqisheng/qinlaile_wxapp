@@ -1,0 +1,115 @@
+/* search.wxss */
+/*空视图  */
+.main .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.main .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: gray; 
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+/*搜索结果  */
+.main .res{
+  height: 100%;
+  width: 100%;
+}
+
+/*店铺  */
+.main .res .shops{
+  width: 100%;
+}
+
+.main .res .shops .item,.main .res .products .item{
+  background: white;
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.main .res .shops .title,.main .res .products .title{
+  width: 100%;
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: gray;
+  background: #eee;
+}
+
+
+.main .res .shops .item .avatar ,.main .res .products .item .avatar{
+  flex-grow: 0;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  line-height: 160rpx;
+}
+
+
+
+.main .res .shops .item .wrapper,.main .res .products .item .wrapper{
+  flex-grow: 1;
+  background: white;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.main .res .shops .item .wrapper .desc,.main .res .products .item .wrapper .desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*评分*/
+.main .res .shops .item .wrapper .desc .rank,.main .res .shops .item .wrapper .desc .rank{
+  font-size: 24rpx;
+  margin-top: 16rpx;
+}
+
+.main .res .products .item .wrapper .desc .rank .price{
+  color: red;
+  font-size: 20rpx;
+}
+
+.main .res .shops .item .wrapper .desc .rank .sales,.main .res .products .item .wrapper .desc .rank .sales{
+  font-size: 20rpx;
+  color: gray;
+}
+
+.main .res .shops .item .wrapper .desc .name,.main .res .products .item .wrapper .desc .name{
+  font-size: 26rpx;
+}
+
+/*评分星星*/
+.main .res .shops .item .wrapper .desc .rank .star{
+  width: 30rpx;
+  height: 30rpx
+}
+
+.orange{
+  color:orange;
+}
+
+
+/*配送费 起送价*/
+.condition{
+  font-size: 20rpx;
+}
+
+.distance{
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  color: red;
+}
+
+.storename{
+  font-size: 26rpx;
+  color: gray;
+  margin-top: 20rpx;
+}

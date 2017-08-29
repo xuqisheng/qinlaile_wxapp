@@ -26,10 +26,11 @@
     "pages/wuye/query/noresult/noresult",
     "pages/wuye/query/bind/bind",
     "pages/wuye/public/public",
-    "pages/wuye/personal/personal",
     "pages/wuye/public/detail/detail",
     "pages/wuye/public/create/create",
-    "pages/huiyuan/repair/repair"
+    "pages/huiyuan/repair/repair",
+    "pages/huiyuan/repair/detail/detail",
+    "pages/xiaodian/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

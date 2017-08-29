@@ -17,18 +17,21 @@ Page({
     // 是否有更多
     hasMore:true,
     repairList:[],
-    currentRepair:{}
+    currentRepair:{},
+    //报修类型
+    repairType:''
   },
 
   /**
    * 去往详情页
    */
   toDetail:function(e){
+    var that = this
     var index = e.currentTarget.dataset.index
     var repair = e.currentTarget.dataset.repair
     var repairStr = JSON.stringify(repair)
     wx.navigateTo({
-      url: 'detail/detail?repairStr=' + repairStr+'&index='+index,
+      url: 'detail/detail?repairStr=' + repairStr + '&index=' + index + '&repairType=' + that.data.repairType,
     })
   },
 
@@ -71,13 +74,56 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
+   * getPersonalList
    */
   onLoad: function (options) {
-    
+    var repairType = options.repairType
+    this.setData({
+      repairType: repairType
+    })
+
   },
 
   onShow:function(){
-    this.getPublicList()
+    if (this.data.repairType=='public'){
+      this.getPublicList()
+      wx.setNavigationBarTitle({
+        title: '公共报修',
+      })
+    }else{
+      this.getPersonalList();
+      wx.setNavigationBarTitle({
+        title: '个人报修',
+      })
+    }
+
+  },
+
+  // 获取个人报修列表
+  getPersonalList: function () {
+    var that = this
+    serviceController.getPersonalList(that.data.page).then(data => {
+      console.log(data)
+      if (data.code == 10000) {
+        var temp = data.lists;
+        temp.forEach(function (item, index) {
+          item['formatTime'] = util.timestampToDate(item.add_time)
+        })
+        that.setData({
+          repairList: data.lists,
+        })
+      } else {
+        wx.showToast({
+          title: data.message,
+        })
+        if (data.code == 10007) {
+          that.setData({
+            hasMore: false
+          })
+        }
+      }
+
+    })
   },
 
   // 获取公共报修列表

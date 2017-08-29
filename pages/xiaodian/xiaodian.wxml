@@ -1,5 +1,19 @@
 <!--xiaodian.wxml-->
 <view class="body">
+
+  <!--搜索bar  -->
+  <view class="search">
+    <!-- <text class="text">搜索</text> -->
+    <view class="text">
+      <input class="input" type="text" name="content" placeholder-style="font-size:26rpx;padding:0" placeholder="搜索" bindinput="textChange"/>
+    </view>
+    
+    <view class="wrapper" bindtap="search">
+      <image class="img" src="../../res/icon/search.png"></image>
+    </view>
+  </view>
+
+
   <!--实现页签功能-->
   <view class="nav">
     <block wx:for="{{typeList}}" wx:for-item="type" wx:key="index">

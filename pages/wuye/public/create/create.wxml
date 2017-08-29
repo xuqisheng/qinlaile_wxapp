@@ -1,6 +1,19 @@
 <!--create.wxml-->
 <view class="main">
   <form bindsubmit="formSubmit">
+    <view class="personal" hidden="{{repairType=='public'}}">
+
+      <view class="desc">
+        <text class="attr">服务地址：</text>
+        <input type="text" name="address" value="{{address}}" placeholder="请输入报修详细地址" class="content"/>
+      </view>
+
+      <view class="desc">
+        <text class="attr">联系电话：</text>
+        <input type="text"  name="mobile" value="{{mobile}}" placeholder="请输入联系电话" class="content"/>
+      </view>
+    </view>
+
     <view class="desc">
       <text class="attr">情况简述：</text>
       <input type="text" name="desc" placeholder="简单说明问题情况" class="content"/>

@@ -54,7 +54,7 @@ Page({
     //获取服务数据
     serviceController.getServe(serveType).then(data=>{
       var temp = data.lists
-      console.log(temp)
+      // console.log(temp)
       //隐藏进度
       wx.hideLoading()
 
@@ -69,7 +69,7 @@ Page({
           //将返回的图片数组，动态添加到其属性imgs
           temp[i]["imgs"] = arr;
         }
-        //console.log(temp)
+        // console.log(temp)
 
         //重新渲染
         that.setData({

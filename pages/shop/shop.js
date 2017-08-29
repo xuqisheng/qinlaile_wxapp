@@ -37,6 +37,7 @@ Page({
     //免邮标记
     free_shipping:false,
 
+
     /*可以不在此声明，setData中使用时再声明
     classifySeleted:'',
     classifyViewed:''
@@ -122,37 +123,59 @@ Page({
 
 	onLoad: function (options) {
     var that = this;
-    var shop = JSON.parse(options.shop)
-    //取出店铺id和店铺名称
-    var shopId = shop.id;
-    var cart_shopId = 'CART_' + shopId;
+    
+    var shop_id = options.shop_id
+    //若为搜索点击过来
+    if (shop_id != undefined && shop_id != null && shop_id!=''){
+      that.loadShopData(shop_id);
+      that.setData({
+        shopId: shopId,
+        delivery_fee: options.delivery_fee,
+        free_shipping_money: options.free_shipping_money
+      })
+    }else{
+      var shop = JSON.parse(options.shop);
+      var shopId = shop.id;;
 
-    that.setData({
-      shopId: shopId,
-      cart_shopId: cart_shopId,
-      delivery_fee:shop.delivery_fee,
-      free_shipping_money:shop.free_shipping_money
-    })
+
+      //取出店铺id和店铺名称
+      console.log('shopId = ' + shopId)
+
+      var cart_shopId = 'CART_' + shopId;
+
+      that.setData({
+        shopId: shopId,
+        cart_shopId: cart_shopId,
+        delivery_fee: shop.delivery_fee,
+        free_shipping_money: shop.free_shipping_money
+      })
 
 
-    wx.setNavigationBarTitle({
-      title: shop.company_name,
-    })
+      wx.setNavigationBarTitle({
+        title: shop.company_name,
+      })
+      that.loadShopData(shopId);
+    }
 
+	},
+
+  // 请求店铺信息
+  loadShopData(shopId){
+    var that = this;
     //请求店铺内商品
-    shopController.getGoods(shopId).then(data=>{
+    shopController.getGoods(shopId).then(data => {
       //console.log(data)
       var temp = data.data;
-      var res = temp.map(function(item){
+      var res = temp.map(function (item) {
         item.classifyId = '_' + item.type_id;
         return item;
       })
-        //为每个item增加非以数字开头的分类id
+      //为每个item增加非以数字开头的分类id
       //console.log(res)
 
       //计算出只有商品的列表
       var res2 = {};
-      for (let i = 0; i < temp.length;i++){
+      for (let i = 0; i < temp.length; i++) {
         let temp2 = temp[i].productLists
         for (let j = 0; j < temp2.length; j++) {
           let goods = temp2[j]
@@ -179,20 +202,20 @@ Page({
     /**
      * 获取店铺信息
      */
-    shopController.getShopInfo(shopId).then(data=>{
+    shopController.getShopInfo(shopId).then(data => {
       //console.log(data.data)
       var url = '../../res/logo.png';
-      if(data.data.images.length!=0){
-        url = app.globalData.URI+data.data.images[0].src
+      if (data.data.images.length != 0) {
+        url = app.globalData.URI + data.data.images[0].src
       }
 
-      //console.log(url)
+      // console.log(data.data)
       this.setData({
         shop: data.data,
-        storeAvatar:url
+        storeAvatar: url
       })
     })
-	},
+  },
 
   
   /**

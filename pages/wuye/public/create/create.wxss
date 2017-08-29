@@ -46,6 +46,7 @@ page{
   line-height: 60rpx;
   font-size: 28rpx;
   color: #444;
+  flex-grow: 0;
 }
 
 .main .desc .content{
@@ -53,6 +54,8 @@ page{
   line-height: 60rpx;
   font-size: 28rpx;
   color: gray;
+  flex-grow: 1;
+  /* background: red */
 }
 
 .main .image{
