@@ -23,7 +23,8 @@
 
   <!--分类下的二级分类弹窗  -->
   <view class="second-type" hidden="{{secondTypeList.length==0||!showPopupwindow}}">
-		<view class="mask" bindtap="showPopupwindow"></view>
+		<!-- <view class="mask" bindtap="showPopupwindow"></view> -->
+    <view class="mask" bindtap="showPopupwindow"></view>
 		<view class="list">
 			<view class="{{secondTypeId==type.id?'item-selected':'item-normal'}}" bindtap="onSecondTypeClick" 
       wx:for="{{secondTypeList}}" data-type_id="{{type.id}}" wx:for-item="type" wx:key="{{index}}">

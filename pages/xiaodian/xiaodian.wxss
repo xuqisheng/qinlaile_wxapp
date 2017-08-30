@@ -78,8 +78,8 @@ page{
 .second-type, .second-type .mask {
 	position: absolute;
 	left: 0;
-  /*绝对定位，在外层.body下靠下.nav的高度70rpx  */
-	top: 70rpx;
+  /*绝对定位，在外层.body下靠下.nav的高度70rpx + 搜索栏高度40rpx +padding值2*20rpx*/
+	top: 150rpx;
 	width: 100%;
 	height: 100%;
 }

@@ -1,0 +1,76 @@
+/* addresslist.wxss */
+page{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+.main{
+  height: 100%;
+  width: 100%;
+}
+
+/*空视图  */
+.main .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.main .insert{
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  height: 100rpx;
+  background: white;
+}
+
+.main .insert .txt{
+  border-radius: 10rpx;
+  height: 60rpx;
+  background: #42c017;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  margin: 20rpx 5%;
+  width: 90%;
+}
+
+
+.main .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: gray; 
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.main .placeholder{
+  height: 100rpx;
+  background: white;
+}
+
+.main .wrapper .item{
+  width: 100%;
+  /* display: -webkit-flex;
+  flex-direction: column; */
+  padding: 20rpx;
+  border-top: 1rpx solid lightgray;
+  font-size: 28rpx;
+  color: #444;
+  background: white;
+}
+
+.main .wrapper .item .basic{
+  margin-bottom: 20rpx;
+  padding-right: 20rpx;
+  width: 90%;
+}
+
+.main .wrapper .item .basic .mobile{
+  position: relative;
+  float: right;
+
+}

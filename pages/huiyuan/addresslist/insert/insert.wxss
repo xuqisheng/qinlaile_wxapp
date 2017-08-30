@@ -1,0 +1,184 @@
+/* insert.wxss */
+
+/*分类下的二级分类弹窗  */
+.areas{
+	position: absolute;
+	left: 10%;
+	top: 300rpx;
+	width: 80%;
+	height: 100%;
+}
+
+.mask {
+	background: white;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1
+}
+
+.areas .list {
+	position: absolute;
+	left: 0;
+  /*绝对定位，在外层.second-type下top为0 */
+	top: 0;
+	width: 100%;
+	background: #eee;
+	padding: 10rpx 0;
+}
+
+/*二级分类正常  */
+.areas .list .item-normal{
+  color: gray;
+  font-size: 26rpx;
+  text-align: center;
+  border-bottom: 1prx solid lightgray;
+  padding: 10rpx;
+}
+
+/*二级分类选中  */
+.areas .list .item-selected{
+  color: #42c017;
+  font-size: 26rpx;
+  text-align: center;
+  border-bottom: 1prx solid lightgray;
+  padding: 10rpx;
+}
+
+
+.main{
+ height: 100%;
+ width: 100%;
+}
+
+.main .receiver{
+  border-top: 20rpx solid lightgray;
+  border-bottom: 1rpx solid lightgray;
+  display: -webkit-flex;
+  font-size: 28rpx;
+  height: 80rpx;
+  padding-left: 20rpx;
+}
+
+.main .receiver .attr{
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.main .receiver .value{
+  margin-left: 40rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.main .mobile{
+  border-bottom: 20rpx solid lightgray;
+  display: -webkit-flex;
+  font-size: 28rpx;
+  height: 80rpx;
+  padding-left: 20rpx;
+}
+
+.main .mobile .attr{
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.main .mobile .value{
+  margin-left: 40rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.main .title{
+  font-size: 28rpx;
+  padding: 20rpx;
+}
+
+.main .current{
+  font-size: 22rpx;
+  padding-left: 20rpx;
+  height: 60rpx;
+}
+
+.main .current .attr{
+  line-height: 60rpx;
+}
+
+.main .current .switch{
+  float: right;
+  line-height: 60rpx;
+  margin-right: 20rpx;
+  border: 2rpx solid #42c017;
+  height: 60rpx;
+  border-radius: 30rpx;
+  padding: 0rpx 20rpx;
+  color: #42c017;
+  text-align: center;
+}
+
+/*三级区域  */
+.main .tripple{
+  display: -webkit-flex;
+  justify-content: space-around;
+  height: 80rpx;
+  margin-top: 40rpx;
+  font-size: 26rpx;
+}
+
+.main .tripple .item{
+  width: 25%;
+  border: 2rpx solid #42c017;
+  height: 80rpx;
+  border-radius: 40rpx;
+  /* padding: 0rpx 20rpx; */
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.main .detail{
+  margin: 20rpx 3%;
+  width:88%;
+  height: 200rpx; 
+  margin-top: 20rpx;
+  border:1rpx solid lightgray;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.main .detail .value{
+  width:100%;
+  font-size: 26rpx;
+
+}
+
+
+.main .default{
+  font-size: 24rpx;
+  color: gray;
+  margin: 20rpx;
+  height: 60rpx;
+  /* background: red */
+}
+
+.main .default .is_default{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.main .default .text{
+   margin-left: 20rpx;
+   line-height: 60rpx;
+}
+
+.main .submit{
+  width: 90%;
+  margin: 40rpx 5%;
+  background: #42c017;
+  height: 60rpx;
+  border-radius: 30rpx;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+}

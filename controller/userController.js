@@ -11,6 +11,52 @@ const index = require('indexController.js').controller;
 class UserController {
 
   /**
+   * 
+   * 团队介绍
+   */
+  getTeamInfo() {
+    return baseController.postMid('/team.html')
+  }
+
+  /**
+   * 保存收货地址（新建）
+   */
+  insertAddress(consignee, mobile, province_id, city_id, area_id, address, is_default){
+    return baseController.postMid('/addressAdd.html?act=submit',{
+      consignee: consignee,
+      mobile: mobile,
+      province_id: province_id,
+      city_id: city_id,
+      area_id: area_id,
+      address: address,
+      is_default: is_default
+    })
+  }
+
+  /**
+   * 保存收货地址（编辑/更新）
+   */
+  updateAddress(addr_id, consignee, mobile, province_id, city_id, area_id, address, is_default){
+    return baseController.postMid('/addressAdd.html?act=submit', {
+      addr_id: addr_id,
+      consignee: consignee,
+      mobile: mobile,
+      province_id: province_id,
+      city_id: city_id,
+      area_id: area_id,
+      address: address,
+      is_default: is_default
+    })
+  }
+
+  /**
+   * 收货地址
+   */
+  getAddressList(){
+    return baseController.postMid('/addressList.html')
+  }
+
+  /**
    * 请求省份数据
    */
   requestProvince() {

@@ -30,7 +30,11 @@
     "pages/wuye/public/create/create",
     "pages/huiyuan/repair/repair",
     "pages/huiyuan/repair/detail/detail",
-    "pages/xiaodian/search/search"
+    "pages/xiaodian/search/search",
+    "pages/huiyuan/addresslist/addresslist",
+    "pages/huiyuan/addresslist/insert/insert",
+    "pages/huiyuan/team/team",
+    "pages/huiyuan/complain/complain"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,18 @@
+<!--jiazheng.wxml-->
+<view class="main">
+
+  <!--轮播图-->
+	<swiper class="banner" id="lunbo" indicator-active-color="#fff"
+  indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+    <block wx:for="{{pics}}" wx:for-item="item" wx:key="*this">
+      <swiper-item>
+        <image class="img" src="{{_uri+item.src}}" mode="widthFix"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="content">{{info}}</view>
+
+
+</view>
+

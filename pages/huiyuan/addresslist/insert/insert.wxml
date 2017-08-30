@@ -1,0 +1,53 @@
+
+<!--区县选择弹窗  -->
+<view class="areas" hidden="{{!showPopupwindow}}">
+	<!-- <view class="mask" bindtap="hidePopupwindow"></view> -->
+	<view class="list">
+		<view class="{{area_id==area.id?'item-selected':'item-normal'}}" bindtap="onAreaClick" 
+    wx:for="{{areas}}" data-area="{{area}}" wx:for-item="area" wx:key="{{index}}">
+			{{area.name}}
+		</view>
+	</view>
+</view>
+<view class="mask" bindtap="hidePopupwindow" hidden="{{!showPopupwindow}}"></view> 
+
+<form bindsubmit="formSubmit">
+  <view class="main" hidden="{{showPopupwindow}}">
+    <view class="receiver">
+      <text class="attr">收 件 人</text>
+      <input type="text" class="value" name="consignee" placeholder="请输入收件人姓名" value="{{address.consignee}}"/>
+    </view>
+
+    <view class="mobile">
+      <text class="attr">联系电话</text>
+      <input type="number" class="value" name="mobile" placeholder="请输入收件人电话" value="{{address.mobile}}"/>
+    </view>
+
+    <view class="title">地址设置</view>
+
+    <view class="current">
+      <text class="attr">当前位置：{{current}}</text>
+      <text class="switch" bindtap="switchNow">切换至该位置</text>
+    </view>
+
+    <view class="tripple">
+      <view class="item">山东省</view>
+      <view class="item">德州市</view>
+      <!--编辑状态用 area_name，添加用选择区县 -->
+      <view class="item" bindtap="selectArea">{{update?area:(address.area_name||area)}}</view>
+    </view>
+
+    <view class="detail">
+      <input type="text" name="detail" class="value" placeholder="请输入详细地址" value="{{detail!=''?detail:address.address}}"/>
+    </view>
+
+    <view class="default">
+      <switch type="switch" class="is_default" name="is_default" checked="{{address.is_default=='1'}}" id="is_default"/>
+      <label class="text" for="is_default">设置为默认收货地址</label>
+    </view>
+
+    <button form-type="submit" class="submit">保存</button>
+    
+  </view>
+</form>
+

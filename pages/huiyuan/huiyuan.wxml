@@ -40,11 +40,12 @@
   <!--section-wrapper开始-->
   <view class="section-wrapper">
     <!--小区公告-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/notice.png"></image>
-
-      <view class="item-text">小区公告</view>
-    </view>
+    <navigator url="../wuye/notice/notice" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/notice.png"></image>
+        <view class="item-text">小区公告</view>
+      </view>
+    </navigator>
 
     <!--社区论坛-->
     <view class="item">
@@ -89,27 +90,30 @@
   </view>
   
   <!--收货地址-->
-  <view class="item-wrapper">
-    <image class="item-icon" src="../../res/icon/address.png"></image>
-
-    <view class="item-text">收货地址</view>
-  </view>
+  <navigator url="addresslist/addresslist" open-type="navigate">
+    <view class="item-wrapper">
+      <image class="item-icon" src="../../res/icon/address.png"></image>
+      <view class="item-text">收货地址</view>
+    </view>
+  </navigator>
 
   <!--section-wrapper开始-->
   <view class="section-wrapper">
     <!--团队介绍-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/team.png"></image>
-
-      <view class="item-text">团队介绍</view>
-    </view>
+    <navigator url="team/team" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/team.png"></image>
+        <view class="item-text">团队介绍</view>
+      </view>
+    </navigator>
 
     <!--投诉建议-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/suggestion.png"></image>
-
-      <view class="item-text">投诉建议</view>
-    </view>
+    <navigator url="complain/complain" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/suggestion.png"></image>
+        <view class="item-text">投诉建议</view>
+      </view>
+    </navigator>
 
     <!--联系我们-->
     <view class="item">

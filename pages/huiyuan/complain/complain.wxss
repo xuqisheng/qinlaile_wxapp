@@ -1,0 +1,55 @@
+/* complain.wxss */
+page{
+  height: 100%;
+  width: 100%;
+  background: #eee;
+}
+
+.main{
+  height: 100%;
+  width:100%;
+}
+
+.main .topic{
+  width: 100%;
+  border-top: 1rpx solid lightgray;
+  font-size: 28rpx;
+  color: #444;
+  height: 60rpx;
+  display: -webkit-flex;
+  padding: 20rpx;
+  background: white
+}
+
+.main .topic .attr{
+  line-height:60rpx;
+  height: 60rpx;
+  width: 20%;
+}
+
+.main .topic .value{
+  line-height:60rpx;
+  height: 60rpx;
+  width: 80%;
+}
+
+.main .description{
+  width: 100%;
+  border-top: 1rpx solid lightgray;
+  font-size: 28rpx;
+  color: #444;
+  display: -webkit-flex;
+  padding: 20rpx;
+  background: white;
+  height: 300rpx
+}
+
+.main .description .attr{
+  height: 60rpx;
+  width: 20%;
+}
+
+.main .description .value{
+  width: 75%;
+  height: 300rpx 
+}

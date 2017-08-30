@@ -1,0 +1,27 @@
+<!--addresslist.wxml-->
+<view class="main">
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      没有收货地址
+    </view>
+  </view>
+
+  <view class="wrapper" wx:else>
+    <view class="item" wx:for="{{addressList}}" wx:for-item="address" wx:key="{{index}}" data-address="{{address}}" bindtap="toEdit">
+      <view class="basic">
+        <text class="name">{{address.consignee}}</text>
+        <text class="mobile">{{address.mobile}}</text>
+      </view>
+      <view class="detail">{{address.addr}}</view>
+
+      <!--占位item  -->
+    <!-- <view class="placeholder" hidden="{{index!=addressList.length-1}}"></view> -->
+    </view>
+  </view>
+
+  <view class="insert">
+    <navigator url="insert/insert?action=insert">
+      <view class="txt">新增收货地址</view>
+    </navigator>
+  </view>
+</view>

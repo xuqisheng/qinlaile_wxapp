@@ -127,20 +127,20 @@ Page({
     var shop_id = options.shop_id
     //若为搜索点击过来
     if (shop_id != undefined && shop_id != null && shop_id!=''){
-      that.loadShopData(shop_id);
+      
       that.setData({
-        shopId: shopId,
+        shopId: shop_id,
+        cart_shopId: 'CART_' + shop_id,
         delivery_fee: options.delivery_fee,
         free_shipping_money: options.free_shipping_money
       })
+
+      that.loadShopData(shop_id);
     }else{
       var shop = JSON.parse(options.shop);
       var shopId = shop.id;;
-
-
       //取出店铺id和店铺名称
       console.log('shopId = ' + shopId)
-
       var cart_shopId = 'CART_' + shopId;
 
       that.setData({
@@ -149,7 +149,6 @@ Page({
         delivery_fee: shop.delivery_fee,
         free_shipping_money: shop.free_shipping_money
       })
-
 
       wx.setNavigationBarTitle({
         title: shop.company_name,

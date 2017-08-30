@@ -30,6 +30,13 @@ Page({
     keyword:''
   },
 
+  //隐藏弹窗
+  showPopupwindow:function(){
+    this.setData({
+      showPopupwindow: false
+    })
+  },
+
   //输入内容监听
   textChange:function(e){
     var keyword = e.detail.value.trim()
