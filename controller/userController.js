@@ -11,6 +11,110 @@ const index = require('indexController.js').controller;
 class UserController {
 
   /**
+   * 帖子点赞
+   */
+  supportThread(id){
+    return baseController.postMid('/forum.html?act=support',{
+      id:id
+    })
+  }
+
+  /**
+   * 删除帖子
+   */
+  deleteThread(id) {
+    return baseController.postMid('/forum.html?act=del', {
+      id: id
+    })
+  }
+
+  /**
+   * 社区论坛
+   */
+  getThreads(action,page){
+    var append = action == 1 ?'?act=mySelf':''
+
+    return baseController.postMid('/forum.html'+append,{
+      page:page
+    })
+  }
+
+
+  /**
+   * 家政公司提交
+   */
+  submitHomeService(name,companyName,mobile, IDcard,imgInfo){
+    return baseController.postMid('/applyEntering.html',{
+      app_id:'3',
+      type:1,
+      name: name,
+      companyName: companyName,
+      mobile: mobile,
+      IDcard: IDcard,
+      imgInfo: imgInfo,
+    })
+  }
+
+  /**
+   * 物业公司提交
+   */
+  submitProperty(name, companyName, mobile, IDcard, imgInfo,email) {
+    return baseController.postMid('/applyEntering.html', {
+      app_id: '3',
+      type: 2,
+      name: name,
+      companyName: companyName,
+      mobile: mobile,
+      IDcard: IDcard,
+      imgInfo: imgInfo,
+      email: email
+    })
+  }
+
+  /**
+   * 在线小店提交
+   */
+  submitOnlineStore(name, companyName, mobile, IDcard, imgInfo, permit_license, extra_info) {
+    return baseController.postMid('/applyEntering.html', {
+      app_id: '3',
+      type: 3,
+      name: name,
+      companyName: companyName,
+      mobile: mobile,
+      IDcard: IDcard,
+      imgInfo: imgInfo,
+      permit_license: permit_license,
+      extra_info: extra_info,
+    })
+  }
+
+  /**
+   * 入驻申请类别
+   */
+  getApplyTypes(){
+    return baseController.postMid('/applyEntering.html',{
+      app_id:'3'
+    })
+  }
+
+  /**
+   * 联系我们
+   */
+  contactUs(){
+    return baseController.postMid('/contactus.html');
+  }
+
+  /**
+   * 投诉建议
+   */
+  complain(title,content){
+    return baseController.postMid('/complain.html?act=submit',{
+      title:title,
+      content:content,
+    })
+  }
+
+  /**
    * 
    * 团队介绍
    */

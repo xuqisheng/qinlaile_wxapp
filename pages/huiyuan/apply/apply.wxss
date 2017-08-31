@@ -1,0 +1,10 @@
+/* apply.wxss */
+page{
+  background: #eee;
+}
+.item{
+  padding: 20rpx;
+  background: white;
+  font-size: 30rpx;
+  border-top: 1rpx solid lightgray
+}

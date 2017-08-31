@@ -1,0 +1,14 @@
+<!--contact.wxml-->
+<view class="main">
+  <view class="hotline">
+    <text class="mobile">客服热线：{{info.hotline}}</text>
+    <image hidden="{{!info.hotline}}" bindtap="call" src="../../../res/icon/contact.png" class="icon"></image>
+  </view>
+
+  <view class="wx">微信公众号：{{info.wun}}</view>
+
+  <view class="bottom">
+    <image src="{{_uri+info.qr_path}}" class="qr"></image>
+    <text class="name">{{info.company_name}}</text>
+  </view>
+</view>

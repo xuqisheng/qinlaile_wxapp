@@ -10,6 +10,27 @@ page{
   width:100%;
 }
 
+.main .submit{
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  height: 100rpx;
+  background: white;
+}
+
+.main .submit .txt{
+  border-radius: 10rpx;
+  height: 60rpx;
+  background: #42c017;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  margin: 20rpx 5%;
+  width: 90%;
+}
+
 .main .topic{
   width: 100%;
   border-top: 1rpx solid lightgray;

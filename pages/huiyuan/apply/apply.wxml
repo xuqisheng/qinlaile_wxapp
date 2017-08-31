@@ -1,0 +1,4 @@
+<!--apply.wxml-->
+<view class="item" wx:for="{{typeList}}" wx:for-item="type" wx:key="{{index}}" bindtap="enter" data-type="{{type}}">
+  {{type.name}}
+</view>

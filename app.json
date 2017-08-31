@@ -34,7 +34,14 @@
     "pages/huiyuan/addresslist/addresslist",
     "pages/huiyuan/addresslist/insert/insert",
     "pages/huiyuan/team/team",
-    "pages/huiyuan/complain/complain"
+    "pages/huiyuan/complain/complain",
+    "pages/huiyuan/contact/contact",
+    "pages/huiyuan/apply/apply",
+    "pages/huiyuan/apply/enter/enter",
+    "pages/huiyuan/apply/enter/agreement/agreement",
+    "pages/huiyuan/community/community",
+    "pages/huiyuan/community/detail/detail",
+    "pages/huiyuan/community/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",

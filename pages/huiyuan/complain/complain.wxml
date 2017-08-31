@@ -8,8 +8,13 @@
 
     <view class="description">
       <text class="attr">具体说明</text>
-      <!-- <input type="text" class="value" name="description" placeholder="请概述您的问题或建议"/> -->
       <textarea class="value" placeholder="请输入您的投诉的内容或建议（500字以内）" name="description"/>
+    </view>
+
+    <view class="submit">
+      <button form-type="submit" class="txt">提交</button>
     </view>
   </view>
 </form>
+
+

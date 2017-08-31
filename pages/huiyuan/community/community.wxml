@@ -1,0 +1,60 @@
+<!--community.wxml-->
+<view class="main">
+  <view class="empty" wx:if="{{empty}}">
+    <view class="text">
+      暂无数据
+    </view>
+  </view>
+
+  <!--主体内容  -->
+  <view class="wrapper" wx:for="{{threads}}" wx:key="{{index}}" wx:for-item="thread">
+    <view class="top" bindtap="toDetail" data-thread="{{thread}}" data-index="{{index}}">
+      <view class="vertical">
+        <image class="avatar" src="{{_uri+thread.headimg}}"></image>
+        <text class="accuse" bindtap="report" data-id="{{thread.id}}">举报</text>
+      </view>
+
+      <view class="content">
+        <view class="horizontal">
+          <text class="name">{{thread.name}}</text>
+          <text class="date">{{thread.formatDate}}</text>
+        </view>
+        <!-- <view class="desc">{{thread.content}}</view> -->
+        <textarea disabled="true" auto-height="true" value="{{thread.content}}" class="desc"/>
+
+        <view class="images">
+          <block wx:for="{{thread.imgs}}" wx:for-item="img" wx:key="{{idx}}">
+            <image class="img" src="{{_uri+img.src}}"></image>
+          </block>
+        </view>
+
+      </view>
+
+    </view>
+
+    <!--点赞和评论  -->
+    <view class="actions">
+      <view class="action" bindtap="toDetail" data-thread="{{thread}}" data-index="{{index}}">
+        <image class="icon" src="../../../res/icon/comment_img.png"></image>
+        <text class="txt">({{thread.comment_count}})</text>
+      </view>
+
+      <view class="action" bindtap="support" data-thread="{{thread}}" data-index="{{index}}">
+        <image class="icon" src="{{thread.is_support?'../../../res/icon/support_img.png':'../../../res/icon/support_img_red.png'}}"></image>
+        <text class="txt">({{thread.support_count}})</text>
+      </view>
+
+      <view wx:if="{{action==1}}" class="action" bindtap="deleteThread" data-id="{{thread.id}}" data-index="{{index}}">
+        <image class="icon" src="../../../res/icon/delect_img.png"></image>
+        <text class="txt">删除</text>
+      </view>
+
+    </view>
+
+  </view>
+
+  <!--发帖按钮  -->
+  <image class="add" src="../../../res/icon/write_post_img.png" bindtap="addThread"></image>
+
+
+</view>

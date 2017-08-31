@@ -1,0 +1,155 @@
+/* community.wxss */
+page{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+/*空视图  */
+.main .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.main .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: #f26d7e;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+
+.main .wrapper{
+  background: white;
+  width: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+  border-top: 1rpx solid lightgray;
+  border-bottom: 20rpx solid lightgray;
+}
+
+
+.main .wrapper .top{
+  margin: 0 20rpx 0 20rpx;
+  display: -webkit-flex;
+  border-bottom: 1rpx solid lightgray;
+  padding-bottom: 20rpx;
+}
+
+/*右侧内容  */
+.main .wrapper .top .content{
+  margin-left: 20rpx;
+  flex-flow: 100;
+  padding-top: 40rpx;
+}
+
+.main .wrapper .top .vertical{
+  width: 100rpx;
+  height: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+  position: relative;
+  float: left;
+  align-items: center;
+}
+
+/*左侧头像  */
+.main .wrapper .top .vertical .avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-top: 20rpx;
+}
+
+.main .wrapper .top .vertical .accuse{
+  font-size: 20rpx;
+  color:#444;
+  background: #eee;
+  padding: 10rpx 15rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+.main .wrapper .top .content .images {
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 600rpx;
+  /* background: greenyellow */
+}
+
+.main .wrapper .top .content .images .img{
+  height: 180rpx;
+  width: 180rpx;
+  /* background: red; */
+  margin: 20rpx 20rpx 0 0;
+}
+
+.main .wrapper .top .content .horizontal{
+  height: 50rpx;
+}
+
+.main .wrapper .top .content .horizontal .name{
+  font-size: 30rpx;
+  color: black;
+  line-height: 50rpx;
+}
+
+.main .wrapper .top .content .horizontal .date{
+  font-size: 24rpx;
+  color: gray;
+  position: absolute;
+  right:20rpx;
+  line-height: 50rpx
+}
+
+
+/*描述  */
+.main .wrapper .top .content .desc{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #444;
+  width: 100%;
+}
+
+/*点赞和评论  */
+.main .wrapper .actions{
+  width: 100%;
+  height: 60rpx;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .wrapper .actions .action{
+  flex-grow: 1;
+  display: -webkit-flex;
+  align-items: center;
+  border-left: 1rpx solid #eee;
+  justify-content: center;
+  height: 40rpx;
+}
+
+.main .wrapper .actions .action .icon{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 5rpx;
+}
+
+.main .wrapper .actions .action .txt{
+  font-size: 26rpx;
+  color: gray;
+  margin: 5rpx;
+}
+
+.main .add{
+  position: fixed;
+  z-index: 1;
+  bottom: 200rpx;
+  right: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+}

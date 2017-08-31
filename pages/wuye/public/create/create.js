@@ -49,6 +49,7 @@ Page({
     }
     //TODO base64转码
     var image = ''
+    
 
 
     if (that.data.repairType=='public'){

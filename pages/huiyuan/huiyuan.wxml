@@ -48,11 +48,12 @@
     </navigator>
 
     <!--社区论坛-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/discuss.png"></image>
-
-      <view class="item-text">社区论坛</view>
-    </view>
+    <navigator url="community/community?type=0" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/discuss.png"></image>
+        <view class="item-text">社区论坛</view>
+      </view>
+    </navigator>
 
     <!--我的报修-->
     <navigator url="repair/repair" open-type="navigate">
@@ -80,11 +81,12 @@
     
 
     <!--我的帖子-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/thread.png"></image>
-
-      <view class="item-text">我的帖子</view>
-    </view>
+    <navigator url="community/community?type=1" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/thread.png"></image>
+        <view class="item-text">我的帖子</view>
+      </view>
+    </navigator>
     
   <!--section-wrapper结束-->
   </view>
@@ -116,18 +118,20 @@
     </navigator>
 
     <!--联系我们-->
-    <view class="item">
-      <image class="item-icon" src="../../res/icon/contact.png"></image>
-
-      <view class="item-text">联系我们</view>
-    </view>
-
+    <navigator url="contact/contact" open-type="navigate">
+      <view class="item">
+        <image class="item-icon" src="../../res/icon/contact.png"></image>
+        <view class="item-text">联系我们</view>
+      </view>
+    </navigator>
+    
     <!--入驻申请-->
-    <view class="item noborder">
-      <image class="item-icon" src="../../res/icon/join.png"></image>
-
-      <view class="item-text">入驻申请</view>
-    </view>
+    <navigator url="apply/apply" open-type="navigate">
+      <view class="item noborder">
+        <image class="item-icon" src="../../res/icon/join.png"></image>
+        <view class="item-text">入驻申请</view>
+      </view>
+    </navigator>
 
   <!--section-wrapper结束-->
   </view>

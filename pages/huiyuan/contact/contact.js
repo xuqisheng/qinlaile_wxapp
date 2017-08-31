@@ -1,4 +1,4 @@
-// team.js
+// contact.js
 //引入controller
 const userController = require('../../../controller/userController.js').controller
 var app = getApp();
@@ -9,9 +9,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    _uri: app.globalData.URI,
-    pics:[],
-    info: '',
+    info:{},
+    _uri:app.globalData.URI,
+  },
+
+
+  //拨打电话
+  call:function(){
+    var mobile = this.data.info.hotline
+    console.log('mobile:'+mobile)
+    wx.makePhoneCall({
+      phoneNumber: mobile,
+    })
   },
 
   /**
@@ -19,18 +28,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+
     wx.showLoading({
-      title: '加载中',
+      title: '加载中...',
     })
-    userController.getTeamInfo().then(data=>{
-      // console.log(data)
+    userController.contactUs().then(data=>{
       wx.hideLoading()
-      
-      var info = app.convertHtmlToText(data.info)
+      console.log(data)
       if(data.code==10000){
         that.setData({
-          pics:data.pics,
-          info:info,
+          info:data
         })
       }else{
         wx.showToast({
@@ -39,6 +46,5 @@ Page({
       }
     })
   },
-
   
 })
