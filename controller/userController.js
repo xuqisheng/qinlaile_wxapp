@@ -11,6 +11,36 @@ const index = require('indexController.js').controller;
 class UserController {
 
   /**
+   * 发帖接口
+   */
+  postThread(content,imgs){
+    return baseController.postMid('/forumAdd.html?act=posting',{
+      content:content,
+      imgs:imgs
+    })
+  }
+
+  /**
+   * 提交评论
+   */
+  comment(id,content){
+    return baseController.postMid('/forumComment.html?act=submit',{
+      id:id,
+      content:content
+    })
+  }
+
+  /**
+   * 获取评论列表
+   */
+  getCommentList(id,page){
+    return baseController.postMid('/forumComment.html',{
+      id: id,
+      page:page,
+    })
+  }
+
+  /**
    * 帖子点赞
    */
   supportThread(id){

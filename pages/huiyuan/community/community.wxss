@@ -27,7 +27,7 @@ page{
   display: -webkit-flex;
   flex-direction: column;
   border-top: 1rpx solid lightgray;
-  border-bottom: 20rpx solid lightgray;
+  border-bottom: 20rpx solid #eee;
 }
 
 

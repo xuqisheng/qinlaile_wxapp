@@ -11,7 +11,7 @@
     <view class="top" bindtap="toDetail" data-thread="{{thread}}" data-index="{{index}}">
       <view class="vertical">
         <image class="avatar" src="{{_uri+thread.headimg}}"></image>
-        <text class="accuse" bindtap="report" data-id="{{thread.id}}">举报</text>
+        <text class="accuse" hidden="true" bindtap="report" data-id="{{thread.id}}">举报</text>
       </view>
 
       <view class="content">

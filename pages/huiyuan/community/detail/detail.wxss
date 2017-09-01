@@ -1,1 +1,264 @@
 /* detail.wxss */
+/* community.wxss */
+
+/*报修按钮 利用z-index重叠显示 */
+.main .thread{
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  height: 100rpx;
+  background: white;
+}
+
+.main .thread .inner{
+  padding: 20rpx;
+  display: -webkit-flex;
+}
+
+.main .thread .inner .input{
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 80%;
+  background: #eee;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: gray;
+  padding-left: 20rpx;
+}
+
+
+.main .thread .inner .button{
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 18%;
+  background: lightgray;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+  margin-left: 20rpx;
+}
+
+
+page{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+/*空视图  */
+.main .empty{
+  height: 100%;
+  width: 100%;
+}
+
+.main .empty .text{
+  text-align: center;
+  font-size: 34rpx;
+  color: #f26d7e;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+
+.main .wrapper{
+  background: white;
+  width: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+  border-top: 1rpx solid lightgray;
+  border-bottom: 20rpx solid #eee;
+}
+
+
+.main .wrapper .top{
+  margin: 0 20rpx 0 20rpx;
+  display: -webkit-flex;
+  border-bottom: 1rpx solid lightgray;
+  padding-bottom: 20rpx;
+}
+
+/*右侧内容  */
+.main .wrapper .top .content{
+  margin-left: 20rpx;
+  flex-flow: 100;
+  padding-top: 40rpx;
+}
+
+.main .wrapper .top .vertical{
+  width: 100rpx;
+  height: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+  position: relative;
+  float: left;
+  align-items: center;
+}
+
+/*左侧头像  */
+.main .wrapper .top .vertical .avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-top: 20rpx;
+}
+
+.main .wrapper .top .vertical .accuse{
+  font-size: 20rpx;
+  color:#444;
+  background: #eee;
+  padding: 10rpx 15rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+.main .wrapper .top .content .images {
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 600rpx;
+  /* background: greenyellow */
+}
+
+.main .wrapper .top .content .images .img{
+  height: 180rpx;
+  width: 180rpx;
+  /* background: red; */
+  margin: 20rpx 20rpx 0 0;
+}
+
+.main .wrapper .horizontal{
+  height: 50rpx;
+}
+
+.main .wrapper .horizontal .name{
+  font-size: 30rpx;
+  color: black;
+  line-height: 50rpx;
+}
+
+.main .wrapper .horizontal .date{
+  font-size: 24rpx;
+  color: gray;
+  position: absolute;
+  right:20rpx;
+  line-height: 50rpx
+}
+
+
+/*描述  */
+.main .wrapper .top .content .desc{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #444;
+  width: 100%;
+}
+
+/*点赞和评论  */
+.main .wrapper .actions{
+  width: 100%;
+  height: 60rpx;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .wrapper .actions .action{
+  flex-grow: 1;
+  display: -webkit-flex;
+  align-items: center;
+  border-left: 1rpx solid #eee;
+  justify-content: center;
+  height: 40rpx;
+}
+
+.main .wrapper .actions .action .icon{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 5rpx;
+}
+
+.main .wrapper .actions .action .txt{
+  font-size: 26rpx;
+  color: gray;
+  margin: 5rpx;
+}
+
+/*评论列表  */
+.main .wrapper .comments{
+  margin-top: 10rpx ;
+  background: #eee;
+  padding: 20rpx 10rpx 0 10rpx;
+}
+
+.main .wrapper .comments .title{
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #f26d7e;
+  background: white;
+  border-top: 1rpx solid lightgray;
+  border-bottom: 1rpx solid lightgray;
+}
+
+/*评论item  */
+.main .wrapper .comments .wrapper2{
+  background: white;
+  width: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+
+}
+
+/*最后一个item加长尾巴，否则报修按钮遮挡  */
+.main .wrapper .comments .wrapper2 .placeholder{
+  height: 100rpx;
+  background: white;
+}
+
+.main .wrapper .comments .wrapper2 .item{
+  margin: 0 20rpx 0 20rpx;
+  display: -webkit-flex;
+  border-bottom: 1rpx solid lightgray;
+}
+
+/*左侧头像  */
+.main .wrapper .comments .wrapper2 .item .avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  position: relative;
+  float: left;
+  margin-top: 20rpx;
+}
+
+/*右侧内容  */
+.main .wrapper .comments .wrapper2 .item .content{
+  margin-left: 20rpx;
+  flex-flow: 100;
+  margin-top: 40rpx;
+}
+
+
+.main .wrapper .comments .wrapper2 .item .content .name{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: black;
+}
+
+/*日期  */
+.main .wrapper .comments .wrapper2 .item .content .date{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: gray;
+}
+
+/*描述  */
+.main .wrapper .comments .wrapper2 .item .content .desc{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #444;
+}

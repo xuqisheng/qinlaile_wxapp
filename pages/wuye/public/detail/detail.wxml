@@ -40,7 +40,7 @@
           <image class="avatar" src="{{_uri+comment.headimg}}"></image>
           <view class="content">
             <view class="name">{{comment.name}}</view>
-            <view class="date">{{comment.add_time}}</view>
+            <view class="date">{{comment.formatTime}}</view>
             <view class="desc">{{comment.content}}</view>
           </view>
         </view>

@@ -1,1 +1,72 @@
 /* add.wxss */
+.main .submit{
+  text-align: center;
+  line-height: 60rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.main .submit .button{
+  width: 90%;
+  background: #42c017;
+  height: 60rpx;
+  border-radius: 6rpx;
+  color: white;
+  line-height: 60rpx;
+  font-size: 32rpx
+}
+
+page{
+  background: #eee;
+  height: 100%;
+  width: 100%
+}
+
+.main{
+  height: 100%;
+  width: 100%
+}
+
+.main .content{
+  background: white;
+  height: 300rpx;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: gray;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.main .wrapper{
+  display: -webkit-flex;
+  background: white;
+}
+
+.main .wrapper .title{
+  color: #444;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  font-size: 28rpx;
+  flex-grow: 0;
+  width: 120rpx;
+}
+
+.main .wrapper .images{
+  width: 600rpx;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-bottom: 20rpx;
+}
+
+.main .wrapper .images .img{
+  height: 160rpx;
+  width: 160rpx;
+  margin: 20rpx 0 0 20rpx;
+}

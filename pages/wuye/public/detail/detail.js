@@ -50,8 +50,12 @@ Page({
     serviceController.getCommentList(that.data.repair.id).then(data => {
       console.log(data)
       if (data.code == 10000) {
+        var temp = data.lists
+        temp.forEach(function (item, index) {
+          item['formatTime'] = util.timestampToDate(item.add_time)
+        })
         that.setData({
-          commentList: data.lists
+          commentList: temp
         })
       } else {
         wx.showToast({

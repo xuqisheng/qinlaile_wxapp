@@ -1,2 +1,20 @@
 <!--add.wxml-->
-<text>add.wxml</text>
+<form bindsubmit="formSubmit">
+  <view class="main">
+    <textarea placeholder="说点什么吧！" class="content" name="content"/>
+
+    <view class="wrapper">
+      <text class="title">上传照片</text>
+      <view class="images">
+        <block wx:for="{{images}}" wx:for-item="url" wx:key="{{index}}">
+          <image hidden="{{index>5}}" class="img" bindtap="chooseImage" data-index="{{index}}" src="{{url}}"></image>
+        </block>
+      </view>
+    </view>
+
+    <view class="submit">
+      <button form-type="submit" class="button">发表</button>
+    </view>
+  </view>
+  
+</form>
