@@ -4,7 +4,7 @@ page{
   width: 100%;
 }
 .main{
-  background: lightgray;
+  background: #eee;
   height: 100%;
   width: 100%;
 }

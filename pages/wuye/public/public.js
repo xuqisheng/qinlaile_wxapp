@@ -113,9 +113,9 @@ Page({
           repairList: data.lists,
         })
       } else {
-        wx.showToast({
-          title: data.message,
-        })
+        // wx.showToast({
+        //   title: data.message,
+        // })
         if (data.code == 10007) {
           that.setData({
             hasMore: false
@@ -140,9 +140,9 @@ Page({
           repairList: data.lists,
         })
       }else{
-        wx.showToast({
-          title: data.message,
-        })
+        // wx.showToast({
+        //   title: data.message,
+        // })
         if(data.code==10007){
           that.setData({
             hasMore: false

@@ -28,17 +28,15 @@ cmd命令行执行，输出当前所有page名称及数量
 
 #TODO
 
-##1.物业缴费绑定成功页面wuye/query/bind
+##物业缴费绑定成功页面wuye/query/bind
 
-##2.报修图片上传base64编码wuye/public/create.js
+##报修图片上传base64编码wuye/public/create.js
 
-##3.入驻申请图片上传base64编码huiyuan/apply/enter.js
+##入驻申请图片上传base64编码huiyuan/apply/enter.js
 
-##4.我的帖子举报功能
+##个人信息设置base64编码huiyuan/persoanl/personal.js
 
-##5.个人信息设置base64编码huiyuan/persoanl/personal.js
-
-##6.首页今日热点，更多不能支持html直接显示
+##首页今日热点，更多不能支持html直接显示
 
 
 #服务端待解决问题：

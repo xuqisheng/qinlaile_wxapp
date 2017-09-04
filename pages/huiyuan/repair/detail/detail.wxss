@@ -1,1 +1,76 @@
 /* detail.wxss */
+page{
+  background: #eee;
+}
+
+.main{
+  background: white;
+  font-size: 26rpx;
+  height: 100%;
+  width: 100%
+}
+
+.main .status{
+  border-top: 1rpx solid lightgray;
+  height: 60rpx;
+  padding: 0 20rpx;
+}
+
+.main .status .attr{
+  color: #444;
+  line-height: 60rpx;
+}
+
+.main .status .value{
+  color: #f26d7e;
+  line-height: 60rpx;
+  float: right;
+}
+
+.main .time{
+    border-top: 1rpx solid lightgray;
+  color: #444;
+  height: 60rpx;
+  padding: 0 20rpx;
+}
+
+.main .time .attr{
+  line-height: 60rpx;
+}
+
+.main .time .value{
+  line-height: 60rpx;
+  float: right;
+}
+
+.main .description{
+  border-top: 1rpx solid lightgray;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+
+.main .description{
+  padding: 0 20rpx;
+}
+
+.main .description .attr{
+  color: #444;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.main .description .value{
+  height: 60rpx;
+  line-height: 60rpx;
+  color: gray;
+}
+
+.main .imgs{
+  padding: 20rpx;
+  border-top: 1rpx solid lightgray;
+}
+
+.main .imgs .img{
+  height: 160rpx;
+  width: 160rpx;
+}

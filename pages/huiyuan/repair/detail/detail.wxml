@@ -1,2 +1,21 @@
 <!--detail.wxml-->
-<text>detail.wxml</text>
+<view class="main">
+  <view class="status">
+    <text class="attr">公共报修</text>
+    <view class="value">{{repair.status_name}}</view>
+  </view>
+
+  <view class="time">
+    <text class="attr">报修时间</text>
+    <view class="value">{{repair.formatDate}}</view>
+  </view>
+
+  <view class="description">
+    <text class="attr">情况描述</text>
+    <view class="value">{{repair.desc}}</view>
+  </view>
+
+  <view class="imgs">
+    <image src="{{_uri+repair.img}}" class="img"></image>
+  </view>
+</view>
