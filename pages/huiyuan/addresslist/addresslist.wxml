@@ -2,7 +2,7 @@
 <view class="main">
   <view class="empty" wx:if="{{empty}}">
     <view class="text">
-      没有收货地址
+      暂时没有收货地址，请添加
     </view>
   </view>
 

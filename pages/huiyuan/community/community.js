@@ -20,7 +20,7 @@ Page({
     threads:[],
     empty:true,
     //举报原因类型
-    report_type_lists:{}
+    report_type_lists:''
   },
 
   /**
@@ -39,7 +39,7 @@ Page({
     var thread = e.currentTarget.dataset.thread
     var threadStr = JSON.stringify(thread)
     wx.navigateTo({
-      url: 'detail/detail?threadStr=' + threadStr + '&index=' + index + '&action=' + that.data.action,
+      url: 'detail/detail?threadStr=' + threadStr + '&index=' + index + '&action=' + that.data.action +'&report_type_lists='+that.data.report_type_lists,
     })
   },
 
@@ -181,7 +181,7 @@ Page({
             thread['formatDate'] = util.timestampToDate(thread.add_time);
           }
           that.setData({
-            report_type_lists: data.report_type_lists,
+            report_type_lists: JSON.stringify(data.report_type_lists),
             threads: temp,
             empty: false
           })

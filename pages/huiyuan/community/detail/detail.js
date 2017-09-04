@@ -14,7 +14,8 @@ Page({
     _uri: app.globalData.URI,
     page:'1',
     commentList:[],
-    thread:{}
+    thread:{},
+    report_type_lists:''
   },
 
   /**
@@ -63,10 +64,12 @@ Page({
   onLoad: function (options) {
     var that = this
     // var index = options.index
+    var report_type_lists = options.report_type_lists
     var threadStr = options.threadStr
     var thread = JSON.parse(threadStr)
     that.setData({
-      thread: thread
+      thread: thread,
+      report_type_lists: report_type_lists
     })
 
     console.log(thread)
@@ -94,9 +97,9 @@ Page({
         })
         console.log(temp)
       } else {
-        wx.showToast({
-          title: data.message,
-        })
+        // wx.showToast({
+        //   title: data.message,
+        // })
       }
     })
   }

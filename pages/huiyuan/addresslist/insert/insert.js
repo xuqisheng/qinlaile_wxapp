@@ -46,6 +46,31 @@ Page({
   },
 
   /**
+   * 删除地址
+   */
+  delete:function(){
+    var that = this
+    wx.showModal({
+      title: '确定删除吗？',
+      success:function(res){
+        if(res.confirm){
+          userController.deleteAddress(that.data.address.id).then(data=>{
+            if(data.code==10000){
+              wx.navigateBack({})
+            }else{
+              wx.showToast({
+                title: data.message,
+              })
+            }
+          })
+        }else if (res.cancel){
+          console.log('用户取消')
+        }
+      }
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {

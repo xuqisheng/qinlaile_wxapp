@@ -1,0 +1,16 @@
+<!--report.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="main">
+    <view class="title">举报类型</view>
+    <radio-group name="report_type" class="report_type" bindchange="radioChange">
+      <label wx:for="{{report_type_lists}}">
+        <radio class="radio" value="{{index}}" checked="{{index==1}}" />{{report_type_lists[index]}}
+      </label>
+    </radio-group>
+    <view class="title">举报理由</view>
+
+    <textarea name="report_reason" class="report_reason" placeholder="请输入举报理由"/>    
+
+    <button class="submit" form-type="submit">提交</button>
+  </view>
+</form>

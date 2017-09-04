@@ -171,14 +171,31 @@
    line-height: 60rpx;
 }
 
-.main .submit{
-  width: 90%;
-  margin: 40rpx 5%;
-  background: #42c017;
+.main .action{
+  display: -webkit-flex; 
+  font-size: 30rpx;
+  justify-content: space-around; 
+}
+
+.main .action .delete{
+  color: #42c017;
+  margin: 20rpx;
+  flex-grow: 1;
   height: 60rpx;
+  background: white;
+  border: 2rpx solid #42c017;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.main .action .submit{
+  height: 60rpx;
+  margin: 20rpx;
+  flex-grow: 1;
+  background: #42c017;
   border-radius: 30rpx;
   color: white;
   text-align: center;
   line-height: 60rpx;
-  font-size: 30rpx;
 }

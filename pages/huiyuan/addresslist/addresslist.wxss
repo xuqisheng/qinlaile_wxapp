@@ -41,7 +41,7 @@ page{
 .main .empty .text{
   text-align: center;
   font-size: 34rpx;
-  color: gray; 
+  color: #f26d7e;
   position: absolute;
   top: 50%;
   width: 100%;

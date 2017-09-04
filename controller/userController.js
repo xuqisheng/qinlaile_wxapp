@@ -49,6 +49,18 @@ class UserController {
   }
 
   /**
+   * 举报帖子
+   */
+  reportThread(report_type,report_reason,id){
+    return baseController.postMid('/forum.html?act=report',{
+      app_id:'3',
+      report_type: report_type,
+      report_reason: report_reason,
+      id:id,
+    })
+  }
+
+  /**
    * 发帖接口
    */
   postThread(content,imgs){
@@ -218,6 +230,15 @@ class UserController {
       area_id: area_id,
       address: address,
       is_default: is_default
+    })
+  }
+
+  /**
+   * 删除地址
+   */
+  deleteAddress(addr_id){
+    return baseController.postMid('/addressList.html?act=del',{
+      addr_id: addr_id
     })
   }
 

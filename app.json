@@ -42,7 +42,8 @@
     "pages/huiyuan/community/community",
     "pages/huiyuan/community/detail/detail",
     "pages/huiyuan/community/add/add",
-    "pages/huiyuan/bindaddress/alter/alter"
+    "pages/huiyuan/bindaddress/alter/alter",
+    "pages/huiyuan/community/report/report"
   ],
   "window": {
     "backgroundTextStyle": "light",

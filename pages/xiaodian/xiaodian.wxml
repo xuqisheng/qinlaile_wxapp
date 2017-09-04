@@ -5,7 +5,7 @@
   <view class="search">
     <!-- <text class="text">搜索</text> -->
     <view class="text">
-      <input class="input" type="text" name="content" placeholder-style="font-size:26rpx;padding:0" placeholder="搜索" bindinput="textChange"/>
+      <input class="input" type="text" name="content" placeholder="搜索" bindinput="textChange"/>
     </view>
     
     <view class="wrapper" bindtap="search">

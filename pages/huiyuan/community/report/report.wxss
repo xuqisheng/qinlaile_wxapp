@@ -1,0 +1,51 @@
+/* report.wxss */
+page{
+  background: #eee;
+}
+
+.main{
+  background: white;
+  font-size: 28rpx;
+  color: black;
+   padding: 20rpx; 
+}
+
+.title{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.report_type{
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+
+.report_type .radio{
+  font-size: 26rpx;
+  height: 40rpx;
+  padding: 10rpx;
+  line-height: 40rpx;
+}
+
+.report_reason{
+  width: 97%;
+  font-size: 26rpx;
+  height: 300rpx;
+  border: 1rpx solid lightgray;
+   border-radius: 10rpx; 
+  padding: 10rpx;
+}
+
+.submit{
+  background: #42c017;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+}

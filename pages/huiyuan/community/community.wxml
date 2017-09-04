@@ -8,13 +8,15 @@
 
   <!--主体内容  -->
   <view class="wrapper" wx:for="{{threads}}" wx:key="{{index}}" wx:for-item="thread">
-    <view class="top" bindtap="toDetail" data-thread="{{thread}}" data-index="{{index}}">
+    <view class="top">
       <view class="vertical">
         <image class="avatar" src="{{_uri+thread.headimg}}"></image>
-        <text class="accuse" hidden="true" bindtap="report" data-id="{{thread.id}}">举报</text>
+        <navigator url="report/report?id={{thread.id}}&report_type_lists={{report_type_lists}}">
+          <text class="accuse">举报</text>
+        </navigator>
       </view>
 
-      <view class="content">
+      <view class="content" bindtap="toDetail" data-thread="{{thread}}" data-index="{{index}}">
         <view class="horizontal">
           <text class="name">{{thread.name}}</text>
           <text class="date">{{thread.formatDate}}</text>

@@ -103,7 +103,7 @@
 
 /*条目的小图标*/
 .item-icon{
-  width:40rpx;
+  width:44rpx;
   height:40rpx;
 }
 
