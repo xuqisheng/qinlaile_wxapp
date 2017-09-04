@@ -41,6 +41,12 @@ Page({
       if (data.code == 10000) {
         var temp = data.lists;
         if (temp != undefined && temp != null && temp.length != 0) {
+          for(let i=0;i<temp.legnth;i++){
+            var address = temp[i]
+            if(address.is_default==1){
+              wx.setStorageSync('default_address', address.addr)
+            }
+          }
           that.setData({
             addressList: temp,
             empty: false

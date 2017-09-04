@@ -1,0 +1,122 @@
+/* bindaddress.wxss */
+/*上部分*/
+
+.top{
+  border-bottom:20rpx solid #eee;
+  border-top: 20rpx solid #eee;
+}
+
+.top .item{
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  height: 70rpx;
+  width: 100%; 
+  display: -webkit-flex;
+}
+
+.top .border{
+  border-top:1rpx solid lightgray;
+}
+
+.top .item .attr{
+  width: 20%; 
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.top .item .value{
+  width: 75%; 
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+
+/*下部分*/
+.bottom{
+  padding: 10rpx;
+}
+
+/*当前位置和切换*/
+.current-wrapper{
+  padding: 20rpx 0;
+  height: 60rpx;
+}
+
+/*当前位置*/
+.current{
+  line-height: 60rpx;
+  width: 100%;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+/*切换至该位置*/
+.switch{
+  position: absolute;
+  right: 0;
+  color: rgb(66, 192, 23);
+  text-align: center;
+  font-size: 28rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  padding: 15rpx 30rpx;
+  border-radius: 45rpx;
+  margin-right: 10rpx
+}
+
+/*左侧的文字*/
+.left-title{
+  font-size: 26rpx;
+  margin: 20rpx 0;
+}
+
+.area-wrapper{
+  text-align: center
+}
+.area-wrapper text{
+  margin: 20rpx;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 15rpx 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  border-radius: 45rpx;
+}
+
+/*小区大厦学校*/
+.village{
+  margin: 20rpx 0rpx;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 15rpx 30rpx;
+  border: 2rpx solid rgb(66, 192, 23);
+  border-radius: 45rpx;
+}
+
+.action{
+  text-align: center;
+  margin-top: 40rpx
+}
+
+/*绑定*/
+.confirm{
+  background-color: rgb(66, 192, 23);
+  color: white;
+  padding: 15rpx 80rpx;
+}
+
+.bottom .button{
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 40rpx 20rpx;
+  background-color: rgb(66, 192, 23);
+  color: white;
+  margin-top: 100rpx;
+}
+
+
+
+

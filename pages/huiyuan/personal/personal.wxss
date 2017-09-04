@@ -1,14 +1,150 @@
 /* personal.wxss */
-/*立即注册*/
-.round-border{
+page{
+  background: #eee;
+  height: 100%;
+  width: 100%;
+  font-size: 28rpx;
+  color: #444;
+}
+
+.main{
+  height: 100%;
+  width: 100%;
+}
+
+/*退出登录*/
+.main .logout{
   text-align: center;
   font-size: 28rpx;
-  padding: 0rpx 60rpx;
   border-radius: 40rpx;
   height: 60rpx;
   line-height: 60rpx;
   margin: 40rpx 20rpx;
   background-color: rgb(66, 192, 23);
   color: white;
+  margin-top: 100rpx;
+}
+
+.main .avatar{
+  width: 100%;
+  margin-top: 20rpx;
+  background: white;
+  display: -webkit-flex;
+}
+
+.main .avatar .attr{
+  height: 160rpx;
+  line-height: 160rpx;
+  padding-left: 60rpx;
+  width: 20%;
+}
+
+.main .avatar .wrapper{
+  height: 160rpx;
+  width: 60%;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.main .avatar .wrapper .img{
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.main .avatar .wrapper .upload{
+  background: #eee;
+  padding: 15rpx 30rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-left: 100rpx;
+  color: gray;
+}
+
+.main .save{
+  display: -webkit-flex;
+  align-items: center;
+  width: 100%;
+  /* background: white; */
+}
+
+.main .save .button{
+  background: white;
+  padding: 0rpx 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: gray
+}
+
+.main .save .items{
+  display: -webkit-flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.main .save .items .item{
+  border-top: 1rpx solid #eee;
+  width: 100%;
+  background: white;
+  display: -webkit-flex;
+  height: 70rpx;
+}
+
+
+.main .save .items .item .attr{
+  width: 20%;
+  background: white;
+  padding-left: 60rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.main .save .items .item .value{
+  width: 60%;
+  background: white;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.main .address{
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: white;
+}
+
+.main .address .wrapper{
+  margin-top: 20rpx;
+  align-items: center;
+  display: -webkit-flex;
+  /* background: red */
+}
+
+.main .address .wrapper .icon{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.main .address .wrapper .vertical{
+  display: -webkit-flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.main .address .wrapper .vertical .detail{
+  color: gray;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+
+.main .address .wrapper .vertical .village{
+
+}
+
+.main .address .wrapper .arrow{
+  width: 15px;
+  height: 30rpx;
 }
 

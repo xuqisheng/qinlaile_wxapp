@@ -11,6 +11,44 @@ const index = require('indexController.js').controller;
 class UserController {
 
   /**
+   * 若realname修改，保存个人信息
+   */
+  savePersonalInfo(headimg, realname, nickname, license_number, province, city, area, village, address){
+    return baseController.postMid('/personSettings.html?act=save',{
+      headimg: headimg, 
+      realname: realname, 
+      nickname: nickname, 
+      license_number: license_number,
+      //固定值
+      province: province,
+      city: city,
+      area:area,
+      village: village,
+      address: address
+    })
+  }
+
+  /**
+   * 保存绑定地址数据
+   */
+  saveAddress(_province, _city, _area, _community_id, _detailAddress) {
+    return baseController.postMid('/bindAddress.html?act=save', {
+      province: _province,
+      city: _city,
+      area: _area,
+      community_id: _community_id,
+      detailAddress: _detailAddress
+    })
+  }
+
+  /**
+   * 个人信息获取
+   */
+  getPersonalInfo(){
+    return baseController.postMid('/personSettings.html');
+  }
+
+  /**
    * 发帖接口
    */
   postThread(content,imgs){
@@ -225,18 +263,7 @@ class UserController {
     })
   }
 
-  /**
-   * 保存绑定地址数据
-   */
-  saveAddress(_province, _city, _area, _community_id, _detailAddress) {
-    return baseController.postMid('/bindAddress.html?act=save',{
-      province: _province,
-      city: _city,
-      area: _area,
-      community_id: _community_id,
-      detailAddress: _detailAddress
-    })
-  }
+  
 
   /**
    * 根据获取的经纬度逆解析当前位置的地址信息
@@ -466,6 +493,10 @@ class UserController {
       key: 'username',
       data: info.realname,
     })
+    wx.setStorage({
+      key: 'nickname',
+      data: info.nickname,
+    })
     // 保存物业信息
     var property_user_id = info.property_user_id
     wx.setStorage({
@@ -476,6 +507,21 @@ class UserController {
     wx.setStorage({
       key: 'province_id',
       data: info.province_id,
+    })
+    //city_id
+    wx.setStorage({
+      key: 'city_id',
+      data: info.city_id,
+    })
+    //area_id
+    wx.setStorage({
+      key: 'area_id',
+      data: info.area_id,
+    })
+    //shipping_addr
+    wx.setStorage({
+      key: 'default_address',
+      data: info.shipping_addr,
     })
     //小区名称village_name
     wx.setStorage({

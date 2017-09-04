@@ -1,0 +1,54 @@
+<!--bindaddress.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="top">
+    <view class="item">
+      <text class="attr">被服务人</text>
+      <input type="text" class="value" name="realname" placeholder="请输入被服务人员的姓名" value="{{realname}}"/>
+    </view>
+
+    <view class="item border">
+      <text class="attr">联系电话</text>
+      <text class="value">{{mobile}}</text>
+    </view>
+  </view>
+
+  <!--bottom开始-->
+  <view class="bottom">
+    <view class="current-wrapper">
+      <text class="current">当前位置：{{address}}</text>
+      <text class="switch">切换至该位置</text>
+    </view>
+
+    <view class="left-title">手动设置位置</view>
+
+    <!--省市区选择-->
+    <view class="area-wrapper">
+      <view class="area">
+
+        <text class="province">{{province}}</text>
+        <text class="city">{{city}}</text>
+         <text class="district" bindtap="selectArea">{{area}}</text> 
+
+        <!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;padding:20rpx;" 
+          value="{{area}}" bindchange="bindContentChange">
+          <picker-view-column>
+            <text wx:for="{{areas}}" class="district">{{item.name}}</text>
+          </picker-view-column>
+        </picker-view> -->
+        
+      </view>
+    </view>
+
+    <view class="left-title">小区/大厦/学校</view>
+    <view class="village" bindtap="selectVillage">{{village}}</view>
+
+    <view class="left-title">楼号/门牌</view>
+    <view class="village">
+      <input type="text" bindinput="onAddressListener" placeholder="请输入详细地址" value="{{detailAddress}}"/>
+    </view>
+
+    <button form-type="submit" class="button">保存</button>
+    <!--bottom结束-->
+  </view>
+
+</form>

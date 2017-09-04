@@ -37,3 +37,5 @@ cmd命令行执行，输出当前所有page名称及数量
 ##3.入驻申请图片上传base64编码huiyuan/apply/enter.js
 
 ##4.我的帖子举报功能
+
+##5.个人信息设置base64编码huiyuan/persoanl/personal.js

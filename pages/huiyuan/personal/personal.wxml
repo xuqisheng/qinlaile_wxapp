@@ -1,6 +1,53 @@
 <!--personal.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="main">
+
+    <view class="avatar">
+      <text class="attr">头像</text>
+      <view class="wrapper">
+        <image class="img" src="{{headimg?headimg:_uri+info.headimg}}"></image>
+        <text class="upload" bindtap="chooseImage">上传头像</text>
+      </view>
+    </view>
+
+    <view class="save">
+      <view class="items">
+        <view class="item">
+          <text class="attr">姓名</text>
+          <input type="text" class="value" name="realname" placeholder="请输入姓名" value="{{info.realname}}"/>
+        </view>
+
+        <view class="item">
+          <text class="attr">昵称</text>
+          <input type="text" class="value" name="nickname" placeholder="取个喜欢的昵称吧" value="{{info.nickname}}"/>
+        </view>
+
+        <view class="item">
+          <text class="attr">车牌号</text>
+          <input type="text" class="value" name="license_number" placeholder="请输入车牌号" value="{{info.license_number}}"/>
+        </view>
+      </view>
+      
+      <button form-type="submit" class="button">保存</button>
+    </view>
+    
+
+    <view class="address">
+      <view class="attr">上门服务地址</view>
+      <view class="wrapper" bindtap="chooseAddress">
+        <image class="icon" src="../../../res/icon/server_location_icon.png"></image>
+        <view class="vertical">
+          <view class="village">{{village_name}}</view>
+          <view class="detail">{{city_name+area_name+village_name+address}}</view>
+        </view>
+        <!-- <image class="arrow" src="../../../res/icon/qianjin.png"></image> -->
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <!--退出登录-->
+    <view class="logout" bindtap="logout">退出当前账号</view>
+  </view>
+</form>
 
 
-
-<!--退出登录-->
-<view class="round-border" bindtap="logout">退出当前账号</view>

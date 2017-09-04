@@ -137,6 +137,12 @@ Page({
     //   console.log(data)
     // })
 
+    if(is_default){
+      wx.setStorage({
+        key: 'default_address',
+        data: detail
+      })
+    }
     
 
     if(that.data.action=='edit'){

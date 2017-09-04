@@ -41,7 +41,8 @@
     "pages/huiyuan/apply/enter/agreement/agreement",
     "pages/huiyuan/community/community",
     "pages/huiyuan/community/detail/detail",
-    "pages/huiyuan/community/add/add"
+    "pages/huiyuan/community/add/add",
+    "pages/huiyuan/bindaddress/alter/alter"
   ],
   "window": {
     "backgroundTextStyle": "light",
