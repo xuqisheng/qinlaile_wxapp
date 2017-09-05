@@ -1,0 +1,33 @@
+/* detail.wxss */
+.main{
+  height: 100%;
+  width: 100%;
+  font-size: 26rpx;
+}
+
+.main .title{
+  width: 100%;
+  border-top: 1rpx solid lightgrey;
+  text-align: center;
+  padding: 20rpx;
+}
+
+.main .time{
+  border-bottom: 1rpx solid lightgrey;
+  text-align: center;
+  margin:0 20rpx;
+  padding-bottom: 20rpx;
+  color: gray;
+}
+
+.main .content{
+  font-size: 30rpx;
+  margin: 20rpx;
+}
+
+.main .company{
+  margin-top: 60rpx;
+  padding: 20rpx;
+  text-align: right;
+  color: gray;
+}

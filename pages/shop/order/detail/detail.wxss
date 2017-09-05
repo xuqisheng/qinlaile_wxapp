@@ -1,6 +1,7 @@
 /* detail.wxss */
 .main{
-
+height: 100%;
+  width: 100%
 }
 
 /*订单状态  */
@@ -9,19 +10,58 @@
   color: black;
   padding: 20rpx;
 	position: relative;
-  border-top: 2rpx solid lightgray;
-  border-bottom: 2rpx solid lightgray;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
 }
 
-.main .title .gray{
-  color:gray;
-  margin-left:20rpx;
+
+.main .status{
+  border-top: 1rpx solid lightgray;
+  height: 60rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #eee;
 }
 
-.main .title .red{
-  color:red;
-  margin-left:20rpx;
+.main .status .attr{
+  color: black;
+  line-height: 60rpx;
 }
+
+.main .status .wrapper{
+  line-height: 60rpx;
+  float: right;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .status .wrapper .text{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0;
+  color: #f26d7e;
+}
+
+.main .status .wrapper .borderright{
+  border-right: 1rpx solid lightgray;
+    padding-right: 20rpx;
+}
+
+.main .status .wrapper .gray{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0;
+  color: gray;
+}
+
+
+.main .status .wrapper .call{
+  margin-left: 20rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
 
 
 /*定位等每个条目的外层*/
@@ -53,9 +93,24 @@
   margin-left: 20rpx;
 }
 
+/*店铺评价*/
+.main .comment{
+  border-top: 20rpx solid #eee;
+  height: 80rpx;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.main .comment .attr{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-right: 20rpx;
+}
+
 /*商品模块*/
 .main .goods{
-  border-bottom: 1rpx solid lightgray;
+  border-bottom: 1rpx solid #eee;
 }
 
 /*左侧标题*/
@@ -64,14 +119,13 @@
   color: black;
   padding: 20rpx;
 	position: relative;
-  border-top: 20rpx solid lightgray;
+  border-top: 20rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
 }
 
 .main .goods .item {
-	position: relative;
-	padding: 20rpx 20rpx 20rpx 20rpx;
-	border-top: 1rpx solid #f7f7f7;
-
+	padding: 20rpx;
+	border-bottom: 1rpx solid #f7f7f7;
 }
 
 .main .goods .item .pic{
@@ -107,6 +161,22 @@
   color: gray;
 }
 
+.main .goods .actual-pay{
+  padding: 20rpx;
+  text-align: right;
+  font-size: 28rpx;
+}
+
+.main .goods .actual-pay .gray{
+  color: gray;
+}
+
+.main .goods .actual-pay .red{
+  color: red;
+  margin-left: 20rpx;
+}
+
+
 /*订单总额  */
 .main .description{
   font-size: 28rpx;
@@ -117,7 +187,7 @@
 }
 
 .main .bordertop{
-  border-top: 20rpx solid lightgray;
+  border-top: 20rpx solid #eee;
 }
 
 .main .description .msg{
@@ -132,7 +202,7 @@
 .main .action{
   text-align: center;
   padding-top: 40rpx;
-  border-top: 20rpx solid lightgray;
+  border-top: 20rpx solid #eee;
 }
 
 .main .action .cancel{
@@ -152,4 +222,54 @@
   border-radius: 10rpx;
   color: white;
   margin: 20rpx
+}
+
+.main .action-status .action-button{
+  width: 90%;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  background: #42c017;
+}
+
+.main .action-status{
+  background: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx 0;
+  display: -webkit-flex;
+  justify-content: space-around;
+}
+
+.main .action-status .pay{
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  background: #42c017;
+}
+
+.main .action-status .cancel{
+  width: 300rpx;
+  border: 2rpx solid #42c017;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #42c017;
+  font-size: 30rpx;
+  background: white;
+}
+
+.main .placeholder{
+  height: 120rpx;
+  background: white;
+  width: 100%;
 }

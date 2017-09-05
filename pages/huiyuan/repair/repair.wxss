@@ -81,6 +81,9 @@ page{
   color: #f26d7e;
 }
 
+.body .repairList .repair .content{
+  font-size: 24rpx;
+}
 
 .body .repairList .repair .content .item{
   display: -webkit-flex;
@@ -96,7 +99,6 @@ page{
 }
 
 .body .repairList .repair .content .item .txt{
-  font-size: 26rpx;
   color: #444;
   line-height: 50rpx;
 }

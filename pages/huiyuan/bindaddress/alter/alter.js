@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //当前位置s
+    //当前位置
     address: '',
     province: '山东省',
     provinceId: '1502',

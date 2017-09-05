@@ -11,13 +11,35 @@ Page({
    */
   data: {
     _uri: app.globalData.URI,
-    curNum:'1',
+    curNum:1,
     status:'',
     tabs:['全部','公共报修','个人报修'],
     itemSelected:0,
     repairList:[],
     empty:true,
     has_next:0,
+
+    //加载中
+    loading:false,
+  },
+
+  /**
+   * 滚动到底部
+   */
+  scrollToBottom:function(){
+    var that = this
+
+    if (that.data.loading||that.data.has_next==0){
+      return
+    }
+    
+    that.setData({
+      curNum: that.data.curNum+1
+    })
+    console.log('加载更多curNum:' + that.data.curNum + ',loading=' + that.data.loading +',has_next='+that.data.has_next)
+
+    that.getRepairList()
+
   },
 
   //toDetail
@@ -54,7 +76,9 @@ Page({
 
     that.setData({
       itemSelected: index,
-      status:status
+      status:status,
+      curNum:1,
+      repairList: [],
     })
 
     this.getRepairList()
@@ -67,11 +91,17 @@ Page({
     this.getRepairList()
   },
 
+  /**
+   * 加载数据
+   */
   getRepairList:function(){
     wx.showLoading({
       title: '加载中...',
     })
     var that = this
+    that.setData({
+      loading:true
+    })
     if (that.data.status==''){
       serviceController.getRepairList(that.data.curNum).then(data => {
         that.process(data)
@@ -87,14 +117,24 @@ Page({
    * 处理响应数据
    */
   process(data){
+    var that = this;
+    that.setData({
+      loading: false
+    })
     wx.hideLoading()
     console.log(data)
     if(data.code==10000){
-      var temp = data.lists.forEach(function(item,index){
+      data.lists.forEach(function(item,index){
         item['formatDate'] = util.timestampToDate(item.add_time)
       })
-      this.setData({
-        repairList:data.lists,
+      var repairList = that.data.repairList
+      
+      //连接两个或更多的数组，并返回结果
+      repairList = repairList.concat(data.lists);
+
+      console.log(repairList)
+      that.setData({
+        repairList: repairList,
         empty:false,
         has_next: data.has_next
       })
@@ -103,7 +143,8 @@ Page({
       //   title: data.message,
       // })
       this.setData({
-        empty: true
+        empty: true,
+        has_next:0,
       })
     }
   }

@@ -76,6 +76,11 @@ page{
   color: gray;
 }
 
+.body .bookList .book .sn .red{
+  float: right;
+  color: #f26d7e;
+}
+
 .body .bookList .book .content{
   /* padding: 0 20rpx 0 20rpx; */
 }

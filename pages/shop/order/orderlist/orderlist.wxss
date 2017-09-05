@@ -76,6 +76,11 @@ page{
   color: gray;
 }
 
+.body .orderList .order .sn .red{
+  float: right;
+  color: #f26d7e;
+}
+
 /*商品列表  */
 .body .orderList .order .goods {
 	position: relative;

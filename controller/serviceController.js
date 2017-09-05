@@ -71,6 +71,15 @@ class ServiceController {
   }
 
   /**
+   * 获取公告详情
+   */
+  getNoticeDetail(id){
+    return baseController.postMid('/announceDetail.html',{
+      aid:id
+    })
+  }
+
+  /**
    * 查询物业
    */
   queryProperty(mobile){

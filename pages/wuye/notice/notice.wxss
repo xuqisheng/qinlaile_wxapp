@@ -18,14 +18,18 @@
 }
 
 .main .wrapper .desc{
+  padding-right: 20rpx;
   font-size: 26rpx;
   color: gray;
+  margin-top: 20rpx;
 }
 
 .main .wrapper .time{
+  padding-right: 30rpx;
   text-align: right;
   font-size: 26rpx;
   color: gray;
+  margin-top: 20rpx;
 }
 
 .main .empty{

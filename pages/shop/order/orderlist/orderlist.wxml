@@ -14,7 +14,7 @@
   </view>
 
   <!--订单列表-->
-  <view class="orderList" wx:else>
+  <scroll-view class="orderList" style="height:800px;" scroll-top="0px" scroll-y="true" bindscrolltolower="scrollToBottom" wx:else>
     <block wx:for="{{orderList}}" wx:for-item="order" wx:key="*this">
       <!--订单item-->
       <navigator url="../detail/detail?orderid={{order.order_info.id}}" open-type="navigate">
@@ -22,7 +22,7 @@
           <!--订单状态-->
           <view class="sn">
             <text>订单编号：{{order.order_info.order_sn}}</text>
-            <text class="status">{{order.order_info.status_text}}</text>
+            <text class="{{order.order_info.status==1||order.order_info.status==2||order.order_info.status==3?'red':'status'}}">{{order.order_info.status_text}}</text>
           </view>
 
           <!--商品列表--> 
@@ -44,6 +44,6 @@
         </view>
       </navigator>
     </block>
-  </view>
+  </scroll-view>
 
 </view>

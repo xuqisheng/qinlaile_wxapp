@@ -43,7 +43,8 @@
     "pages/huiyuan/community/detail/detail",
     "pages/huiyuan/community/add/add",
     "pages/huiyuan/bindaddress/alter/alter",
-    "pages/huiyuan/community/report/report"
+    "pages/huiyuan/community/report/report",
+    "pages/wuye/notice/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

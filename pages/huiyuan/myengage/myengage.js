@@ -25,10 +25,16 @@ Page({
     itemSelected: 0,
     //分页参数，默认1
     curNum: 1,
+    status:'-1',
 
     //订单列表
     bookList: [],
-    empty: true
+    empty: true,
+
+    has_next: 0,
+
+    //加载中
+    loading: false,
   },
 
   /**
@@ -36,7 +42,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    that.getBookList(that.data.curNum,'-1');
+    that.getBookList();
 
   },
 
@@ -52,14 +58,21 @@ Page({
   /**
    * 获取预约列表
    */
-  getBookList(curNum,status){
+  getBookList(){
     var that = this
+    that.setData({
+      loading: true
+    })
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     if(status=='-1'){
-      serviceController.getBookList(curNum).then(data=>{
+      serviceController.getBookList(that.data.curNum).then(data=>{
         that.process(data)
       })
     }else{
-      serviceController.getBookListByStatus(curNum, status).then(data => {
+      serviceController.getBookListByStatus(that.data.curNum, that.data.status).then(data => {
         that.process(data)
       })
     }
@@ -69,30 +82,53 @@ Page({
    * 处理数据
    */
   process(data){
+    wx.hideLoading()
     var that = this
+    that.setData({
+      loading: false
+    })
     console.log(data)
-    // 是否还有更多
-    var has_next = data.has_next
+    if (data.code == 10000) {
+      data.lists.forEach(function (item, index) {
+        item['formatDate'] = util.timestampToDate(item.booking_time);
+      })
+      var bookList = that.data.bookList
 
-    var temp = data.lists;
+      //连接两个或更多的数组，并返回结果
+      bookList = bookList.concat(data.lists);
 
-    if (temp != undefined && temp.length != 0) {
-      for(let i=0;i<temp.length;i++){
-        let book = temp[i]
-        book['formatDate'] = util.timestampToDate(book.booking_time);
-      }
-      console.log(temp)
-
+      console.log(bookList)
       that.setData({
-        bookList: temp,
-        empty: false
+        bookList: bookList,
+        empty: false,
+        has_next: data.has_next
       })
     } else {
-      that.setData({
-        bookList: [],
-        empty: true
+      this.setData({
+        empty: true,
+        has_next: 0,
       })
     }
+
+  },
+
+  /**
+   * 滚动到底部
+   */
+  scrollToBottom: function () {
+    var that = this
+
+    if (that.data.loading || that.data.has_next == 0) {
+      return
+    }
+
+    that.setData({
+      curNum: that.data.curNum + 1
+    })
+    console.log('加载更多curNum:' + that.data.curNum + ',loading=' + that.data.loading + ',has_next=' + that.data.has_next)
+
+    that.getBookList()
+
   },
 
   /**
@@ -129,10 +165,13 @@ Page({
 
     that.setData({
       itemSelected: index,
+      status: status,
+      curNum: 1,
+      bookList: [],
     })
 
     //重新请求订单
-    that.getBookList(that.data.curNum, status);
+    that.getBookList();
 
   },
 

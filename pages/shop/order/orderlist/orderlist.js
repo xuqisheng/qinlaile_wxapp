@@ -27,9 +27,31 @@ Page({
 
     //订单列表
     orderList:[],
-    empty:true
+    empty:true,
+
+    has_next: 0,
+    //加载中
+    loading: false,
   },
 
+  /**
+     * 滚动到底部
+     */
+  scrollToBottom: function () {
+    var that = this
+
+    if (that.data.loading || that.data.has_next == 0) {
+      return
+    }
+
+    that.setData({
+      curNum: that.data.curNum + 1
+    })
+    console.log('加载更多curNum:' + that.data.curNum + ',loading=' + that.data.loading + ',has_next=' + that.data.has_next)
+
+    that.getOrderList()
+
+  },
 
 
   /**
@@ -45,7 +67,9 @@ Page({
     }
 
     that.setData({
-      itemSelected:index,
+      itemSelected: index,
+      curNum: 1,
+      orderList: [],
     })
 
     //重新请求订单
@@ -56,32 +80,50 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function () {
     var that = this
+    that.setData({
+      curNum: 1,
+      orderList: [],
+    })
     that.getOrderList();
   },
 
   /**获取订单列表 */
   getOrderList:function(){
     var that = this
-    shopController.getOrderList(that.data.itemSelected, that.data.curNum).then(data => {
-      var temp = data.data;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    that.setData({
+      loading: true
+    })
 
-      console.log(temp)
-      
-      if(temp!=undefined && temp.length!=0){
+    shopController.getOrderList(that.data.itemSelected, that.data.curNum).then(data => {
+      that.setData({
+        loading: false
+      })
+      wx.hideLoading()
+
+      console.log(data)
+
+      if (data.code == 10000) {
+        var orderList = that.data.orderList
+        //连接两个或更多的数组，并返回结果
+        orderList = orderList.concat(data.data);
+
+        // console.log(orderList)
         that.setData({
-          orderList: temp,
-          empty:false
+          orderList: orderList,
+          empty: false,
+          has_next: data.has_next
         })
-      }else{
-        that.setData({
-          orderList: [],
-          empty:true
+      } else {
+        this.setData({
+          empty: true,
+          has_next: 0,
         })
       }
-
-      
     })
   },
   

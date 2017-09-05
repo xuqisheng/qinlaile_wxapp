@@ -35,7 +35,7 @@ button.green.disabled {
 	background: #42c017;
 }
 
-/*空数据红色  */
+/*常用红色  */
 .empty-red{
   background: #f26d7e;
 }

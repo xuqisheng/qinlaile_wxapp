@@ -9,25 +9,43 @@ const baseController = require('baseController.js').controller;
 class ShopController {
 
   /**
-   * post方式抓取API数据，封装所有的必须参数mid，did和encrypt_did
-   * @param  {String} uri    链接
-   * @param  {Objece} _param  参数
-   * @return {Promise}       包含抓取任务的Promise
+   * 订单详情店铺评分
    */
-  _post_request(uri,_param){
-    var url = `${URI}/App` + uri;
-    var param = Object.assign({
-      mid: app.globalData.mid,
-      did: 'A8:60:B6:2D:81:AB',
-      encrypt_did: 'db1d273c49d4fa014b4d17250dfc4da4',
-    },_param);
-
-    console.log('-----请求开始-----')
-    console.log(url)
-    console.log(param)
-    console.log('-----请求结束-----')
-    return request.postAsync(url,param).then(res => res.data)
+  comment(order_id,score){
+    return baseController.postMid('/orderDetail.html?act=comment',{
+      order_id: order_id,
+      score:score
+    })
   }
+
+  /**
+   * 支付
+   */
+  pay(order_id,payway){
+    return baseController.postMid('/orderDetail.html?act=pay', {
+      order_id: order_id,
+      payway: payway
+    })
+  }
+
+  /**
+   * 取消订单
+   */
+  cancel(order_id){
+    return baseController.postMid('/orderDetail.html?act=cancel', {
+      order_id: order_id,
+    })
+  }
+
+  /**
+  * 确认收货
+  */
+  confirm(order_id) {
+    return baseController.postMid('/orderDetail.html?act=confirm', {
+      order_id: order_id,
+    })
+  }
+
 
   /**
   * 获取店铺商品数据

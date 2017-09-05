@@ -10,7 +10,7 @@
   <view class="wrapper" wx:for="{{threads}}" wx:key="{{index}}" wx:for-item="thread">
     <view class="top">
       <view class="vertical">
-        <image class="avatar" src="{{_uri+thread.headimg}}"></image>
+        <image class="avatar" src="{{thread.headimg}}"></image>
         <navigator url="report/report?id={{thread.id}}&report_type_lists={{report_type_lists}}">
           <text class="accuse">举报</text>
         </navigator>

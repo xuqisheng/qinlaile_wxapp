@@ -2,9 +2,13 @@
 <!--body-->
 <view class="main">
   <!--订单状态  -->
-  <view class="title">
-    <text>订单状态：</text>
-    <text class="{{orderDetail.order_info.status==1?'red':'gray'}}">{{orderDetail.order_info.statusTxt}}</text>
+  <view class="status">
+    <text class="attr">订单状态：</text>
+    <view class="wrapper">
+      <text class="{{orderDetail.order_info.status==2?'borderright':''}} {{orderDetail.order_info.status==1||orderDetail.order_info.status==2||orderDetail.order_info.status==3?'text':'gray'}}">{{orderDetail.order_info.statusTxt}}</text>
+      <image wx:if="{{orderDetail.order_info.status==2}}" class="call" bindtap="call" data-tel="{{orderDetail.shop_info.tel}}" src="../../../../res/icon/contact.png"></image>
+    </view>
+    <!-- <text class="{{orderDetail.order_info.status==1||orderDetail.order_info.status==2||orderDetail.order_info.status==3?'red':'gray'}}">{{orderDetail.order_info.statusTxt}}</text> -->
   </view>
 
   <!--收货地址信息-->
@@ -16,7 +20,14 @@
       <view class="addr">收货地址：{{orderDetail.order_info.area_info+orderDetail.order_info.delivery_address}}</view>
     </view>
   </view>
-  <!--收货地址信息-->
+
+  <!--评价店铺：comment为[]时评价事件-->
+  <view class="comment" wx:if="{{orderDetail.order_info.status==4}}">
+    <text class="attr">{{orderDetail.comment.length==0?'评价店铺：':'已评价：'}}</text>
+    <view class="stars" wx:for="{{stars}}" wx:key="{{index}}">
+      <image src="{{item}}" class="star"></image>
+    </view>
+  </view>
 
   <!--商品信息  -->
   <view class="goods">
@@ -38,16 +49,22 @@
         <!--名称和价格等-->
       </view>
     </block>
+
+    <!--实付金额  -->
+    <view class="actual-pay" wx:if="{{orderDetail.order_info.status!=1}}">
+      <text class="gray">实付金额</text>
+      <text class="red">￥{{orderDetail.order_info.money}}</text>
+    </view>
   </view>
 
   <!--支付信息  -->
-  <view class="description bordertop">
+  <view class="description bordertop" wx:if="{{orderDetail.order_info.status==1}}">
     <text>共需支付</text>
     <text class="msg red">￥{{orderDetail.order_info.money}}</text>
   </view>
 
   <!--支付方式  -->
-  <view class="description" hidden="{{orderDetail.order_info.status!=1}}">
+  <view class="description" wx:if="{{orderDetail.order_info.status==1}}">
     <text>支付方式</text>
     <text class="msg">{{orderDetail.order_info.pay_name}}</text>
   </view>
@@ -70,10 +87,19 @@
     <text class="msg">{{add_time}}</text>
   </view>
 
-  <!--订单操作  -->
-  <view class="action" hidden="{{orderDetail.order_info.status!=1}}">
-    <text class="cancel">取消订单</text>
-    <text class="pay">立即支付</text>
+  <view class="placeholder"></view>
+
+  <!--订单操作  1取消订单、立即支付 4提交评价 3确认收货 wx:if="{{orderDetail.order_info.status==1}}"-->
+  <view class="action-status" wx:if="{{orderDetail.order_info.status==1}}">
+    <text class="cancel" bindtap="cancel">取消订单</text>
+    <text class="pay" bindtap="pay">立即支付</text>
   </view>
 
+  <view class="action-status" wx:if="{{orderDetail.order_info.status==3}}">
+    <text class="action-button" bindtap="confirm">确认收货</text>
+  </view>
+  
+  <view class="action-status" wx:if="{{orderDetail.order_info.status==4}}">
+    <text class="action-button" bindtap="comment">提交评价</text>
+  </view>
 </view>

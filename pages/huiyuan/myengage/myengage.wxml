@@ -14,14 +14,14 @@
   </view>
 
   <!--订单列表-->
-  <view class="bookList" wx:else>
+  <scroll-view style="height:800px;" scroll-top="0px" scroll-y="true" bindscrolltolower="scrollToBottom" class="bookList" wx:else>
     <block wx:for="{{bookList}}" wx:for-item="book" wx:key="*this">
       <!--订单item-->
       <view class="book" bindtap="toDetail" data-book="{{book}}">
         <!--订单状态-->
         <view class="sn">
           <text>{{book.t_name}}</text>
-          <text class="status">{{book.status_name}}</text>
+          <text class="{{book.status==0||book.status==1?'red':'status'}}">{{book.status_name}}</text>
         </view>
 
         <view class="content">
@@ -51,7 +51,7 @@
       </view>
 
     </block>
-  </view>
+  </scroll-view>
 
 </view>
 

@@ -21,14 +21,42 @@ page{
   line-height: 60rpx;
 }
 
-.main .status .value{
-  color: #f26d7e;
+.main .status .wrapper{
   line-height: 60rpx;
   float: right;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.main .status .wrapper .text{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0;
+  padding-right: 20rpx;
+  border-right: 1rpx solid lightgray;
+  color: #f26d7e;
+}
+
+.main .status .wrapper .gray{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0;
+  padding-right: 20rpx;
+  border-right: 1rpx solid lightgray;
+  color: gray;
+}
+
+
+.main .status .wrapper .call{
+  margin-left: 20rpx;
+  height: 40rpx;
+  width: 40rpx;
 }
 
 .main .time{
-    border-top: 1rpx solid lightgray;
+  border-top: 1rpx solid lightgray;
   color: #444;
   height: 60rpx;
   padding: 0 20rpx;
@@ -68,9 +96,67 @@ page{
 .main .imgs{
   padding: 20rpx;
   border-top: 1rpx solid lightgray;
+  
 }
 
 .main .imgs .img{
   height: 160rpx;
   width: 160rpx;
+}
+
+.main .reply{
+  width: 100%;
+}
+
+.main .reply .title{
+  color: #f26d7e;
+  padding-left: 20rpx;
+  border-top: 1rpx solid lightgray;
+    border-bottom: 1rpx solid lightgray;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.main .reply .reason{
+  color: gray;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+}
+
+.main .reply .time2{
+  text-align: right;
+  color: gray;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  padding-right: 20rpx;
+
+}
+
+.frm .radio{
+  border-top: 20rpx solid #eee;
+  font-size: 28rpx;
+  color: black;
+  padding: 20rpx;
+  height: 90rpx;
+  display: -webkit-flex;
+}
+
+.frm .radio .icon{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+}
+
+.frm .radio .name{
+  line-height: 90rpx;
+}
+
+.frm .radio .box{
+  line-height: 90rpx;
+  float: right;
+  /*绝对定位靠右*/
+  position: absolute;
+  right: 10rpx
 }

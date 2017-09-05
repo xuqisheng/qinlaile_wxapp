@@ -14,7 +14,7 @@
   </view>
 
   <!--订单列表-->
-  <view class="repairList" wx:else>
+  <scroll-view class="repairList" style="height:800px;" scroll-top="0px" scroll-y="true" bindscrolltolower="scrollToBottom" wx:else>
     <block wx:for="{{repairList}}" wx:for-item="repair" wx:key="{{index}}">
       <!--订单item-->
       <view class="repair" bindtap="toDetail" data-repair="{{repair}}">
@@ -56,7 +56,7 @@
       </view>
 
     </block>
-  </view>
+  </scroll-view>
 
 </view>
 
