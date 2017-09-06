@@ -7,21 +7,23 @@
   </view>
 
   <view class="wrapper" wx:else>
-    <view class="item" wx:for="{{addressList}}" wx:for-item="address" wx:key="{{index}}" data-address="{{address}}" bindtap="toEdit">
-      <view class="basic">
-        <text class="name">{{address.consignee}}</text>
-        <text class="mobile">{{address.mobile}}</text>
-      </view>
-      <view class="detail">{{address.addr}}</view>
 
-      <!--占位item  -->
-    <!-- <view class="placeholder" hidden="{{index!=addressList.length-1}}"></view> -->
+    <view class="address {{address.is_default==1?'default':''}}"  wx:for="{{addressList}}" wx:for-item="address" wx:key="{{index}}" data-address="{{address}}" bindtap="action">
+      <view class="left {{address.is_default==1?'default':''}}">{{address.is_default==1?'[默认]':''}}</view>
+      <view class="item {{address.is_default==1?'default':''}}">
+        <view class="basic">
+          <text class="name">{{address.consignee}}</text>
+          <text class="mobile">{{address.mobile}}</text>
+        </view>
+        <view class="detail">{{address.addr}}</view>
+
+        <!--占位item  -->
+      <!-- <view class="placeholder" hidden="{{index!=addressList.length-1}}"></view> -->
+      </view>
     </view>
   </view>
 
-  <view class="insert">
-    <navigator url="insert/insert?action=insert">
+  <view class="insert" bindtap="insert">
       <view class="txt">新增收货地址</view>
-    </navigator>
   </view>
 </view>

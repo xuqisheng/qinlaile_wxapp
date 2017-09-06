@@ -19,6 +19,10 @@ Page({
     //当前地址
     current:'',
     locationInfo:{},
+
+    consignee: '',
+    mobile: '',
+    addr: ''
   },
 
   /**
@@ -141,16 +145,19 @@ Page({
       return
     }
 
-    that.setData({
-      detail:detail
-    })
-
     if (that.data.area_id==''){
       wx.showToast({
         title: '请选择区县',
       })
       return
     }
+
+    that.setData({
+      detail: detail,
+      consignee: consignee,
+      mobile:mobile,
+      addr: '山东省 德州市 ' + that.data.area+ ' ' + detail
+    })
 
 
     //山东省1502
@@ -182,11 +189,29 @@ Page({
   },
 
   process(data){
+    var that = this
     console.log(data)
+    console.log('action=' + that.data.action)
     if (data.code == 10000) {
-      wx.navigateBack({
-        delta:1
-      });
+      if(that.data.action=='buy'){
+
+        //选定地址
+        var pages = getCurrentPages()
+        var prevPage = pages[pages.length - 1]  //当前界面
+        var prevPage = pages[pages.length - 2]  //上一个页面
+
+        /**
+         * 若从下单页选择新增地址，此处需要设置address信息
+         */
+        prevPage.setData({
+          address: { 
+            consignee: that.data.consignee,
+            mobile: that.data.mobile,
+            addr:that.data.addr
+          }
+        })
+      }
+      wx.navigateBack({});
     } else {
       wx.showToast({
         title: data.message,

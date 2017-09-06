@@ -1,6 +1,8 @@
 // detail.js
 var app = getApp();
 const util = require('../../../../utils/util.js')
+//引入controller
+const serviceController = require('../../../../controller/serviceController.js').controller;
 
 Page({
 
@@ -11,6 +13,82 @@ Page({
     _uri: app.globalData.URI,
     repair:{},
     
+  },
+
+  /**
+   * 取消报修
+   */
+  cancel:function(){
+    var that = this
+    wx.showModal({
+      title: '确定取消吗？',
+      success:function(res){
+        if(res.confirm){
+          wx.showLoading({
+            title: '取消中...',
+          })
+
+          serviceController.cancelRepair(that.data.repair.id).then(data=>{
+            wx.hideLoading()
+            if(data.code==10000){
+              wx.showToast({
+                title: '取消成功',
+              })
+              wx.navigateBack({})
+            } else {
+              wx.showToast({
+                title: data.message,
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
+  /**
+   * 评价
+   */
+  comment:function(){
+    var that = this
+    wx.navigateTo({
+      url: '../comment/comment?id='+that.data.repair.id+'&action=repair',
+    })
+  },
+
+
+  /**
+   * 支付
+   */
+  formSubmit:function(e){
+    var that = this
+    var money = e.detail.value.money.trim()
+
+    if(money==''){
+      wx.showToast({
+        title: '请输入服务金额',
+      })
+      return
+    }
+
+    var payment_id = 'wxapppay';
+
+    wx.showLoading({
+      title: '支付中...',
+    })
+    serviceController.payRepair(that.data.repair.id, money, payment_id).then(data=>{
+      wx.hideLoading()
+      if(data.code==10000){
+        wx.showToast({
+          title: '支付成功',
+        })
+        wx.navigateBack({})
+      }else{
+        wx.showToast({
+          title: data.message,
+        })
+      }
+    })
   },
 
   /**

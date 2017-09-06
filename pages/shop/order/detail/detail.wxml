@@ -24,9 +24,9 @@
   <!--评价店铺：comment为[]时评价事件-->
   <view class="comment" wx:if="{{orderDetail.order_info.status==4}}">
     <text class="attr">{{orderDetail.comment.length==0?'评价店铺：':'已评价：'}}</text>
-    <view class="stars" wx:for="{{stars}}" wx:key="{{index}}">
-      <image src="{{item}}" class="star"></image>
-    </view>
+    <block wx:for="{{stars}}" wx:key="{{index}}">
+      <image bindtap="countStar" data-index="{{index}}" src="{{item}}" class="star"></image>
+    </block>
   </view>
 
   <!--商品信息  -->

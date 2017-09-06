@@ -52,7 +52,7 @@
 }
 
 .main .receiver{
-  border-top: 20rpx solid lightgray;
+  border-top: 20rpx solid #eee;
   border-bottom: 1rpx solid lightgray;
   display: -webkit-flex;
   font-size: 28rpx;
@@ -72,7 +72,7 @@
 }
 
 .main .mobile{
-  border-bottom: 20rpx solid lightgray;
+  border-bottom: 20rpx solid #eee;
   display: -webkit-flex;
   font-size: 28rpx;
   height: 80rpx;

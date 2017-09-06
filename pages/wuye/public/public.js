@@ -19,7 +19,28 @@ Page({
     repairList:[],
     currentRepair:{},
     //报修类型
-    repairType:''
+    repairType:'',
+    loading:false,
+
+  },
+
+  /**
+   * 滚动到底部
+   */
+  scrollToBottom: function () {
+    var that = this
+
+    if (that.data.loading || !that.data.hasMore) {
+      return
+    }
+
+    that.setData({
+      page: that.data.page + 1
+    })
+    console.log('加载更多page:' + that.data.page + ',loading=' + that.data.loading + ',hasMore=' + that.data.hasMore)
+
+    that.getData()
+
   },
 
   /**
@@ -85,43 +106,42 @@ Page({
   },
 
   onShow:function(){
-    if (this.data.repairType=='public'){
+    var that = this
+    that.setData({
+      repairList:[],
+      hasMore:true,
+      page:1,
+    })
+    that.getData()
+  },
+
+  getData:function(){
+    var that = this
+    wx.showLoading({
+      title: '加载中...',
+    })
+    that.setData({
+      loading:true
+    })
+    if (this.data.repairType == 'public') {
       this.getPublicList()
       wx.setNavigationBarTitle({
         title: '公共报修',
       })
-    }else{
+    } else {
       this.getPersonalList();
       wx.setNavigationBarTitle({
         title: '个人报修',
       })
     }
-
   },
 
   // 获取个人报修列表
   getPersonalList: function () {
     var that = this
+    
     serviceController.getPersonalList(that.data.page).then(data => {
-      console.log(data)
-      if (data.code == 10000) {
-        var temp = data.lists;
-        temp.forEach(function (item, index) {
-          item['formatTime'] = util.timestampToDate(item.add_time)
-        })
-        that.setData({
-          repairList: data.lists,
-        })
-      } else {
-        // wx.showToast({
-        //   title: data.message,
-        // })
-        if (data.code == 10007) {
-          that.setData({
-            hasMore: false
-          })
-        }
-      }
+      that.process(data)
 
     })
   },
@@ -130,27 +150,38 @@ Page({
   getPublicList:function(){
     var that = this
     serviceController.getPublicList(that.data.page).then(data=>{
-      console.log(data)
-      if(data.code==10000){
-        var temp = data.lists;
-        temp.forEach(function(item,index){
-          item['formatTime'] = util.timestampToDate(item.add_time)
-        })
-        that.setData({
-          repairList: data.lists,
-        })
-      }else{
-        // wx.showToast({
-        //   title: data.message,
-        // })
-        if(data.code==10007){
-          that.setData({
-            hasMore: false
-          })
-        }
-      }
+      that.process(data)
       
     })
   },
+
+  process(data){
+    var that = this
+    wx.hideLoading()
+    that.setData({
+      loading: false
+    })
+    console.log(data)
+    if (data.code == 10000) {
+      var temp = data.lists;
+      temp.forEach(function (item, index) {
+        item['formatTime'] = util.timestampToDate(item.add_time)
+      })
+
+      var repairList = that.data.repairList
+
+      //连接两个或更多的数组，并返回结果
+      repairList = repairList.concat(temp);
+      that.setData({
+        repairList: repairList,
+      })
+    } else {
+      if (data.code == 10007) {
+        that.setData({
+          hasMore: false
+        })
+      }
+    }
+  }
  
 })

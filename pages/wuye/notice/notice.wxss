@@ -8,11 +8,13 @@
   display: -webkit-flex;
   width: 100%;
   flex-direction: column;
-  padding: 20rpx;
-  border-bottom: 1prx solid lightgray;
+  padding:0 20rpx;
 }
 
 .main .wrapper .title{
+  padding-top: 20rpx;
+  margin-right: 20rpx;
+  border-top: 1rpx solid lightgray;
   font-size: 30rpx;
   color: #444;
 }
@@ -29,7 +31,8 @@
   text-align: right;
   font-size: 26rpx;
   color: gray;
-  margin-top: 20rpx;
+  margin: 20rpx 0;
+  /* border-bottom: 1prx solid lightgray; */
 }
 
 .main .empty{

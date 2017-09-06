@@ -108,6 +108,11 @@ height: 100%;
   margin-right: 20rpx;
 }
 
+.main .comment .star{
+  width: 30rpx;
+  height: 30rpx
+}
+
 /*商品模块*/
 .main .goods{
   border-bottom: 1rpx solid #eee;

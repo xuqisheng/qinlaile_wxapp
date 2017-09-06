@@ -6,9 +6,11 @@
     </view>
   </view>
 
-  <view class="wrapper" wx:for="{{notices}}" wx:for-item="notice" bindtap="toDetail" data-id="{{notice.id}}" wx:key="{{index}}">
-    <view class="title">{{notice.title}}</view>
-    <view class="desc">{{notice.content}}</view>
-    <view class="time">{{notice.formattime}}</view>
-  </view>
+  <scroll-view style="height:800px;" scroll-top="0px" scroll-y="true" bindscrolltolower="scrollToBottom">
+    <view class="wrapper" wx:for="{{notices}}" wx:for-item="notice" bindtap="toDetail" data-id="{{notice.id}}" wx:key="{{index}}">
+      <view class="title">{{notice.title}}</view>
+      <view class="desc">{{notice.content}}</view>
+      <view class="time">{{notice.formattime}}</view>
+    </view>
+  </scroll-view>
 </view>

@@ -53,6 +53,48 @@ class ServiceController {
     })
   }
 
+  /**
+   * 预约支付
+   */
+  payBook(order_id, money, payment_id){
+    return baseController.postMid('/bookingDetail.html?act=pay',{
+      order_id: order_id,
+      money: money,
+      payment_id: payment_id
+    })
+  }
+
+  /**
+   * 取消预约
+   */
+  cancelBook(order_id) {
+    return baseController.postMid('/bookingDetail.html?act=cancel', {
+      order_id: order_id,
+    })
+  }
+
+  /**
+   * 完成预约
+   */
+  finishBook(order_id) {
+    return baseController.postMid('/bookingDetail.html?act=finish', {
+      order_id: order_id,
+    })
+  }
+
+  /**
+   * 评价预约
+   */
+  commentBook(order_id,star,content,imgs) {
+    return baseController.postMid('/bookingDetail.html?act=comment', {
+      app_id:'3',
+      order_id: order_id,
+      star: star,
+      content: content,
+      imgs:imgs
+    })
+  }
+
   // 获取物业详情
   getPropertyDetail(){
     return baseController.postMid('/propertyDetail.html', {
@@ -176,6 +218,39 @@ class ServiceController {
   getRepairList(curNum){
     return baseController.postMid('/myRepairs.html?act=ajax', {
       curNum: curNum,
+    })
+  }
+
+  /**
+   * 个人报修支付
+   */
+  payRepair(rid,money, payment_id){
+    return baseController.postMid('/repairsDetail.html?act=pay',{
+      rid:rid, 
+      money:money, 
+      payment_id: payment_id
+    })
+  }
+
+  /**
+   * 取消报修
+   */
+  cancelRepair(rid) {
+    return baseController.postMid('/repairsDetail.html?act=cancel', {
+      rid: rid
+    })
+  }
+
+  /**
+   * 评价
+   */
+  commentRepair(rid,star,content,imgs){
+    return baseController.postMid('/repairsComment.html?act=comment',{
+      app_id:3,
+      rid:rid,
+      star:star,
+      content:content,
+      imgs: imgs
     })
   }
 

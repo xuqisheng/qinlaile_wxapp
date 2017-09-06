@@ -5,8 +5,8 @@
     <image class="item-icon" src="../../../res/icon/receice-addr.png"></image>
 
     <view class="receive">
-      <view class="receiver">{{orderView.addressInfo.consignee+'  '+orderView.addressInfo.mobile}}</view>
-      <view class="loacation">收货地址：{{orderView.addressInfo.addr}}</view>
+      <view class="receiver">{{address.consignee+'  '+address.mobile}}</view>
+      <view class="loacation">收货地址：{{address.addr}}</view>
     </view>
   </view>
   <!--收货地址信息-->

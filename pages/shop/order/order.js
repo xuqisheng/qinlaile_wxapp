@@ -13,8 +13,17 @@ Page({
     orderView: {},
     total_price: 0,
     products:'',
-    cart_shopId:''
+    cart_shopId:'',
+    address:{}
+  },
 
+  /**
+   * 选择地址
+   */
+  selectAddress:function(){
+    wx.navigateTo({
+      url: '../../huiyuan/addresslist/addresslist?mode=select',
+    })
   },
 
   /**
@@ -39,9 +48,14 @@ Page({
       orderView: orderView,
       total_price: total_price,
       products: products,
-      cart_shopId: _cart_shopId
+      cart_shopId: _cart_shopId,
+      address:orderView.addressInfo
     })
 
+  },
+
+  onShow:function(){
+    console.log(this.data.address)
   },
 
   /**
@@ -111,17 +125,6 @@ Page({
       }
     })
 
-    //清除内存中的购物车
-    // var pages = getCurrentPages()
-    // var prevPage = pages[pages.length - 1]  //当前界面
-    // var prevPage = pages[pages.length - 2]  //上一个页面
-    // prevPage.setData({
-    //   cart:{
-    //     count: 0,
-    //     total: 0,
-    //     list: {}
-    //   }
-    // })
   },
 
   /**

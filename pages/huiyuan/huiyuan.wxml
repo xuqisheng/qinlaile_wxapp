@@ -92,7 +92,7 @@
   </view>
   
   <!--收货地址-->
-  <navigator url="addresslist/addresslist" open-type="navigate">
+  <navigator url="addresslist/addresslist?mode=view" open-type="navigate">
     <view class="item-wrapper">
       <image class="item-icon" src="../../res/icon/address.png"></image>
       <view class="item-text">收货地址</view>

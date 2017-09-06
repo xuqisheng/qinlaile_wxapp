@@ -54,13 +54,14 @@
   display: -webkit-flex;
   flex-direction: column;
   border-top: 1rpx solid lightgray;
-  border-bottom: 20rpx solid lightgray;
+  border-bottom: 20rpx solid #eee;
 }
 
 .main .wrapper .top{
   margin: 0 20rpx 0 20rpx;
   display: -webkit-flex;
   border-bottom: 1rpx solid lightgray;
+  flex-wrap: nowrap;
 }
 
 /*左侧头像  */
@@ -71,25 +72,22 @@
   position: relative;
   float: left;
   margin-top: 20rpx;
-  /* background: greenyellow; */
 }
 
 /*右侧内容  */
 .main .wrapper .top .content{
-   /* background: red;  */
   margin-left: 20rpx;
-  flex-flow: 100;
+  flex-grow: 1;
 }
 
 /*右侧悬浮按钮  */
-.main .wrapper .top .action{
-  position: absolute;
-  right: 20rpx;
+.main .wrapper .top .status{
+  position: relative;
+  right: 0;
   top: 0;
   width: 120rpx;
   height: 120rpx;
   border-radius: 60rpx;
-  /* background: greenyellow; */
 }
 
 .main .wrapper .top .content .name{

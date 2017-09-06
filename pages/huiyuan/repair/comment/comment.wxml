@@ -1,0 +1,28 @@
+<!--comment.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="main">
+    <view class="title">您对该服务满意吗？</view>
+    <view class="stars">
+      <block wx:for="{{stars}}" wx:key="{{index}}">
+        <image bindtap="countStar" data-index="{{index}}" src="{{item}}" class="star"></image>
+      </block>
+
+      <text class="level">{{level}}</text>
+    </view>
+
+    <view class="content">
+      <text class="attr">我的评价</text>
+      <textarea name="content" class="value" placeholder="请输入本次服务您的感受吧，对他人帮助很大哦!（200字以内）"/>
+    </view>
+
+    <view class="image">
+      <text class="attr">上传照片</text>
+      <image src="../../../../res/add_img.png" class="img" bindtap="chooseImage"></image>
+    </view>
+
+    <view class="action-status">
+      <button form-type="submit" class="pay">提交</button>
+    </view>
+  </view>
+</form>
+

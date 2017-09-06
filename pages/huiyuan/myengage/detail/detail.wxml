@@ -1,8 +1,8 @@
 <!--detail.wxml-->
 <view class="main">
   <view class="item">
-    <text class="attr">保姆</text>
-    <text class="value">{{book.status_name}}</text>
+    <text class="attr">{{book.t_name}}</text>
+    <text class="{{book.status==0||book.status==1?'red':'value'}}">{{book.status_name}}</text>
   </view>
 
   <view class="item">
@@ -23,5 +23,62 @@
   <view class="item">
     <text class="attr">预约时间</text>
     <text class="value">{{formatDate}}</text>
+  </view>
+
+  <!--支付完成信息  -->
+  <view class="paydone" wx:if="{{book.status==2}}">
+    <view class="title">服务已完成</view>
+    
+    <view class="item">
+      <text class="attr">完成时间</text>
+      <text class="value">{{finished_time}}</text>
+    </view>
+
+    <view class="item" >
+      <text class="attr">服务费用</text>
+      <text class="money">￥{{book.money}}</text>
+    </view>
+  </view>
+
+  <!--取消按钮  -->
+  <view class="action-status" bindtap="cancel" wx:if="{{book.status==0}}">
+    <text class="cancel">取消预约</text>
+  </view>
+
+
+  <!--支付信息  -->
+  <form bindsubmit="formSubmit">
+    <view class="frm" wx:if="{{book.status==1}}">
+      <view class="title">服务已完成，请及时支付服务费用并评分</view>
+
+      <view class="item">
+        <text class="attr">完成时间</text>
+        <text class="value">{{finished_time}}</text>
+      </view>
+
+      <view class="time">
+        <text class="attr">服务费用</text>
+        <input class="value" style="text-align:right;" type="digit" name="money" placeholder="请输入服务费用"/>
+      </view>
+      <view class="radio">
+        <image class="icon" src="../../../../res/pay_wechat.png"></image>
+        <text class="name">微信支付</text>
+        <radio class="box" value="0" checked="true"/>{{item.value}}
+      </view>
+
+      <view class="action-status">
+        <button form-type="submit" class="action-button">立即支付</button>
+      </view>
+    </view>
+  </form>
+
+  <!--评价  -->
+  <view class="action-status" bindtap="comment" wx:if="{{book.status==2&&book.content==null}}">
+    <text class="action-button">评价</text>
+  </view>
+
+  <!--完成  -->
+  <view class="action-status" bindtap="finish" wx:if="{{book.status==8}}">
+    <text class="action-button">完成</text>
   </view>
 </view>

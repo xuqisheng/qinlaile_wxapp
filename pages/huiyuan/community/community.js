@@ -20,13 +20,113 @@ Page({
     threads:[],
     empty:true,
     //举报原因类型
-    report_type_lists:''
+    report_type_lists:'',
+    loading:false,
+    hasMore:true,
+  },
+
+  
+
+ /**
+  * 滚动到底部
+  */
+  scrollToBottom: function () {
+    var that = this
+    console.log('加载更多page:' + that.data.page + ',loading=' + that.data.loading + ',hasMore=' + that.data.hasMore)
+    if (that.data.loading || !that.data.hasMore) {
+      return
+    }
+
+    that.setData({
+      page: that.data.page + 1
+    })
+
+    that.getThreads()
+
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var action = options.type
+    var that = this
+    that.setData({
+      action: action
+    })
+
+    if(action==1){
+      wx.setNavigationBarTitle({
+        title: '我的帖子',
+      })
+    }else{
+      wx.setNavigationBarTitle({
+        title: '社区论坛',
+      })
+    }
+  },
+
+  /**
+   * 加载数据
+   */
+  getThreads(){
+    var that = this
+    wx.showLoading({
+      title: '加载中...',
+    })
+    that.setData({
+      loading:true
+    })
+    userController.getThreads(that.data.action, that.data.page).then(data => {
+      console.log(data)
+      wx.hideLoading()
+      that.setData({
+        loading: false
+      })
+
+      if (data.code == 10000) {
+        var temp = data.lists;
+        temp.forEach(function (item, index) {
+          item['formatDate'] = util.timestampToDate(item.add_time)
+        })
+
+        var threads = that.data.threads
+
+        //连接两个或更多的数组，并返回结果
+        threads = threads.concat(temp);
+        that.setData({
+          threads: threads,
+          empty: false,
+          report_type_lists: JSON.stringify(data.report_type_lists),
+        })
+      } else {
+        if (data.code == 10007) {
+          that.setData({
+            hasMore: false
+          })
+        }
+      }
+    })
+  },
+
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this
+    that.setData({
+      threads: [],
+      hasMore: true,
+      page: 1,
+    })
+    this.getThreads();
   },
 
   /**
    * 发帖
    */
-  addThread:function(){
+  addThread: function () {
     wx.navigateTo({
       url: 'add/add',
     })
@@ -39,14 +139,14 @@ Page({
     var thread = e.currentTarget.dataset.thread
     var threadStr = JSON.stringify(thread)
     wx.navigateTo({
-      url: 'detail/detail?threadStr=' + threadStr + '&index=' + index + '&action=' + that.data.action +'&report_type_lists='+that.data.report_type_lists,
+      url: 'detail/detail?threadStr=' + threadStr + '&index=' + index + '&action=' + that.data.action + '&report_type_lists=' + that.data.report_type_lists,
     })
   },
 
   /**
    * 举报
    */
-  report(e){
+  report(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     wx.showToast({
@@ -54,11 +154,11 @@ Page({
     })
   },
 
-  
+
   /**
    * 删除帖子
    */
-  deleteThread:function(e){
+  deleteThread: function (e) {
     //定义删除方法
     Array.prototype.removeByValue = function (val) {
       for (var i = 0; i < this.length; i++) {
@@ -101,7 +201,7 @@ Page({
         }
       }
     })
-    
+
   },
 
   /**
@@ -139,68 +239,6 @@ Page({
         })
       }
     })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var action = options.type
-    var that = this
-    that.setData({
-      action: action
-    })
-
-    if(action==1){
-      wx.setNavigationBarTitle({
-        title: '我的帖子',
-      })
-    }else{
-      wx.setNavigationBarTitle({
-        title: '社区论坛',
-      })
-    }
-
-    
-  },
-
-  getThreads(){
-    var that = this
-    wx.showLoading({
-      title: '加载中...',
-    })
-    userController.getThreads(that.data.action, that.data.page).then(data => {
-      console.log(data)
-      wx.hideLoading()
-      if (data.code == 10000) {
-        var temp = data.lists
-        if(temp!=undefined&&temp!=null&&temp.length!=0){
-          for (let i = 0; i < temp.length; i++) {
-            let thread = temp[i]
-            thread['formatDate'] = util.timestampToDate(thread.add_time);
-          }
-          that.setData({
-            report_type_lists: JSON.stringify(data.report_type_lists),
-            threads: temp,
-            empty: false
-          })
-        }
-        
-      } else {
-        wx.showToast({
-          title: data.message,
-        })
-      }
-    })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.getThreads();
   },
 
   //图片base64转换测试

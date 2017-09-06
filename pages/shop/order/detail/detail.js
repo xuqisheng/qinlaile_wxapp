@@ -17,6 +17,29 @@ Page({
     add_time:'',
     //订单id
     order_id:'',
+
+    //评分
+    score:0,
+    stars:[]
+  },
+
+  /**
+   * 店铺评分
+   */
+  countStar:function(e){
+    var that = this
+    var score = e.currentTarget.dataset.index+1
+    console.log('score = '+score)
+
+    var comment = that.data.orderDetail.comment
+    if(comment.length==0){
+      var stars = that.rating(score)
+      that.setData({
+        score:score,
+        stars: stars
+      })
+    }
+
   },
 
   //评分方法
@@ -25,9 +48,9 @@ Page({
     var that = this,　//这里是图片的路径，自己需要改
       data = {
         //从使用评分控件的目录算起
-        ling: "../../res/icon/star_empty.png",
-        zheng: "../../res/icon/star_full.png",
-        ban: "../../res/icon/star_half.png"
+        ling: "../../../../res/icon/star_empty.png",
+        zheng: "../../../../res/icon/star_full.png",
+        ban: "../../../../res/icon/star_half.png"
       },
       nums = []; //这里是返回图片排列的顺序的数组，这里要注意在页面使用的时候图片的路径，不过使用网络图片无所谓
 
@@ -121,8 +144,10 @@ Page({
    * 店铺评分
    */
   comment: function () {
-    var score = '5'
+   
     var that = this
+    var score = that.data.score
+    
     wx.showLoading({
       title: '提交中...',
     })
@@ -195,11 +220,23 @@ Page({
       //时间日期格式化
       var timestamp = data.order_info.add_time
       var format = util.timestampToDate(timestamp)
+      var comment = data.comment
+      //评分
+      var score = 0;
+      console.log(comment)
+      if(comment.length==0){
+
+      }else{
+        score = comment.score;
+      }
+
+      var stars = that.rating(score)
 
       that.setData({
         orderDetail:data,
         add_time: format,
-        order_id: order_id
+        order_id: order_id,
+        stars: stars
       })
     })
   },

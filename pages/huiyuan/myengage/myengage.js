@@ -35,13 +35,18 @@ Page({
 
     //加载中
     loading: false,
+    status:'-1'
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数
    */
-  onLoad: function (options) {
+  onShow: function () {
     var that = this
+    that.setData({
+      curNum:1,
+      bookList: [],
+    })
     that.getBookList();
 
   },
@@ -67,7 +72,7 @@ Page({
       title: '加载中...',
     })
 
-    if(status=='-1'){
+    if(that.data.status=='-1'){
       serviceController.getBookList(that.data.curNum).then(data=>{
         that.process(data)
       })
@@ -143,7 +148,7 @@ Page({
       return
     }
 
-    var status = '0';
+    var status = '-1';
 
     switch(index){
       case '0':

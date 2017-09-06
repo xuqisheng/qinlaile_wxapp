@@ -21,7 +21,7 @@
         <!--订单状态-->
         <view class="type">
           <text>{{repair.type_name}}</text>
-          <text class="{{repair.status=='0'?'red':'status'}}">{{repair.status_name}}</text>
+          <text class="{{(repair.type==1&&repair.status=='0')||(repair.type==2&&repair.status=='0')||(repair.type==2&&repair.status=='1')?'red':'status'}}">{{repair.status_name}}</text>
         </view>
 
         <view class="content">

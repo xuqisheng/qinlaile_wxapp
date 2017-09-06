@@ -12,6 +12,30 @@ Page({
     page:1,
     notices:[],
     empty:true,
+
+    page:1,
+    has_next:0,
+    //加载中
+    loading: false,
+  },
+
+  /**
+   * 滚动到底部
+   */
+  scrollToBottom: function () {
+    var that = this
+
+    if (that.data.loading || that.data.has_next == 0) {
+      return
+    }
+
+    that.setData({
+      page: that.data.page + 1
+    })
+    console.log('加载更多page:' + that.data.page + ',loading=' + that.data.loading + ',has_next=' + that.data.has_next)
+
+    that.getNotices()
+
   },
 
   /**
@@ -33,30 +57,37 @@ Page({
 
   getNotices:function(){
     var that = this
+    that.setData({
+      loading: true
+    })
     //获取公告
     serviceController.getNotices(that.data.page).then(data => {
+      that.setData({
+        loading: false
+      })
       console.log(data)
-      var notices = data.lists;
-      var temp = [];
-      if(notices){
-        for (let i = 0; i < notices.length; i++) {
-          var notice = notices[i];
-          notice['formattime'] = util.timestampToDate(notice.add_time);
-        }
-        temp = that.data.notices.concat(notices)
-      }
 
-      that.setData({
-        notices: temp,
-      })
+      if (data.code == 10000) {
+        data.lists.forEach(function (item, index) {
+          item['formattime'] = util.timestampToDate(item.add_time)
+        })
+        var notices = that.data.notices
 
-      var empty = true;
-      if(that.data.notices.length!=0){
-        empty = false
+        //连接两个或更多的数组，并返回结果
+        notices = notices.concat(data.lists);
+
+        // console.log(notices)
+        that.setData({
+          notices: notices,
+          empty: false,
+          has_next: data.has_next
+        })
+      } else {
+        this.setData({
+          empty: true,
+          has_next: 0,
+        })
       }
-      that.setData({
-        empty:empty
-      })
     })
 
     

@@ -35,7 +35,6 @@ page{
   line-height: 40rpx;
   margin: 10rpx 0;
   padding-right: 20rpx;
-  border-right: 1rpx solid lightgray;
   color: #f26d7e;
 }
 
@@ -44,13 +43,13 @@ page{
   line-height: 40rpx;
   margin: 10rpx 0;
   padding-right: 20rpx;
-  border-right: 1rpx solid lightgray;
   color: gray;
 }
 
 
 .main .status .wrapper .call{
-  margin-left: 20rpx;
+  border-left: 1rpx solid lightgray;
+  padding-left: 20rpx;
   height: 40rpx;
   width: 40rpx;
 }
@@ -67,6 +66,18 @@ page{
 }
 
 .main .time .value{
+  line-height: 60rpx;
+  float: right;
+}
+
+.main .time .address{
+  font-size: 22rpx;
+  line-height: 60rpx;
+  float: right;
+}
+
+.main .time .money{
+  color: #f26d7e;
   line-height: 60rpx;
   float: right;
 }
@@ -112,7 +123,6 @@ page{
   color: #f26d7e;
   padding-left: 20rpx;
   border-top: 1rpx solid lightgray;
-    border-bottom: 1rpx solid lightgray;
   height: 60rpx;
   line-height: 60rpx;
 }
@@ -160,3 +170,37 @@ page{
   position: absolute;
   right: 10rpx
 }
+
+.main .action-status{
+  background: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx 0;
+  display: -webkit-flex;
+  justify-content: space-around;
+}
+
+.main .action-status .pay{
+  width: 90%;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  background: #42c017;
+}
+
+.main .action-status .cancel{
+  width: 90%;
+  border: 2rpx solid #42c017;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #42c017;
+  font-size: 30rpx;
+  background: white;
+}
+

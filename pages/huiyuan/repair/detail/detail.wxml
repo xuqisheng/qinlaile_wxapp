@@ -1,10 +1,10 @@
 <!--detail.wxml-->
 <view class="main">
   <view class="status">
-    <text class="attr">公共报修</text>
+    <text class="attr">{{repair.type==2?'个人报修':'公共报修'}}</text>
     <view class="wrapper">
-      <text class="{{repair.status==1||repair.status==8?'gray':'text'}}">{{repair.status_name}}</text>
-      <image class="call" bindtap="call" src="../../../../res/icon/contact.png"></image>
+      <text class="{{(repair.type==1&&repair.status=='0')||(repair.type==2&&repair.status=='0')||(repair.type==2&&repair.status=='1')?'text':'gray'}}">{{repair.status_name}}</text>
+      <image class="call" wx:if="{{repair.status=='0'}}" bindtap="call" src="../../../../res/icon/contact.png"></image>
     </view>
   </view>
 
@@ -15,7 +15,7 @@
 
   <view class="time" wx:if="{{repair.type==2}}">
     <text class="attr">服务地址</text>
-    <view class="value">{{repair.address}}</view>
+    <view class="address">{{repair.address}}</view>
   </view>
 
   <view class="time" wx:if="{{repair.type==2}}">
@@ -43,12 +43,12 @@
   <view class="paydone" wx:if="{{repair.status==8&&repair.type==2}}">
     <view class="time">
       <text class="attr">付款时间</text>
-      <text class="val">{{paytime}}</text>
+      <text class="value">{{repair.pay_time}}</text>
     </view>
 
-    <view class="amount">
+    <view class="time" >
       <text class="attr">服务费用</text>
-      <text class="val">{{amount}}</text>
+      <text class="money">￥{{repair.money}}</text>
     </view>
   </view>
 
@@ -68,27 +68,35 @@
     <view class="content">{{comment_list.comment}}</view>
   </view>
 
-  <!--业主评价  -->
-  <view class="comment" wx:if="{{repair.status==8&&repair.is_comment==0}}">
-    评价
-  </view>
 
   <!--支付按钮 个人报修且状态为1  -->
   <form bindsubmit="formSubmit">
     <view class="frm" wx:if="{{repair.status==1&&repair.type==2}}">
+      <view class="time">
+        <text class="attr">服务费用</text>
+        <input class="value" style="text-align:right;" type="digit" name="money" placeholder="请输入服务费用"/>
+      </view>
       <view class="radio">
         <image class="icon" src="../../../../res/pay_wechat.png"></image>
         <text class="name">微信支付</text>
         <radio class="box" value="0" checked="true"/>{{item.value}}
       </view>
 
-      <button form-type="submit" class="pay">立即支付</button>
+      <view class="action-status">
+        <button form-type="submit" class="pay">立即支付</button>
+      </view>
     </view>
   </form>
 
   <!--取消按钮 个人报修且状态为0  -->
-  <view class="cancel" wx:if="{{repair.status==0&&repair.type==2}}">
-    <view class="button">取消报修</view>
+  <view class="action-status" bindtap="cancel" wx:if="{{repair.status==0&&repair.type==2}}">
+    <text class="cancel">取消报修</text>
+  </view>
+
+
+  <!--业主评价  -->
+  <view class="action-status" bindtap="comment" wx:if="{{repair.status==8&&repair.is_comment==0}}">
+    <text class="pay">评价</text>
   </view>
 
 </view>

@@ -10,10 +10,10 @@ page{
 }
 
 .main .property{
-  border-top: 20rpx solid lightgray;
+  border-top: 20rpx solid #eee;
   padding: 20rpx;
   background: white;
-  border-bottom: 1rpx solid lightgray;
+  border-bottom: 1rpx solid #eee;
   font-size: 30rpx;
 }
 
