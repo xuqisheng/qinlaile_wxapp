@@ -46,6 +46,15 @@ class ShopController {
     })
   }
 
+  /**
+   * 获取商品详情
+   */
+  getGoodsDetail(goods_id) {
+    return baseController.post('/productDetail.html', {
+      goods_id: goods_id
+    })
+  }
+
 
   /**
   * 获取店铺商品数据

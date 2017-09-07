@@ -45,7 +45,8 @@
     "pages/huiyuan/bindaddress/alter/alter",
     "pages/huiyuan/community/report/report",
     "pages/wuye/notice/detail/detail",
-    "pages/huiyuan/repair/comment/comment"
+    "pages/huiyuan/repair/comment/comment",
+    "pages/shop/goods/goods"
   ],
   "window": {
     "backgroundTextStyle": "light",

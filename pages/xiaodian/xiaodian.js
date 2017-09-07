@@ -165,7 +165,7 @@ Page({
   enterShop: function (event) {
     var shop = event.currentTarget.dataset.shop;
     wx.navigateTo({
-      url: '../shop/shop?shop=' + JSON.stringify(shop),
+      url: '../shop/shop?shop=' + JSON.stringify(shop) + '&score=' + shop.score,
     })
   },
 

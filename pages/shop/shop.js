@@ -38,11 +38,26 @@ Page({
     free_shipping:false,
 
 
-    /*可以不在此声明，setData中使用时再声明
+    /*可以不在此声明，setData中使用时再声明*/
     classifySeleted:'',
-    classifyViewed:''
-    */
+    classifyViewed:'',
+    
+    //最后一个商品的id
+    last_goods_id:'',
 	},
+
+  /**
+   * 商品详情页
+   */
+  toDetail:function(e){
+    var that = this
+    var goods = e.currentTarget.dataset.goods
+    // console.log(goods)
+
+    wx.navigateTo({
+      url: 'goods/goods?goodsStr=' + JSON.stringify(goods) + '&score=' + that.data.score,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -124,6 +139,11 @@ Page({
 	onLoad: function (options) {
     var that = this;
     
+    var score = options.score
+    that.setData({
+      score: score
+    })
+    console.log('score = '+score)
     var shop_id = options.shop_id
     //若为搜索点击过来
     if (shop_id != undefined && shop_id != null && shop_id!=''){
@@ -158,17 +178,32 @@ Page({
 
 	},
 
+  //找出最后一个商品id
+  findLastGoodsId: function (classifyList) {
+    var productLists = classifyList[classifyList.length - 1].productLists
+    var last_goods_id = productLists[productLists.length - 1].id
+    console.log('last_goods_id:' + last_goods_id)
+
+    this.setData({
+      last_goods_id: last_goods_id
+    })
+  },
+
   // 请求店铺信息
   loadShopData(shopId){
     var that = this;
     //请求店铺内商品
     shopController.getGoods(shopId).then(data => {
-      //console.log(data)
+      console.log(data)
       var temp = data.data;
       var res = temp.map(function (item) {
         item.classifyId = '_' + item.type_id;
         return item;
       })
+
+      //找出最后一个商品id
+      that.findLastGoodsId(temp);
+
       //为每个item增加非以数字开头的分类id
       //console.log(res)
 

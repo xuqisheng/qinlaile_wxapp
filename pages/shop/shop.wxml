@@ -28,25 +28,27 @@
     <!--商品部分-->
     <!--scroll-into-view值应为某子元素id（id不能以数字开头），故使用重新生成的classifyId（type_name为中文字符，不能作为id）作为id，结合上面商品分类给classifyViewed赋值。设置哪个方向可滚动，则在哪个方向滚动到该元素-->
 		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
-			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" id="{{classify.classifyId}}">
-				<view class="title">{{classify.type_name}}</view>
-				<view class="goods" wx:for="{{classify.productLists}}" wx:for-item="goods" wx:key="*this">
-					<image class="pic" src="{{_uri+goods.pic}}"></image>
-          <!--名称和价格等-->
-          <view class="wrapper">
-            <text class="name ellipsis">{{goods.product_name}}</text>
-            <view class="horizontal">
-              <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
-              <view class="edit-container">
-                <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
-                <view class="e-num">{{cart.list[goods.id]}}</view>
-                <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
-              </view>
+			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="{{index}}" id="{{classify.classifyId}}">
+        <view class="title">{{classify.type_name}}</view>
+				<view wx:for="{{classify.productLists}}" wx:for-item="goods" wx:key="*this">
+          <view class="goods" bindtap="toDetail" data-goods="{{goods}}">
+            <image class="pic" src="{{_uri+goods.pic}}"></image>
+            <!--名称和价格等-->
+            <view class="wrapper">
+              <text class="name ellipsis">{{goods.product_name}}</text>
+              <view class="horizontal">
+                <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
+                <view class="edit-container">
+                  <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
+                  <view class="e-num">{{cart.list[goods.id]}}</view>
+                  <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
+                </view>
+              </view>    
             </view>
-                  
+            <!--名称和价格等-->
           </view>
-          <!--名称和价格等-->
-				</view>
+          <view class="placeholder" wx:if="{{goods.id==last_goods_id}}"></view>
+        </view>
 			</view>
 		</scroll-view>
 	</view>

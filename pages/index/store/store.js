@@ -30,7 +30,7 @@ Page({
   enterShop:function(event){
     var shop = event.currentTarget.dataset.shop;
     wx.navigateTo({
-      url: '../../shop/shop?shop=' + JSON.stringify(shop),
+      url: '../../shop/shop?shop=' + JSON.stringify(shop)+'&score='+shop.score,
     })
   },
 
@@ -57,7 +57,7 @@ Page({
         var bool = temp[i].free_shipping_money == 0
         //console.log(bool)
       }
-      //console.log(temp)
+      console.log(temp)
 
       //重新渲染
       that.setData({

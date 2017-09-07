@@ -1,0 +1,28 @@
+<!--goods.wxml-->
+<view class="main">
+  <!--轮播图-->
+	<swiper class="banner" indicator-active-color="#fff"indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+    <block wx:for="{{goods.images}}" wx:for-item="item" wx:key="{{index}}">
+      <swiper-item>
+        <!--保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。  -->
+        <image class="img" src="{{_uri+item.src}}" mode="aspectFill"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="score">
+    <text class="name">{{goods.product_name}}</text>
+
+    <view class="stars">
+      <block wx:for="{{stars}}" wx:key="{{index}}">
+        <image bindtap="countStar" data-index="{{index}}" src="{{item}}" class="star"></image>
+      </block>
+    </view>
+  </view>
+
+  <view class="info">
+    <text class="price">￥{{goods.price}}</text>
+    <text class="num">月售{{goods.monthSellNum?goods.monthSellNum:0}}份</text>
+  </view>
+
+</view>

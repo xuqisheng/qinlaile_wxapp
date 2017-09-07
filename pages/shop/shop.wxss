@@ -21,7 +21,7 @@ page {
 /*通过margin-top的负值隐藏头部*/
 .header.hidden {
 	/*-webkit-transform: translate3d(0,-290rpx,0);*/
-	margin-top: -404rpx;
+	margin-top: -408rpx;
 }
 .header .logo {
 	float: left;
@@ -115,20 +115,19 @@ page {
 	line-height: 30rpx;
 	background: #f7f7f7;
 }
-/* .goods-container .goods {
-	position: relative;
-	padding: 20rpx 30rpx;
-	font-size: 36rpx;
-	line-height: 40rpx;
-	border-bottom: 1px solid #f7f7f7;
-  background: red;
-} */
+
 
 .goods-container .goods {
   display: -webkit-flex;
 	padding: 20rpx;
 	border-bottom: 1px solid #f7f7f7;
   align-items: center;
+  width: 100%;
+}
+
+/*商品过少时底部无法显示完全*/
+.goods-container .placeholder {
+  height: 400rpx;
   width: 100%;
 }
 
