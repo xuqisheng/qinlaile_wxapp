@@ -1,4 +1,5 @@
 <!--goods.wxml-->
+
 <view class="main">
   <!--轮播图-->
 	<swiper class="banner" indicator-active-color="#fff"indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
@@ -10,8 +11,10 @@
     </block>
   </swiper>
 
-  <view class="score">
-    <text class="name">{{goods.product_name}}</text>
+  <view class="product">{{goods.product_name}}</view>
+
+  <view class="rank">
+    <text class="name">评价</text>
 
     <view class="stars">
       <block wx:for="{{stars}}" wx:key="{{index}}">
@@ -22,7 +25,49 @@
 
   <view class="info">
     <text class="price">￥{{goods.price}}</text>
-    <text class="num">月售{{goods.monthSellNum?goods.monthSellNum:0}}份</text>
+    <text class="num">月售{{monthSellNum?monthSellNum:0}}份</text>
   </view>
 
+  <view class="wrapper">
+    <view class="placeholder"></view>
+    <view class="action">
+      <image class="reduce" bindtap="tapReduceCart" src="../../../res/icon/reduce.png"></image>
+      <view class="num">{{num}}</view>
+      <image class="add" bindtap="tapAddCart" src="../../../res/icon/plus.png"></image>
+    </view>
+  </view>
+
+  <view class="tags" wx:if="{{goods.tags}}">
+    <view class="title">商品标签</view>
+    <view class="content">{{goods.tags}}</view>
+  </view>
+
+  <view class="tags" wx:if="{{goods.desc}}">
+    <view class="title">商品信息</view>
+    <rich-text class="content" nodes="{{goods.desc}}"/>
+  </view>
+
+  <view class="nega-cart" wx:if="{{goods.tags||goods.desc}}"></view>
+
+  <!--购物车-->
+	<view class="cart">
+		<view class="data" bindtap="showCartDetail">
+			<view class="icon">
+				<image src="../../../res/icon/gouwuche.png"></image>
+				<view class="count">{{cart.count}}</view>
+			</view>
+      <view class="total">
+        <view class="fee">￥{{cart.total}}</view>
+        <!--配送费-->
+        <view class="fee delivery">配送费：￥{{free_shipping?'0.00':delivery_fee}}</view>
+      </view>
+      
+		</view>
+		<form bindsubmit="submit" report-submit="true" id="frm">
+			<!--<view formType="submit" class="submit">去结算</view>-->
+			<button class="green {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+		</form>
+	</view>
+
 </view>
+

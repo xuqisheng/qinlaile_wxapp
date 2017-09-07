@@ -1,12 +1,14 @@
 /* goods.wxss */
 page{
   background: #eee;
+  width: 100%;
   height: 100%;
 	overflow: hidden;
 }
 
 .main {
 	height: 100%;
+  width: 100%;
 	overflow: hidden;
   font-size: 28rpx;
 }
@@ -22,7 +24,8 @@ page{
   height:100%;
 }
 
-.main .score{
+.main .product{
+  font-weight: bold;
   background: white;
   width: 100%;
   margin-top: 20rpx;
@@ -30,7 +33,8 @@ page{
   padding: 20rpx;
 }
 
-.main .score .stars{
+
+.main .rank .stars{
   height: 40rpx;
   display: -webkit-flex;
   justify-content: center;
@@ -38,12 +42,12 @@ page{
   right:20rpx;
 }
 
-.main .score .stars .star{
+.main .rank .stars .star{
   height: 40rpx;
   width: 40rpx;
 }
 
-.main .info{
+.main .info,.main .rank{
   background: white;
   width: 100%;
   border-top: 1rpx solid #eee;
@@ -60,4 +64,114 @@ page{
   color: gray;
   position: absolute;
   right:20rpx;
+}
+
+.main .wrapper{
+  margin-top: 20rpx;
+  background: white;
+  width: 100%;
+  display: -webkit-flex;
+}
+
+.main .wrapper .placeholder{
+  flex-grow: 1;
+}
+
+.main .wrapper .action{
+  flex-grow: 0;
+  display: -webkit-flex;
+	color: #333;
+	font-size: 26rpx;
+  align-items: center;
+}
+
+.main .wrapper .action .add,
+.main .wrapper .action .reduce{
+  width: 40rpx;
+	height: 40rpx;
+  margin: 20rpx;
+}
+
+.main .tags{
+  margin-top: 20rpx;
+  background: white;
+}
+
+.main .tags .title{
+  padding: 20rpx;
+}
+
+.main .tags .content{
+  padding: 20rpx;
+  color: gray;
+}
+
+.nega-cart{
+  height: 100rpx;
+}
+
+.cart {
+  border-top: 1rpx solid #eee;
+	display: -webkit-flex;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100rpx;
+	background: #fff;
+}
+.cart .data {
+	-webkit-flex: 1;
+	/*border-top: 1rpx solid #e7e7e7;*/
+}
+.cart .data .icon {
+	position: absolute;
+	left: 40rpx;
+	top: -20rpx;
+	width: 100rpx;
+	height: 100rpx;
+	background: #484848;
+	border-radius: 50%;
+}
+.cart .data .icon image {
+	position: absolute;
+	left: 15rpx;
+	top: 15rpx;
+	width: 70rpx;
+	height: 70rpx;
+}
+.cart .data .icon .count {
+	position: absolute;
+	left: 70rpx;
+	top: -10rpx;
+	font-size: 30rpx;
+	line-height: 40rpx;
+	padding: 0 12rpx;
+	color: #fff;
+	background: #f45044;
+	border-radius: 20rpx;
+}
+.cart .data .total {
+	color: #f45044;
+	font-size: 32rpx;
+	line-height: 100rpx;
+	padding-left: 160rpx;
+}
+.cart .data .total .fee{
+  line-height: 50rpx;
+}
+
+/*配送费*/
+.cart .data .total .delivery{
+  color: gray;
+	font-size: 26rpx;
+}
+
+/*去结算*/
+.cart button {
+	margin-top: 10rpx;
+	margin-right: 0rpx;
+	width: 200rpx;
+	height: 100%;
+	font-size: 36rpx;
 }
