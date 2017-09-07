@@ -169,20 +169,22 @@ Page({
     //   console.log(data)
     // })
 
+    var def_addr = 0;
     if(is_default){
       wx.setStorage({
         key: 'default_address',
         data: detail
       })
+      def_addr = 1;
     }
     
 
     if(that.data.action=='edit'){
-      userController.updateAddress(that.data.address.id, consignee, mobile, province_id, city_id, that.data.area_id,that.data.detail, is_default).then(data => {
+      userController.updateAddress(that.data.address.id, consignee, mobile, province_id, city_id, that.data.area_id, that.data.detail, def_addr).then(data => {
         that.process(data)
       })
     }else{
-      userController.insertAddress(consignee, mobile, province_id, city_id, that.data.area_id, that.data.detail, is_default).then(data=>{
+      userController.insertAddress(consignee, mobile, province_id, city_id, that.data.area_id, that.data.detail, def_addr).then(data=>{
         that.process(data)
       })
     }

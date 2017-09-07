@@ -2,7 +2,7 @@
 <form bindsubmit="formSubmit">
   <view class="main">
     <view class="title">举报类型</view>
-    <radio-group name="report_type" class="report_type" bindchange="radioChange">
+    <radio-group name="report_type" class="report_type">
       <label wx:for="{{report_type_lists}}">
         <radio class="radio" value="{{index}}" checked="{{index==1}}" />{{report_type_lists[index]}}
       </label>

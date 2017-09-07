@@ -4,7 +4,7 @@
   <view class="time">{{data.formattime}}</view>
 
   <view class="content">
-    <rich-text nodes="{{data.content}}" bindtap="tap"></rich-text>
+    <rich-text nodes="{{data.content}}"></rich-text>
   </view> 
   
   <view class="company">{{data.company_name}}</view>

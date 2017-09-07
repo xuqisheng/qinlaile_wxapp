@@ -173,7 +173,6 @@
 
 .main .action{
   display: -webkit-flex; 
-  font-size: 30rpx;
   justify-content: space-around; 
 }
 
@@ -187,6 +186,7 @@
   border-radius: 30rpx;
   text-align: center;
   line-height: 60rpx;
+  font-size: 28rpx;
 }
 
 .main .action .submit{
@@ -198,4 +198,5 @@
   color: white;
   text-align: center;
   line-height: 60rpx;
+  font-size: 28rpx;
 }

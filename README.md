@@ -65,5 +65,9 @@ cmd命令行执行，输出当前所有page名称及数量
 收货地址列表
 下单地址选择
 
+2017-09-07
+设置默认地址bug
+个人信息设置保存用户名
+
 ##tips
-pages最多5层，下单结算流程：index->store->shop->order->addresslsit，此时新建地址需要redirectTo新的insert页面
+pages最多5层，下单结算流程：index->store->shop->order->addresslist，此时新建地址需要redirectTo新的insert页面

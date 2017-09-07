@@ -52,6 +52,7 @@ Page({
       wx.hideLoading()
       console.log(data)
       if(data.code == 10000){
+        wx.setStorageSync('username', realname)
         wx.setStorageSync('nickname', nickname)
         wx.setStorageSync('license_number', license_number)
         wx.showToast({
