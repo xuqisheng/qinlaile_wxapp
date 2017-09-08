@@ -5,8 +5,8 @@
 
 <view class="content" wx:else>
   <block wx:for="{{serveList}}" wx:for-item="serve" wx:key="*this">
-    <view class="serve-item">
-      <image class="avatar" bindtap="toDetail" data-id="{{serve.id}}" src="{{_uri+serve.headpic}}" background-size="cover"></image>
+    <view class="serve-item" bindtap="toDetail" data-id="{{serve.id}}">
+      <image class="avatar" src="{{_uri+serve.headpic}}" background-size="cover"></image>
 
       <view class="wrapper">
         <view class="desc">
@@ -25,7 +25,8 @@
 
         <view class="desc right">
           <text class="distance">{{serve.distance}}</text>
-          <view class="select" bindtap="select" data-id="{{serve.id}}">选TA</view>
+          <!--子组件与父组件都设置了点击事件时，当子组件点击时会同时触发父组件的点击事件，此时子组件用catchtap，父组件用bindtap即可  -->
+          <view class="select" catchtap="select" data-id="{{serve.id}}">选TA</view>
         </view>
       </view>
       

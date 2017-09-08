@@ -13,29 +13,38 @@
 
   <view class="product">{{goods.product_name}}</view>
 
-  <view class="rank">
-    <text class="name">评价</text>
-
-    <view class="stars">
-      <block wx:for="{{stars}}" wx:key="{{index}}">
-        <image bindtap="countStar" data-index="{{index}}" src="{{item}}" class="star"></image>
-      </block>
-    </view>
-  </view>
-
+  <!--价格和销量  -->
   <view class="info">
     <text class="price">￥{{goods.price}}</text>
     <text class="num">月售{{monthSellNum?monthSellNum:0}}份</text>
   </view>
 
-  <view class="wrapper">
+  <!--库存  -->
+  <view class="info">
+    <text class="stock">库存</text>
+    <text class="num">{{goods.stock}}份</text>
+  </view>
+
+  <view class="rank">
+    <text class="name">评价</text>
+
+    <view class="stars">
+      <block wx:for="{{stars}}" wx:key="{{index}}">
+        <image src="{{item}}" class="star"></image>
+      </block>
+    </view>
+  </view>
+
+  
+
+  <!-- <view class="wrapper">
     <view class="placeholder"></view>
     <view class="action">
       <image class="reduce" bindtap="tapReduceCart" src="../../../res/icon/reduce.png"></image>
       <view class="num">{{num}}</view>
       <image class="add" bindtap="tapAddCart" src="../../../res/icon/plus.png"></image>
     </view>
-  </view>
+  </view> -->
 
   <view class="tags" wx:if="{{goods.tags}}">
     <view class="title">商品标签</view>
@@ -44,13 +53,13 @@
 
   <view class="tags" wx:if="{{goods.desc}}">
     <view class="title">商品信息</view>
-    <rich-text class="content" nodes="{{goods.desc}}"/>
+    <rich-text class="rich-text" nodes="{{goods.desc}}"/>
   </view>
 
   <view class="nega-cart" wx:if="{{goods.tags||goods.desc}}"></view>
 
   <!--购物车-->
-	<view class="cart">
+	<view class="cart" hidden="true">
 		<view class="data" bindtap="showCartDetail">
 			<view class="icon">
 				<image src="../../../res/icon/gouwuche.png"></image>

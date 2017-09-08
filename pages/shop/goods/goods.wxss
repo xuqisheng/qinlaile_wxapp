@@ -43,8 +43,8 @@ page{
 }
 
 .main .rank .stars .star{
-  height: 40rpx;
-  width: 40rpx;
+  height: 30rpx;
+  width: 30rpx;
 }
 
 .main .info,.main .rank{
@@ -57,6 +57,10 @@ page{
 
 .main .info .price{
   color: red;
+}
+
+.main .info .stock{
+  
 }
 
 .main .info .num{
@@ -102,8 +106,14 @@ page{
 }
 
 .main .tags .content{
-  padding: 20rpx;
+  padding:0 20rpx;
   color: gray;
+}
+
+.rich-text{
+  padding:0 20rpx;
+  color: gray;
+  width: 100%; 
 }
 
 .nega-cart{

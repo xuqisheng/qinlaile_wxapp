@@ -3,7 +3,7 @@ App({
   
   // 应用全局变量
   globalData: {
-    URI: 'https://www.jiahetianlang.com',
+    URI: 'https://qll.jiahetianlang.com',
     //当前的经纬度
     latitude: '',
     longitude: '',

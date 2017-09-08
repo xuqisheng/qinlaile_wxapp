@@ -39,9 +39,9 @@
               <view class="horizontal">
                 <view class="price">￥{{goods.price}}/{{goods.unit}}</view>
                 <view class="edit-container">
-                  <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" bindtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
+                  <image class="edit" data-id="{{goods.id}}" hidden="{{!cart.list[goods.id]}}" catchtap="tapReduceCart" src="../../res/icon/reduce.png"></image>
                   <view class="e-num">{{cart.list[goods.id]}}</view>
-                  <image class="edit" data-id="{{goods.id}}" bindtap="tapAddCart" src="../../res/icon/plus.png"></image>
+                  <image class="edit" data-id="{{goods.id}}" catchtap="tapAddCart" src="../../res/icon/plus.png"></image>
                 </view>
               </view>    
             </view>
