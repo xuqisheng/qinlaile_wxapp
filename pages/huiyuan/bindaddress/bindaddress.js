@@ -27,6 +27,14 @@ Page({
   },
 
   /**
+   * 跳过该步骤
+   */
+  skipThis:function(){
+    var that = this
+    wx.navigateBack({})
+  },
+
+  /**
    * picker组件的绑定事件
    */
   bindRegionChange: function (e) {
@@ -191,12 +199,16 @@ Page({
           delta:1
         })
 
+        //小区id
+        wx.setStorageSync('village', that.data.villageId)
         //小区名称village_name
         wx.setStorageSync('village_name', that.data.village)
         //小区详细address
         wx.setStorageSync('address', that.data.detailAddress)
         //城市名称city_name
         wx.setStorageSync('city_name', that.data.city)
+        //区县id，areaId
+        wx.setStorageSync('area_id', that.data.areaId)
         //区名称area_name
         wx.setStorageSync('area_name', that.data.area)
         //保存用户地址

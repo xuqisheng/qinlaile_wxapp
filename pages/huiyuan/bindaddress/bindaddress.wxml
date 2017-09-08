@@ -43,7 +43,7 @@
 
   <view class="action">
     <view class="classname">
-      <text class="skip">跳过该步骤</text>
+      <text class="skip" bindtap="skipThis">跳过该步骤</text>
       <text class="skip confirm" bindtap="saveAddress">绑定</text>
     </view>
   </view>

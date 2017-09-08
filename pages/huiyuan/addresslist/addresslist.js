@@ -97,9 +97,10 @@ Page({
         }
 
       } else {
-        wx.showToast({
-          title: data.message,
-        })
+        // wx.showToast({
+        //   title: data.message,
+        // })
+        console.log('没有收货地址')
       }
     })
   }

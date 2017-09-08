@@ -33,7 +33,7 @@
 
     <view class="loacation">
       <view class="item-text">{{village_name}}</view>
-      <view class="loacation-content">{{city_name+area_name+village_name+address}}</view>
+      <view class="loacation-content" wx:if="{{province_id}}">{{city_name+area_name+village_name+address}}</view>
     </view>
   </view>
 

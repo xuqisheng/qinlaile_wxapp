@@ -16,11 +16,32 @@ Page({
     info:{},
 
     //小区名称
-    village_name: '没有绑定小区，请绑定地址',
+    village_name: '请绑定上门服务地址',
     //小区地址信息
     city_name: '',
     area_name: '',
     address: '',
+    province_id: ''
+  },
+
+  /**
+   * 检查地址绑定
+   */
+  checkProvince: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'province_id',
+      success: function (res) {
+
+        var province_id = res.data;
+        that.setData({
+          province_id: province_id
+        })
+      },
+      fail: function () {
+        console.log('用户未绑定地址')
+      }
+    })
   },
 
   //表单提交
@@ -113,6 +134,9 @@ Page({
 
   onShow:function(){
     var that = this
+    //检查地址
+    that.checkProvince()
+
     userController.getPersonalInfo().then(data => {
       console.log(data)
       if (data.code == 10000) {

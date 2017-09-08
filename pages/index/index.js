@@ -120,7 +120,7 @@ Page({
     //获取首页数据
     index.getIndex().then(data => {
       wx.hideLoading()
-      // console.log(data)
+       console.log(data)
       // 保存物业信息
       var propertyInfo = data.propertyInfo
       if (propertyInfo!=null){

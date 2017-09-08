@@ -3,12 +3,18 @@ App({
   
   // 应用全局变量
   globalData: {
-    URI: 'https://qll.jiahetianlang.com',
+    URI: 'https://www.jiahetianlang.com',
     //当前的经纬度
     latitude: '',
     longitude: '',
     //用户唯一id，记录是否登录；使用时要注意，用户若退出登录切换用户，且未退出应用，那么mid的值还在，可能会影响一些用到mid的操作
-    mid: wx.getStorageSync('mid')
+    mid: wx.getStorageSync('mid'),
+    //微信用户信息
+    /**
+     {"nickName":"Vintage","gender":1,"language":"zh_CN","city":"Dezhou","province":"Shandong","country":"China",
+     "avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epCtyvA27oEibhCvyj48pTyUxqQh1icZABoga8xBbVLibrKHwYLhpZXZflwmn6h31IVt4s3gicPsOpjGw/0"}
+     */
+    userInfo:'',
   },
 
   onLaunch: function() {
@@ -29,6 +35,8 @@ App({
         console.log('当前经纬度：' + that.globalData.latitude + "," + that.globalData.longitude)
       }
     })
+
+    this.getUserInfo()
   },
 
   getUserInfo: function(cb) {
@@ -40,6 +48,7 @@ App({
       wx.getUserInfo({
         withCredentials: false,
         success: function(res) {
+          console.log(res)
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }

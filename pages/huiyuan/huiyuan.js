@@ -27,7 +27,27 @@ Page({
     area_name:'',
     address:'',
 
-    xq_addr:'请绑定地址',
+    province_id:''
+  },
+
+  /**
+   * 检查地址绑定
+   */
+  checkProvince: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'province_id',
+      success: function (res) {
+
+        var province_id = res.data;
+        that.setData({
+          province_id: province_id
+        })
+      },
+      fail: function () {
+        console.log('用户未绑定地址')
+      }
+    })
   },
 
   tologin:function(){
@@ -52,6 +72,7 @@ Page({
 
     if(that.data.mid){
       userController.setup(that)
+      that.checkProvince()
     }
 
 

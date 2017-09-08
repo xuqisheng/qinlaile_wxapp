@@ -31,13 +31,13 @@
       -->
     </form>
 
-    <!-- <view class="new-user">第三方平台登录</view>
+     <view class="new-user">第三方平台登录</view>
 
     <view class="trd">
-      <image bindtap="qqLogin" class="icon" src="../../../res/qq.png"></image>
+      <!-- <image bindtap="qqLogin" class="icon" src="../../../res/qq.png"></image> -->
 
-      <image class="icon" src="../../../res/wechat.png"></image>
-    </view> -->
+      <image class="icon" src="../../../res/wechat.png" bindtap="wxlogin"></image>
+    </view> 
   </view>
 
 </view>

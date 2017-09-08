@@ -11,6 +11,17 @@ const index = require('indexController.js').controller;
 class UserController {
 
   /**
+   * 获取微信openid
+   */
+  getWxOpenId(code){
+    return baseController.getWxOpenId(code)
+  }
+
+  wxLogin(){
+
+  }
+
+  /**
    * 若realname修改，保存个人信息
    */
   savePersonalInfo(headimg, realname, nickname, license_number, province, city, area, village, address){
@@ -45,7 +56,9 @@ class UserController {
    * 个人信息获取
    */
   getPersonalInfo(){
-    return baseController.postMid('/personSettings.html');
+    return baseController.postMid('/personSettings.html',{
+      app_id:5
+    });
   }
 
   /**
@@ -574,46 +587,13 @@ class UserController {
       key: 'village',
       data: info.village,
     })
+    //license_number
+    wx.setStorage({
+      key: 'license_number',
+      data: info.license_number,
+    })
   }
 
-  /**
-   * 保存用户信息
-   */
-  saveUserInfo(data, _mobile){
-    var mid = data.mid;
-    //console.log('注册信息：mid = ' + mid)
-
-    //同步方式将用户信息保存到内部存储中
-    wx.setStorageSync('mid', mid)//用户唯一ID，类似token
-    //注意：从未登录状态到登录状态，需要修改app中初始化的mid值
-    app.globalData.mid = mid
-
-    wx.setStorageSync('mobile', _mobile)
-    //用户账号其他信息
-    var info = data.info;
-
-    console.log(JSON.stringify(info))
-
-    //对象转为字符串，保存
-    wx.setStorageSync('userinfo', JSON.stringify(info))
-
-    //保存用户头像
-    wx.setStorageSync('headimg', info.headimg)
-    //保存用户姓名
-    var realname = info.realname
-    console.log('realname = ' + realname)
-    wx.setStorageSync('username', realname)
-    //保存用户地址
-    wx.setStorageSync('province_id', info.province_id)
-    //小区名称village_name
-    wx.setStorageSync('village_name', info.village_name)
-    //小区详细address
-    wx.setStorageSync('address', info.address)
-    //城市名称city_name
-    wx.setStorageSync('city_name', info.city_name)
-    //区名称area_name
-    wx.setStorageSync('area_name', info.area_name)
-  }
 
   /**
    * 表单提交

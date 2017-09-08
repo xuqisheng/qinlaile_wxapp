@@ -38,7 +38,7 @@
         <image class="icon" src="../../../res/icon/server_location_icon.png"></image>
         <view class="vertical">
           <view class="village">{{village_name}}</view>
-          <view class="detail">{{city_name+area_name+village_name+address}}</view>
+          <view class="detail" wx:if="{{province_id}}">{{city_name+area_name+village_name+address}}</view>
         </view>
         <!-- <image class="arrow" src="../../../res/icon/qianjin.png"></image> -->
         <text class="arrow">></text>

@@ -5,6 +5,9 @@ const request = require('../utils/request.js')
 //腾讯地图webService接口
 const MAP_API = 'https://apis.map.qq.com/ws/geocoder/v1/';
 
+const APP_ID = 'wx5f6c0b635cc84b43';
+const APP_SECRET = 'f1e1bfdcc1fe14577128778b12b1d5ba'
+
 //获取应用实例
 var app = getApp()
 
@@ -14,6 +17,18 @@ const URI = app.globalData.URI;
  * BaseController
  */
 class BaseController {
+
+  
+  /**
+     * 获取微信openid
+     */
+  getWxOpenId(code){
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=+' + `${APP_ID}` + '&secret=' + `${APP_SECRET}`+'&js_code='+code+'&grant_type=authorization_code'
+    console.log('获取微信openid')
+    console.log(url)
+    return request.getAsync(url).then(res => res.data)
+  }
+
 
   /**
    * 逆地址解析

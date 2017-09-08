@@ -27,8 +27,8 @@ Page({
     communitys:[],
 
     detailAddress: '',
-    realname: wx.getStorageSync('username'),
-    mobile: wx.getStorageSync('mobile')
+    realname: '',
+    mobile: '',
   },
 
   /**
@@ -77,7 +77,7 @@ Page({
    */
   formSubmit: function (e) {
     var that = this;
-    var realname = e.detail.value.realname
+    var realname = e.detail.value.realname.trim()
     if(realname==''){
       wx.showToast({
         title: '请输入被服务人姓名',
@@ -90,6 +90,8 @@ Page({
     var area = that.data.areaId;
     var village = that.data.villageId;
     var address = that.data.detailAddress;
+
+    
 
     if (area == '') {
       wx.showModal({
@@ -147,7 +149,8 @@ Page({
           // 保存物业信息
           wx.setStorageSync('propertyInfoId', that.data.property_user_id)
 
-
+          console.log('area = ' + area)
+          console.log('that.data.area = ' + that.data.area)
         }
       })
     //若名称已修改，执行savePersonalInfo
@@ -212,13 +215,17 @@ Page({
     var village_name = wx.getStorageSync('village_name')
     var villageId = wx.getStorageSync('village')
     var address = wx.getStorageSync('address')
+    var realname = wx.getStorageSync('username')
+    var mobile = wx.getStorageSync('mobile')
 
     that.setData({
       area: area_name,
       areaId: areaId,
       village: village_name,
       villageId: villageId,
-      detailAddress: address
+      detailAddress: address,
+      realname: realname,
+      mobile: mobile
     })
     
   },
